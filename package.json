@@ -1,0 +1,23 @@
+{
+  "name": "tnp_project",
+  "version": "1.0.0",
+  "description": "college project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mayank2406/TNP_Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mayank2406/TNP_Project/issues"
+  },
+  "homepage": "https://github.com/Mayank2406/TNP_Project#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.15"
+  }
+}

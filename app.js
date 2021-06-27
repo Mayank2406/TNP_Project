@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 
-const studentRouter = require('./Routes/studentRouter');
+const studentRouter = require('./routes/studentRouter');
 const app = express()
 
 // connect to mongoDB

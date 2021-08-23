@@ -6,4 +6,4 @@ router.get('/',studentController.student_get);
 
 router.post('/',studentController.student_post);
 
-module.exports = router;
+module.exports = router; 

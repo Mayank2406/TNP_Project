@@ -6,9 +6,11 @@ const studentSchema = new Schema({
     name:{type:String, required:true},
     position:{type:String, required:true},
     branch:{type:String, required:true},
+    course:{type:String, required:true},
     type:{type:String, required:true},
     salary:{type:Number, required:true},
     year:{type:String, required:true},
+    interviewExperience:{type:String}
 },{timestamps:true})
 
 

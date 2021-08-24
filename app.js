@@ -9,7 +9,7 @@ const dbUrl = "mongodb+srv://m2406:whJaqTam7AwRUut@cluster0.9gkt2.mongodb.net/TN
 
 mongoose.connect(dbUrl,{useNewUrlParser:true,useUnifiedTopology:true})
 .then((result) => app.listen(9000, () =>{
-    console.log('hello listening on port 9000 mayank');
+    console.log('hello listening on port 9000 atif');
 }))
 .catch((err) => {console.log(err)})
 

@@ -12,4 +12,20 @@ const student_post  = (req,res) => {
     .catch(err => res.status(404).json({error:err.message}))
 }
 
-module.exports = {student_get, student_post}
+const student_sorting = (req,res) => {
+    const id = (req.params.sortBy);
+    var sortparams;
+
+    if(id==='year')
+        sortparams = {year:-1};
+    else
+        sortparams = {salary:-1};
+
+    Student.find().sort(sortparams)
+    .then(data => res.status(200).json({message:"all students fetched",data:data}))
+    .catch(err => res.status(404).json({error:err.message || err.tostring()}))
+
+
+}
+
+module.exports = {student_get, student_post, student_sorting}

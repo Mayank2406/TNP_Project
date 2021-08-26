@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import FormInput from './FormInput';
 function Login() {
     const [login,setlogin]=useState(0);
     const set=()=>{
@@ -10,7 +10,8 @@ function Login() {
         <div>
         {!login ? <div>     <input type="text" />
             <button onClick={set}>login</button></div>
-            : <div>entered</div>
+            : <div><FormInput/></div>
+            
             
         }
 

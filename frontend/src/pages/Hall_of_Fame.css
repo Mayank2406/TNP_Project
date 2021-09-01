@@ -18,15 +18,15 @@
     }
 }
 @media screen  and (max-width:1100px){
-
     .cardStudent{
         display:grid;
         grid-template-columns: auto auto  ;
         row-gap: 5%;
         margin-top:20px;
-    
-        
     }
+}
+.subHome{
+    background-color:#edf1f5;
 }
 @media screen  and (max-width:720px){
 
@@ -36,6 +36,7 @@
         row-gap: 2%;
         margin-top:20px;
     
+
         
     }
 }
@@ -52,4 +53,23 @@
     margin-top:2%;
     margin-bottom:50px;
 margin-left: 60px;
+}
+.but1{
+    display:flex;
+    justify-content:space-between;
+}
+.sec{
+    display: block;
+    top: 10px;
+}
+.but{
+    background-color:#36bea6;
+    width: 100%;
+    border-top-left-radius:25px;  
+    border-top-right-radius:25px;  
+    border-bottom-right-radius:25px;  
+    border-bottom-left-radius:25px; 
+ border-color: #36bea6;   
+ color: white;
+ 
 }

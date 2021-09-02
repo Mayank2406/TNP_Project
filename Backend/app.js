@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors =require('cors');
 const studentRouter = require('./Routes/studentRouter');
+const registerRouter = require('./Routes/registerRouter');
 const app = express();
 const PORT = process.env.PORT || 9000;
 // connect to mongoDB
@@ -20,6 +21,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cors());
 app.use('/students',studentRouter);
+app.use('/register',registerRouter);
 
 
 app.get('/', (req, res) => res.send('Home Page'));

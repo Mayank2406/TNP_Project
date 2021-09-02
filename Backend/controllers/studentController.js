@@ -7,9 +7,11 @@ const student_get =  (req,res) =>{
 }
 
 const student_post  = (req,res) => {
+    
     const students = new Student(req.body);
     students.save().then((data) => res.status(200).json({message:'students saved',data})) 
     .catch(err => res.status(404).json({error:err.message}))
+
 }
 
 const student_sorting = (req,res) => {

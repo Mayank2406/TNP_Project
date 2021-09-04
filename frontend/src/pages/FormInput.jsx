@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Grid, Paper, Avatar, Typography, TextField, Button, TextareaAutosize } from '@material-ui/core'
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 import Radio from '@material-ui/core/Radio';
@@ -10,6 +10,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
+import { useHistory } from "react-router-dom";
 
 import axios from 'axios';
 import './FormInput.css'
@@ -27,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
   }));
   
 function FormInput() {
+  const history = useHistory();
+  const [loading, setloading] = useState(false);
+  const [completed, setcompleted] = useState(false);
     const paperStyle = { padding: '30px 60px', width: 600, margin: "20px auto" }
     const headerStyle = { margin: 0 }
     const avatarStyle = { padding:'30px',backgroundColor: '#1bbd7e' }
@@ -42,7 +46,7 @@ function FormInput() {
             salary:salary,
             year:year,
             interviewExperience:interview
-        }).then((res)=>console.log(res))
+        }).then((res)=>{console.log(res); history.push("/placements"); })
         .catch((e)=>console.log("unsuccessfull submission"));
 
         console.log(name,image,position,branch,course,placement,salary,year,interview);
@@ -58,6 +62,7 @@ function FormInput() {
     const [year, setyear] = useState('')
     const[interview,setInterview]=useState();
 
+
     const classes = useStyles();
   
     const [open, setOpen] = React.useState(false);
@@ -65,6 +70,29 @@ function FormInput() {
     const [open2, setOpen2] = React.useState(false);
   
     const [open3, setOpen3] = React.useState(false);
+    // (() => {
+    //   setTimeout(() => {
+     
+    //      setloading(true);
+  
+    //         setTimeout(() => {
+    //           setcompleted(true);
+    //         }, 500);
+          
+    //   }, 2000);
+    // }, []);
+    const load=()=>{
+    //   setTimeout(() => {
+     
+    //     setloading(true);
+ 
+    //        setTimeout(() => {
+    //          setcompleted(true);
+    //        }, 500);
+         
+    //  }, 2000);
+    history.push("/placements");  
+  }
     const handleClose = () => {
       setOpen(false);
     };
@@ -91,8 +119,19 @@ function FormInput() {
 
     
     return (
-        
-        <Grid>
+        <>
+        {completed ? (
+          <>
+            {loading ? (
+              <div className="spinner">
+                <span>Loading...</span>
+                <div className="half-spinner"></div>
+              </div>
+            ) : (
+              <div className="completed">&#x2713;</div>
+            )}
+          </>
+        ) : (<div><Grid>
         <Paper elevation={20} style={paperStyle}>
             <Grid align='center' className='Avatar'>
                 <Avatar style={avatarStyle}>
@@ -183,6 +222,9 @@ onChange={(e)=>{setplacement(e.target.value)}}
             </form>
         </Paper>
     </Grid>
+    </div>)
+        }
+        </>
     )
 }
 

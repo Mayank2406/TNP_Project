@@ -25,9 +25,26 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 function Hall_of_Fame() {
+  const url ='http://localhost:9000/students';
     const classes = useStyles();
-    const [sort,setSort]=useState('')
+    const [sort,setSort]=useState('');
+    const [search,setSearch]=useState('')
     const [open2, setOpen2] = useState(false)
+    const funSort=()=> {
+      console.log(sort);
+      const url2 =`http://localhost:9000/students/${sort}`;
+      axios.get(url2)
+      .then((res)=>{console.log(res.data.data);
+     
+        setdata(res.data.data);
+        console.log(data);
+    
+        
+    // setdata(data.data.length);
+    })
+      .catch(error=>console.error('error'));
+
+    };
     const handleClose2 = () => {
         setOpen2(false);
       };
@@ -38,7 +55,7 @@ function Hall_of_Fame() {
     var backendData=[];
     const [data, setdata] = useState([]);
     useEffect(() => {
-  const url ='http://localhost:9000/students';
+  
   axios.get(url)
   
   .then((res)=>{console.log(res.data.data);
@@ -86,7 +103,7 @@ function Hall_of_Fame() {
      <FormControl className={classes.formControl}>
         <Select
           value={sort}
-          onChange={(e)=>{setSort(e.target.value)}}
+          onChange={(e)=>{setSearch(e.target.value)}}
 
           displayEmpty
           className={classes.selectEmpty}
@@ -111,7 +128,7 @@ function Hall_of_Fame() {
      <FormControl className={classes.formControl}>
         <Select
           value={sort}
-          onChange={(e)=>{setSort(e.target.value)}}
+          onChange={(e)=>{setSearch(e.target.value)}}
 
           displayEmpty
           className={classes.selectEmpty}
@@ -136,7 +153,7 @@ function Hall_of_Fame() {
      <FormControl className={classes.formControl}>
         <Select
           value={sort}
-          onChange={(e)=>{setSort(e.target.value)}}
+          onChange={(e)=>{setSearch(e.target.value)}}
 
           displayEmpty
           className={classes.selectEmpty}
@@ -164,7 +181,7 @@ function Hall_of_Fame() {
      <FormControl className={classes.formControl}>
         <Select
           value={sort}
-          onChange={(e)=>{setSort(e.target.value)}}
+          onChange={(e)=>{setSearch(e.target.value)}}
 
           displayEmpty
           className={classes.selectEmpty}
@@ -189,7 +206,7 @@ function Hall_of_Fame() {
      <FormControl className={classes.formControl}>
         <Select
           value={sort}
-          onChange={(e)=>{setSort(e.target.value)}}
+          onChange={(e)=>{setSearch(e.target.value)}}
 
           displayEmpty
           className={classes.selectEmpty}
@@ -260,8 +277,8 @@ function Hall_of_Fame() {
             <em>--Select--</em>
           </MenuItem>
        
-  <MenuItem  value="Package">Sort by package</MenuItem>
-  <MenuItem value="branch">Sort by branch</MenuItem>
+  <MenuItem  value="salary">Sort by package</MenuItem>
+  <MenuItem value="year">Sort by Batch</MenuItem>
         </Select>
      
       </FormControl>
@@ -273,6 +290,7 @@ function Hall_of_Fame() {
             onClick={() => {
               console.log('modal closed ');
               close();
+              funSort();
             }}
           >
             Done
@@ -288,7 +306,7 @@ function Hall_of_Fame() {
             {data.map((item)=>{
                 return(
                     <div className="student">
-                    <Card name={item.name} job={item.position} branch={item.branch} course='cse' batch={item.year} />
+                    <Card name={item.name} job={item.position} branch={item.branch} course={item.course} batch={item.year} />
                 </div>
                 )
             })

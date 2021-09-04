@@ -24,11 +24,11 @@ const mailer=async (email,msgSubject,msg)=>{
             if(err) {
                 console.log("err"+err);
                 resolve(false)
-                //return f;
+                
             } else {
                 console.log("done")
                 resolve(true)
-            // return f;
+            
             }
         });
         

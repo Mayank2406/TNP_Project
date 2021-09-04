@@ -9,7 +9,7 @@ const registration =  async (req,res) =>{
     const userData=req.body;
     userData.secret="itsme";
     userData.userPassword=await bcrypt.hash("password",10);
-    userData.userEmail="pawankhampar@gmail.com"
+    userData.userEmail=userData.userID+'@mmmut.ac.in'
     console.log(userData)
     const userEncryptedData= EncryptDecrypt.encryptHelper(userData);
     const msgEmail=`<p>Welcome ${userData.userName}, <br> <a href=/ value=${userEncryptedData} >Click to verify</a><br><h3>Thanks<br>TnP Info created by Nandzam</h3>`;
@@ -59,7 +59,11 @@ const verification = async(req,res)=>{
             console.log(countUser)
             if(countUser===0){
                 const user = new User(decryptedMsg);
-                user.save().then((data) => res.send({status:true,userID:decryptedMsg.userID,secret:EncryptDecrypt.encryptHelper(decryptedMsg.secret)})) 
+                user.save().then((data) => res.send({
+                    status:true,
+                    userID:decryptedMsg.userID,
+                    secret:EncryptDecrypt.encryptHelper(decryptedMsg.userID)
+                })) 
                 .catch(err => res.send({status:false,error:err}))
             }
             else{

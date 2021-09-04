@@ -4,6 +4,7 @@ const cors =require('cors');
 const studentRouter = require('./Routes/studentRouter');
 const registerRouter = require('./Routes/registerRouter');
 const loginRouter  = require('./Routes/loginRouter');
+const resetRouter  = require('./Routes/resetRouter');
 const app = express();
 const PORT = process.env.PORT || 9000;
 // connect to mongoDB
@@ -24,5 +25,5 @@ app.use(cors());
 app.use('/students',studentRouter);
 app.use('/register',registerRouter);
 app.use('/login',loginRouter);
-
+app.use('/reset',resetRouter)
 app.get('/', (req, res) => res.send('Home Page'));

@@ -9,11 +9,7 @@ const registration =  async (req,res) =>{
     const userData=req.body;
     userData.secret="itsme";
     userData.userPassword=await bcrypt.hash("password",10);
-<<<<<<< HEAD
     userData.userEmail=req.body.userEmail;
-=======
-    userData.userEmail=userData.userID+'@mmmut.ac.in'
->>>>>>> 3567518cb41ce2c23872237b5c035906fbcbe245
     console.log(userData)
     const userEncryptedData= EncryptDecrypt.encryptHelper(userData);
     const msgEmail=`<p>Welcome ${userData.userName}, <br> <a href=/ value=${userEncryptedData} >Click to verify</a><br><h3>Thanks<br>TnP Info created by Nandzam</h3>`;

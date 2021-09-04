@@ -1,17 +1,18 @@
 const User = require('../models/user')
 const Mailer=require('./mailer')
 const EncryptDecrypt=require('./dataencrypt')
+const bcrypt = require('bcrypt');
 
 const registration =  async (req,res) =>{
 
     console.log(req.body);
     const userData=req.body;
     userData.secret="itsme";
-    userData.userPassword="password"
-
+    userData.userPassword=await bcrypt.hash("password",10);
+    userData.userEmail="pawankhampar@gmail.com"
     console.log(userData)
     const userEncryptedData= EncryptDecrypt.encryptHelper(userData);
-    const msgEmail=`<p>${userEncryptedData}</p>`;
+    const msgEmail=`<p>Welcome ${userData.userName}, <br> <a href=/ value=${userEncryptedData} >Click to verify</a><br><h3>Thanks<br>TnP Info created by Nandzam</h3>`;
     try{
         var countUser=0
         await User.find({userID:userData.userID}).then(data=>countUser=data.length)

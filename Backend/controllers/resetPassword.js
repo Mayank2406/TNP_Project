@@ -57,27 +57,30 @@ const generate = async (req,res)=>{
         console.log("daata"+data)
         if(data.length==0)res.send({status:false,msg:"userID does not exist"});
         else if(data[0].userID==req.body.userID){
-            
-            const user={
-                userID:req.body.userID,
-                secret:"itsme"
-            }
-            const userEncryptedData = EncryptDecrypt.encryptHelper(user);
-            const msgEmail=`<p>Welcome ${user.userID}, <br> <a href=/ value=${userEncryptedData} >Click to Reset Password</a><br><h3>Thanks<br>TnP Info created by Nandzam</h3>`;
-            console.log("from herererere")
-            try{
-                const mail_res=await Mailer.mailer(user.userID+"@mmmut.ac.in",'TnP Reset Password',msgEmail);
-            
-                toSend={
-                    status:mail_res,
-                    msg:mail_res?"email sent":"email not sent",
-                    
-                }
-                res.send(toSend);
-            }
-            catch(err){
-                res.send({status:false,msg:"error occurred1",error:err})
-            }
+            const OTP=Math.floor(Math.random() * (99999 - 10001)) + 100001;
+            var newvalues = { $set: {userOTP:OTP,userVerified:"YES" } };
+                await User.updateOne({userID:req.body.userID},newvalues,async (err,result)=>{
+                    if(result){
+                        const msgEmail=`<p>Welcome ${req.body.userID}, <br> OTP to reset password is ${OTP}<br><h3>Thanks<br>TnP Info created by Nandzam</h3>`;
+                        console.log("from herererere")
+                        try{
+                            const mail_res=await Mailer.mailer(req.body.userID+"@mmmut.ac.in",'TnP Reset Password',msgEmail);
+                        
+                            toSend={
+                                status:mail_res,
+                                msg:mail_res?"email sent":"email not sent",
+                                
+                            }
+                            res.send(toSend);
+                        }
+                        catch(err){
+                            console.log(err);
+                            res.send({status:false,msg:"error occurred1",error:err})
+                        }
+                    }
+                    else res.send({status:false,msg:'error occurred2'})
+                })
+           
         }
     }).catch((err)=>{
         res.send({status:false,msg:"error occurred2",error:err})
@@ -85,13 +88,13 @@ const generate = async (req,res)=>{
 }
 
 const verification = async (req,res)=>{
-    const msg=req.body.msg
-    const decryptedMsg = await EncryptDecrypt.decryptObjectHelper(msg);
+    
+    const decryptedMsg = req.body
     if(decryptedMsg.secret=="\"itsme\"" ||decryptedMsg.secret=="itsme"){
         try{
             await User.find({userID:decryptedMsg.userID}).then((data)=>{
                 if(data.length==0)res.send({status:"false",msg:"userID does not exist"});
-                else if(data[0].userID==decryptedMsg.userID){
+                else if(data[0].userID==decryptedMsg.userID&&data[0].userOTP==decryptedMsg.userOTP){
                     res.send({
                         status:"true",
                         userID:decryptedMsg.userID,

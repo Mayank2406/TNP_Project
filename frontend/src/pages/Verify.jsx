@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import FormInput from './FormInput';
-import axios from 'axios'
+
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -15,8 +15,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Popup from 'reactjs-popup';
-import Verify from './Verify';
+import PasswordSet from './PasswordSet';
+import axios from 'axios';
 
 function Copyright() {
   return (
@@ -30,7 +30,6 @@ function Copyright() {
     </Typography>
   );
 }
-
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -51,29 +50,33 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
-function SignUp() {
+
+function Verify() {
   
-  const [r,setr]=useState(false);
-  const [name,setname]=useState('');
-  const [roll,setroll]=useState('');
-  const regis=()=>{
+  const [msg,setmsg]=useState('');
+  const [win,setwin]=useState(false);
+  const [sec,setsec]=useState('')
+  const [userid,setuserid]=useState('');
+  const classes = useStyles();
+  const verify=()=>{
+    console.log('atif')
     console.log('naffo');
-    axios.post('http://localhost:9000/register/registration',{
-      
-      userID:roll,
-      userName:name
+    axios.post('http://localhost:9000/register/verification',{
+      msg:msg
       
   }).then((res)=>{
-    setr(res.data.status);
+    console.log(res)
+    setwin(res.data.status);
+    setuserid(res.data.userID);
+    setsec(res.data.secret);
   })
   .catch((e)=>console.log("unsuccessfull submission"));
-  console.log('verdict',r);
+  console.log('veify',win);
   }
-
-    const classes = useStyles();
     return (
         <div>
-           {!r?<div>   
+           
+         {win?<div><PasswordSet userID={userid} secret={sec} /></div>:<div>   
 
 <Container component="main" maxWidth="xs">
 <CssBaseline />
@@ -82,48 +85,34 @@ function SignUp() {
 <LockOutlinedIcon />
 </Avatar>
 <Typography component="h1" variant="h5">
-SignUp
+varification page
 </Typography>
 <div className={classes.form} noValidate>
+
 <TextField
 variant="outlined"
 margin="normal"
 required
+value={msg}
+onChange={(e)=>{setmsg(e.target.value)}}
 fullWidth
 
-value={name}
-onChange={(e)=>{setname(e.target.value)}}
-label="user Name"
-
-autoComplete="userName"
-autoFocus
-/>
-<TextField
-variant="outlined"
-margin="normal"
-required
-value={roll}
-onChange={(e)=>{setroll(e.target.value)}}
-fullWidth
-
-label="Roll Number"
+label="Message"
 type="text"
 
 autoComplete="current-password"
 />
+
 <Button
 
-type="submit"
 fullWidth
 variant="contained"
-onClick={regis}
+onClick={verify}
 color="primary"
 className={classes.submit}
 >
-Sign up
+verify
 </Button>
-
-
 
 </div>
 </div>
@@ -131,10 +120,10 @@ Sign up
 <Copyright />
 </Box>
 </Container>
-</div>:<Verify/>}
-
+</div>
+}
         </div>
     )
 }
 
-export default SignUp
+export default Verify

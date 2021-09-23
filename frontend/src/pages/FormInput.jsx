@@ -140,7 +140,7 @@ function FormInput() {
                 <h2 style={headerStyle}>Registration form</h2>
                 <Typography variant='caption' gutterBottom>Please fill this form to create an account !</Typography>
             </Grid>
-            <form>
+           
             <TextField fullWidth label='imageUrl' onChange={(e)=>{setimage(e.target.value)}} placeholder="Enter your imageUrl" />
                 <TextField fullWidth label='Name' onChange={(e)=>{setname(e.target.value)}} placeholder="Enter your name" />
                 <TextField fullWidth label='Job Position' onChange={(e)=>{setposition(e.target.value)}} placeholder="Enter your email" />
@@ -219,7 +219,7 @@ onChange={(e)=>{setplacement(e.target.value)}}
 
 
                 <Button onClick={sendData} variant='contained' color='primary'>Submit</Button>
-            </form>
+          
         </Paper>
     </Grid>
     </div>)

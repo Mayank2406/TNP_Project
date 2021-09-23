@@ -15,6 +15,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import axios from 'axios';
 
 function Copyright() {
   return (
@@ -50,10 +51,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 function Login() {
     const [login,setlogin]=useState(0);
+    const [user,setuser]=useState('');
+    const [pass,setpass]=useState('');
     const set=()=>{
-        setlogin(1)
-
+        
+      axios.post('http://localhost:9000/login',{
+      
+        userID:user,
+        userPassword:pass
+        
+    }).then((res)=>{
+      
+      setlogin("status",res.data.status);
+    })
+    .catch((e)=>console.log("unsuccessfull submission"));
+    console.log('verdict',login);
     }
+    
     const classes = useStyles();
     return (
         <div>
@@ -77,6 +91,8 @@ function Login() {
             id="email"
             label="Email Address"
             name="email"
+            value={user}
+            onChange={(e)=>{setuser(e.target.value)}}
             autoComplete="email"
             autoFocus
           />
@@ -87,6 +103,8 @@ function Login() {
             fullWidth
             name="password"
             label="Password"
+            value={pass}
+            onChange={(e)=>{setpass(e.target.value)}}
             type="password"
             id="password"
             autoComplete="current-password"
@@ -97,7 +115,7 @@ function Login() {
           />
           <Button
            onClick={set}
-           type="submit"
+    
             fullWidth
             variant="contained"
             color="primary"

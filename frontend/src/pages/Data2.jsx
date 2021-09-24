@@ -7,7 +7,7 @@ import Profilephoto5 from "./assets/Profilephoto5.jpg";
 
 
 
-const Data=[
+const Data2=[
   {
     image: Profilephoto1,
     description: "Mohammad Ahzam",
@@ -35,28 +35,7 @@ const Data=[
     dept:"Computer Sciece Engineering",
    
   },
-  {
-    image: Profilephoto5,
-    description: "Mayank Gupta",
-    job_pos:"SDE @ Google",
-    dept:"Computer Sciece Engineering",
-   
-  },
-  {
-    image: Profilephoto3,
-    description: "Mayank Gupta",
-    job_pos:"SDE @ Google",
-    dept:"Computer Sciece Engineering",
-   
-  },
-  {
-    image: Profilephoto3,
-    description: "Mayank Gupta",
-    job_pos:"SDE @ Google",
-    dept:"Computer Sciece Engineering",
-   
-  },
-
+ 
 ];
 
-export default Data;
+export default Data2;

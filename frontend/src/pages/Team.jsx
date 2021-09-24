@@ -1,5 +1,5 @@
 import "./Team.css";
-import CardTeam from "./CardTeam";
+import CardTeam from "./components/CardTeam";
 import Data from "./Data.jsx";
 import Data2 from "./Data2.jsx";
 import { makeStyles } from '@material-ui/core/styles';

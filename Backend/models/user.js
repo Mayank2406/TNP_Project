@@ -6,7 +6,9 @@ const userSchema = new Schema({
     userID:{type:Number, required:true},
     userName:{type:String, required:true},
     userEmail:{type:String, required:true},
-    userPassword:{type:String, required:true}
+    userPassword:{type:String, required:true},
+    userOTP:{type:Number},
+    userVerified:{type:String}
 },{timestamps:true})
 
 

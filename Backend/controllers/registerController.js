@@ -9,24 +9,33 @@ const registration =  async (req,res) =>{
     const userData=req.body;
     userData.secret="itsme";
     userData.userPassword=await bcrypt.hash("password",10);
-    userData.userEmail=userData.userID+'@mmmut.ac.in'
+    userData.userEmail=userData.userID+'@mmmut.ac.in';
+    userData.userOTP=Math.floor(Math.random() * (99999 - 10001)) + 100001;
+    console.log(userData.userOTP)
+    userData.userVerified="NO";
     console.log(userData)
     const userEncryptedData= EncryptDecrypt.encryptHelper(userData);
-    const msgEmail=`<p>Welcome ${userData.userName}, <br> <a href=/ value=${userEncryptedData} >Click to verify</a><br><h3>Thanks<br>TnP Info created by Nandzam</h3>`;
+    const msgEmail=`<p>Welcome ${userData.userName}, <br> OTP for registration is ${userData.userOTP}<br><h3>Thanks<br>TnP Info created by Nandzam</h3>`;
     try{
         var countUser=0
-        await User.find({userID:userData.userID}).then(data=>countUser=data.length)
+        var dbData
+        await User.find({userID:userData.userID}).then((data)=>{dbData=data;countUser=data.length})
         .catch(err=>console.log(err));
         var toSend={};
+        
         console.log(countUser)
-        if(countUser==0){
+        if(countUser==0 || (countUser==1&&dbData[0].userVerified==="NO")){
             const mail_res=await Mailer.mailer(userData.userEmail,'TnP Email Verification',msgEmail);
-            
-            toSend={
+            const user = new User(userData);
+
+            await user.save().then((data) => toSend={
                 status:mail_res,
                 msg:mail_res?"email sent":"email not sent",
                 
-            }
+                }
+            )
+            .catch(err => toSend={status:false,error:err})
+            
             res.send(toSend);
         }
         else{
@@ -48,26 +57,40 @@ const registration =  async (req,res) =>{
 
 const verification = async(req,res)=>{
     //console.log(req.body);
-    const encryptedMsg=req.body.msg
+    const decryptedMsg=req.body
     try{
-        const decryptedMsg=EncryptDecrypt.decryptObjectHelper(encryptedMsg);
+       
         console.log(decryptedMsg);
         try{
             var countUser=0
-            await User.find({userID:decryptedMsg.userID}).then(data=>countUser=data.length)
+            var dbData
+            await User.find({userID:decryptedMsg.userID}).then((data)=>{
+                countUser=data.length;
+                dbData=data
+                
+            })
             .catch(err=>console.log(err));
-            console.log(countUser)
-            if(countUser===0){
-                const user = new User(decryptedMsg);
-                user.save().then((data) => res.send({
-                    status:true,
-                    userID:decryptedMsg.userID,
-                    secret:EncryptDecrypt.encryptHelper(decryptedMsg.userID)
-                })) 
-                .catch(err => res.send({status:false,error:err}))
+            console.log(dbData)
+            if(countUser===1&&dbData[0].userOTP==decryptedMsg.userOTP){
+                
+                var newvalues = { $set: {userOTP:0,userVerified:"YES" } };
+                await User.updateOne({userID:decryptedMsg.userID},newvalues,(err,result)=>{
+                    if(result){
+                        res.send({
+                            status:true,
+                            userID:decryptedMsg.userID,
+                            secret:EncryptDecrypt.encryptHelper(decryptedMsg.userID)
+                        })
+                    }
+                    else res.send({status:false,msg:'error occurred2'})
+                })
+                
+            }
+            else if(dbData[0].userVerified=="YES"){
+                res.send({status:false,msg:"User already verified"})
             }
             else{
-                res.send({status:false,msg:"UserID exist"})
+                res.send({status:false,msg:"Invalid OTP"})
             }
         }
         catch(err){

@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 function Hall_of_Fame() {
-  const url ='http://localhost:9000/students';
+  const url ='http://localhost:9000/students/';
     const classes = useStyles();
     const [sort,setSort]=useState('');
     const [search,setSearch]=useState('')
@@ -52,26 +52,27 @@ function Hall_of_Fame() {
       const handleOpen2 = () => {
         setOpen2(true);
       };
-    var backendData=[];
+
     const [data, setdata] = useState([]);
     useEffect(() => {
   
-  axios.get(url)
+    axios.get(url)
+  
   
   .then((res)=>{console.log(res.data.data);
-    for(var i=0;i<res.data.data.length;i++)
-    {console.log(res.data[i]);
-        backendData.push(res.data.data[i]);
 
-    }
-    setdata(res.data.data);
-    console.log(backendData);
-
+    
+    console.log(res);
+    console.log('arraya fdjfdkfksjfkldsjflkdsjfkdjflkdjflkdjfkldj');
+setdata(res.data.students);
     
 // setdata(data.data.length);
 })
-  .catch(error=>console.error('error'));
-    }, [])
+  .catch(error=>{
+console.log('djfjkdjflkdjfldjflkdjfdljflkjf    fjdkfjkdfjdsjf')});
+    }
+    
+    , [])
     
     return (
 

@@ -23,7 +23,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      techTheak
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function SignUp() {
-  
+  const [exist,setexit]=useState(true);
   const [r,setr]=useState(false);
   const [name,setname]=useState('');
   const [roll,setroll]=useState('');
@@ -65,9 +65,12 @@ function SignUp() {
       
   }).then((res)=>{
     setr(res.data.status);
+    setexit(res.data.status);
   })
   .catch((e)=>console.log("unsuccessfull submission"));
   console.log('verdict',r);
+
+  
   }
 
     const classes = useStyles();
@@ -111,6 +114,15 @@ type="text"
 
 autoComplete="current-password"
 />
+
+
+{exist?<div></div>:<div >* You are already registerd 
+  
+  <Link href="/login" variant="body2">
+                {" click to login"}
+              </Link>
+  </div>}
+
 <Button
 
 type="submit"
@@ -123,15 +135,13 @@ className={classes.submit}
 Sign up
 </Button>
 
-
-
 </div>
 </div>
 <Box mt={8}>
 <Copyright />
 </Box>
 </Container>
-</div>:<Verify/>}
+</div>:<Verify userID={roll}/>}
 
         </div>
     )

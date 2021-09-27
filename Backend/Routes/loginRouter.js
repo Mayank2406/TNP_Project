@@ -6,7 +6,9 @@ router.post('/',loginController.login);
 
 router.post('/verify',authenticate,(req,res)=>{
     console.log(req.user);
-    res.send("from hree");
+   let response=req.user;
+   response.status=true;
+    res.send(response);
 })
 
 module.exports = router; 

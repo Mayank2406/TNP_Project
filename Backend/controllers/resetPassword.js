@@ -9,8 +9,11 @@ const resetPassword = async (req,res)=>{
     var secret=EncryptDecrypt.decryptHelper(req.body.secret);
     const secrettmp=secret.slice(1,11)
     const user=req.body.userID;
-    const password=req.body.userPassword
-    
+    var password=req.body.userPassword;
+    console.log('atif');
+    password = await bcrypt.hash(password,10);
+    console.log('naffo');
+    console.log(password);
     try{
         
         if(secret==user||secrettmp==user){
@@ -28,12 +31,12 @@ const resetPassword = async (req,res)=>{
                 })
             }
             else{
-                var newvalues = { $set: {userPassword: await bcrypt.hash(password,10) } };
+                var newvalues = { $set: {userPassword: password } };
                 await User.updateOne({userID:user},newvalues,(err,result)=>{
                     if(result){
                         res.send({status:true,msg:'password updated'})
                     }
-                    else res.send({status:false,msg:'error occurred2'})
+                    else {console.log(err);res.send({status:false,msg:'error occurred2'})}
                 })
             }
             

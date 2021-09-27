@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './contact.css'
 import logo from  '../logo.png'
+import { useStateValue } from '../StateProvider'
 function Countact() {
+    const [{token},dispatch]=useStateValue();
+    // useEffect(()=>{
+    //     axios.post()
+    // },[]);
     return (
         <div className="toOfImg">
+            <h1>{token}</h1>
             <div className="contactBg">
                 <img className='img2' src={logo} alt="" />
 

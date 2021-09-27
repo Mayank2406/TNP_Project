@@ -23,7 +23,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        techTheak
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Verify() {
+function Verify(props) {
   
   const [msg,setmsg]=useState('');
   const [win,setwin]=useState(false);
@@ -59,10 +59,10 @@ function Verify() {
   const [userid,setuserid]=useState('');
   const classes = useStyles();
   const verify=()=>{
-    console.log('atif')
-    console.log('naffo');
+  
     axios.post('http://localhost:9000/register/verification',{
-      msg:msg
+      userOTP:msg,
+      userID:props.userID
       
   }).then((res)=>{
     console.log(res)

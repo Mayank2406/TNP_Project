@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import FormInput from './FormInput';
 
 
@@ -16,6 +16,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from 'axios';
+import { useStateValue } from '../StateProvider';
+import { actionTypes } from '../reducer';
 
 function Copyright() {
   return (
@@ -53,6 +55,15 @@ function Login() {
     const [login,setlogin]=useState(0);
     const [user,setuser]=useState('');
     const [pass,setpass]=useState('');
+const [{token},dispatch]=useStateValue();
+useEffect(()=>{
+  axios.post('http://localhost:9000/login/verify',{
+    token:token
+  }).then((res)=>{
+    setlogin(res.data.status);
+    console.log('token reslt ',res);
+  })
+},[])
     const set=()=>{
         
       axios.post('http://localhost:9000/login',{
@@ -61,8 +72,12 @@ function Login() {
         userPassword:pass
         
     }).then((res)=>{
+      dispatch({
+        type:actionTypes.SET_TOKEN,
+        token: res.data.token,
+    }); 
       
-      setlogin("status",res.data.status);
+      setlogin(res.data.status);
     })
     .catch((e)=>console.log("unsuccessfull submission"));
     console.log('verdict',login);
@@ -88,12 +103,12 @@ function Login() {
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
+            id="roll"
+            label="Roll Number"
+            name="roll"
             value={user}
             onChange={(e)=>{setuser(e.target.value)}}
-            autoComplete="email"
+            autoComplete="number"
             autoFocus
           />
           <TextField
@@ -109,10 +124,10 @@ function Login() {
             id="password"
             autoComplete="current-password"
           />
-          <FormControlLabel
+          {/* <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
-          />
+          /> */}
           <Button
            onClick={set}
     
@@ -125,7 +140,7 @@ function Login() {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link href="/forget" variant="body2">
                 Forgot password?
               </Link>
             </Grid>

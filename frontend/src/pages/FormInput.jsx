@@ -172,7 +172,7 @@ function FormInput() {
       value={branch}
       onChange={(e)=>{setbranch(e.target.value)}}
     >
-      <MenuItem  value="CS">CSE</MenuItem>
+      <MenuItem  value="Computer Science and enginerring">CSE</MenuItem>
       <MenuItem value="EE">EE</MenuItem>
       <MenuItem value="CE">CE</MenuItem>
       <MenuItem value="ME">ME</MenuItem>
@@ -206,19 +206,12 @@ onChange={(e)=>{setplacement(e.target.value)}}
 <TextField fullWidth label='Graduation year' onChange={(e)=>{setyear(e.target.value)}} placeholder="Enter Graduation year" />
 <div className="interview">
   
-  
-<TextareaAutosize
-  
-  minRows={4}
-  aria-label="maximum height"
-  placeholder="your Interview Experience"
-  onChange={(e)=>{setInterview(e.target.value)}}
+<Button onClick={sendData} variant='contained' color='primary'>Submit</Button>
 
-/>
-             </div>
+        </div>
 
 
-                <Button onClick={sendData} variant='contained' color='primary'>Submit</Button>
+              
           
         </Paper>
     </Grid>

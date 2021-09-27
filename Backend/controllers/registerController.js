@@ -27,14 +27,20 @@ const registration =  async (req,res) =>{
         if(countUser==0 || (countUser==1&&dbData[0].userVerified==="NO")){
             const mail_res=await Mailer.mailer(userData.userEmail,'TnP Email Verification',msgEmail);
             const user = new User(userData);
-
-            await user.save().then((data) => toSend={
+           
+            await user.save().then((data) =>{ toSend={
                 status:mail_res,
                 msg:mail_res?"email sent":"email not sent",
                 
+                
                 }
+  
+            }
+                
             )
-            .catch(err => toSend={status:false,error:err})
+            .catch(err =>{ toSend={status:false};
+               
+            })
             
             res.send(toSend);
         }

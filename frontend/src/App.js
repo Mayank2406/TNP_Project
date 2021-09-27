@@ -9,6 +9,9 @@ import Team from './pages/Team'
 import Hall_of_fame from './pages/Hall_of_Fame';
 import Login from './pages/Login';
 import Contact from './pages/Countact';
+import SignUp from './pages/SignUp';
+import InterviewExp from './pages/InterviewExp';
+import Forget_generate from './pages/Forget_generate';
 function App() {
   return (
     <>
@@ -20,7 +23,9 @@ function App() {
           <Route path='/placements' component={Hall_of_fame} />
           <Route path='/login' component={Login} />
           <Route path='/contact' component={Contact} />
-          
+          <Route path='/signup' component={SignUp} />
+          <Route path='/Interview' component={InterviewExp} />
+          <Route path='/forget' component={Forget_generate}/>
         </Switch>
       </Router>
     </>

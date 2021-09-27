@@ -91,3 +91,13 @@ color:white;
 
     backdrop-filter: blur(6px);
   }
+  .links{
+margin: 30px;  
+display: flex;
+flex-direction: row;
+
+justify-content: center;
+}
+.linkedin{
+    padding:10px;
+}

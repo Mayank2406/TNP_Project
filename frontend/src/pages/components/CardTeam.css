@@ -1,0 +1,92 @@
+.cardTeam {
+	float:left;
+	background-color: white;
+	color: #272727;
+	padding: 0.625rem;
+	transition: 200ms;
+    max-width: 200;
+	text-align: center;
+}
+
+.cardTeam:hover {
+	transition: 200ms;
+	border-color: tomato;
+	border-style: solid;
+}
+
+.card-header {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+    
+}
+
+.profile {
+	width: 2.5rem;
+	height: 2.5rem;
+	background-color: tomato;
+	border-radius: 100%;
+	margin:0.625rem;
+	font-size: 20pt;
+	text-align: center;
+	font-weight: bold;
+	color: white;
+	justify-content: center;
+}
+
+.letter {
+	vertical-align: middle;
+}
+
+.card-title-group {
+	justify-content: center;
+}
+
+.card-title {
+	flex: 0.5;
+	font-size: large;
+	margin-bottom: 8;
+	margin-top: 0;
+	margin-left: 6.25rem;
+}
+
+
+.card-image {
+	border-radius: 100%;
+	border: solid 5px black;
+}
+
+.card-image:hover {
+	transition: 200ms;
+	opacity: 0.3;
+	border-style: solid;
+}
+
+.card-text1 {
+	width: auto;
+	font-size: small;
+	color: black;
+	text-align: center;
+}
+
+.card-text2 {
+	width: auto;
+	font-size: small;
+	text-align: center;
+	color: grey;
+}
+.card-text3 {
+	width: auto;
+	color: grey;
+	font-size: small;
+	text-align: center;
+}
+
+
+.card-like-bar {
+	display: flex;
+	align-items: center;
+	margin-top: 1.25rem;
+	
+}
+

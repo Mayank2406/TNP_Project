@@ -33,6 +33,12 @@ export const SidebarData = [
     path: '/contact',
     icon: <FaIcons.FaEnvelopeOpenText />,
     cName: 'nav-text'
+  },
+  {
+    title: 'Interview Exp.',
+    path: '/Interview',
+    icon: <FaIcons.FaEnvelopeOpenText />,
+    cName: 'nav-text'
   }
 
 ];

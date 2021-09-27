@@ -12,7 +12,7 @@ function Card(props) {
         <div className="card">
         <div className="upper-container">
         <div className="image-container">
-            <img src={pic} alt=""  width="100px" height="100px"/>
+            <img class="img1" src={pic} alt=""  width="100px" height="100px"/>
 
 
         </div>

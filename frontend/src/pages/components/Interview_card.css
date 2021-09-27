@@ -1,0 +1,166 @@
+.Icard {
+	float:left;
+	color: #272727;
+	padding: 0.625rem;
+	transition: 200ms;
+    min-width: 90%;
+    background-color: white;
+	text-align: center;
+    font-size: large;
+    border-radius: 5%;
+    margin-right: 4em;
+    margin-top: 4em;
+    min-height: 350px;
+}
+
+.Icard:hover {
+	transition: 200ms;
+	border-color: tomato;
+	border-style: solid;
+}
+
+.Icard-header {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+    
+}
+
+.profile {
+	width: 2.5rem;
+	height: 2.5rem;
+	background-color: tomato;
+	border-radius: 100%;
+	margin:0.625rem;
+	font-size: 20pt;
+	text-align: center;
+	font-weight: bold;
+	color: white;
+	justify-content: center;
+}
+
+.letter {
+	vertical-align: middle;
+}
+
+.Icard-title-group {
+	justify-content: center;
+}
+
+.Icard-title {
+	flex: 0.5;
+	font-size: large;
+	margin-bottom: 8;
+	margin-top: 0;
+	margin-left: 6.25rem;
+}
+
+
+.Icard-image {
+	border-radius: 100%;
+	border: solid 5px black;
+}
+
+.Icard-image:hover {
+	transition: 200ms;
+	opacity: 0.3;
+	border-style: solid;
+}
+
+.Icard-text1 {
+	width: auto;
+	font-size: large;
+	color: black;
+	text-align: center;
+    padding-top: 5%;
+}
+
+.Icard-text2 {
+	width: auto;
+	font-size: large;
+	text-align: center;
+	color: grey;
+    padding-top: 5% ;
+}
+.Icard-text3 {
+	width: auto;
+	color: grey;
+	font-size: large;
+	text-align: center;
+    padding-top:5% ;
+    padding-bottom:5% ;
+}
+
+
+.Icard-like-bar {
+	display: flex;
+	align-items: center;
+	margin-top: 1.25rem;
+	
+}
+
+.modal-overlay {
+    padding-top:5% ;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    opacity: .5;
+  }
+  
+  .modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+  }
+  
+  .modal {
+    
+    z-index: 100;
+    background: white;
+    position: relative;
+    margin: 1.75rem auto;
+    border-radius: 3px;
+    max-width: 800px;
+    padding: 2rem;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .modal-close-button {
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    opacity: .3;
+    cursor: pointer;
+    border: none;
+    
+  }
+  
+  button {
+
+  }
+  
+  .button-default {
+    background: #247BA0;
+    color: #fff;
+    font-size: .9rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 3px;
+    padding: .3rem 1rem;
+    margin-left: .5rem;
+  }

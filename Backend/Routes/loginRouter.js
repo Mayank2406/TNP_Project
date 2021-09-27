@@ -9,6 +9,7 @@ router.post('/verify',authenticate,(req,res)=>{
    let response=req.user;
    response.status=true;
     res.send(response);
+    
 })
 
 module.exports = router; 

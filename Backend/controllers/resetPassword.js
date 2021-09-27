@@ -9,11 +9,8 @@ const resetPassword = async (req,res)=>{
     var secret=EncryptDecrypt.decryptHelper(req.body.secret);
     const secrettmp=secret.slice(1,11)
     const user=req.body.userID;
-    var password=req.body.userPassword;
-    console.log('atif');
-    password = await bcrypt.hash(password,10);
-    console.log('naffo');
-    console.log(password);
+    var password=req.body.userPassword
+    password = await bcrypt.hash(password,10)
     try{
         
         if(secret==user||secrettmp==user){

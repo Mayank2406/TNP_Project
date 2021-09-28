@@ -13,7 +13,7 @@ const studentSchema = new Schema({
     year: { type: String, required: true },
     author: {
         type: Schema.Types.ObjectId,
-        ref: 'DemoUser'
+        ref: 'User'
     },
     interviews: [
         {

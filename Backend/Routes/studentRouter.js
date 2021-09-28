@@ -5,14 +5,15 @@ const upload = multer({ storage });
 const router   = express.Router();
 const studentController = require('../controllers/studentController')
 const {isLoggedIn} = require('../middleware')
+const authenticate = require('../middlewares/authenticate');
 
 router.post('/register',studentController.student_register);
 
 router.get('/',studentController.student_get);
 
-router.post('/',isLoggedIn,upload.single('image'),studentController.student_post);
+router.post('/',authenticate,studentController.student_post);
 
-router.get('/:sortBy', studentController.student_sorting);
+router.get('/:sortBy',studentController.student_sorting);
 
 router.post('/filter', studentController.student_filter);
 

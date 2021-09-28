@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import React, { Component,useState } from 'react';
+import React, { Component,useEffect,useState } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Fab from '@mui/material/Fab';
@@ -10,6 +10,8 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import './InterviewExp.css';
 import Data from "./Data.jsx";
+import { useStateValue } from '../StateProvider';
+import axios from 'axios';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -28,9 +30,10 @@ const useStyles = makeStyles((theme) => ({
 function ncards(val){
   return(
     <Card
-    image={val.image}
-    description={val.description}
-    job_pos={val.job_pos}
+    image={"https://res.cloudinary.com/tnpmmmut/image/upload/v1630779028/tnp/ti9hemolb088ff7ksyue.jpg"}
+    
+    description={val.name}
+    job_pos={val.company}
     dept={val.dept}
     />
      
@@ -42,8 +45,11 @@ function ncards(val){
     const classes = useStyles();
     const [name,setName]=useState('');
     const [roll,setRoll]=useState('');
+    const [{token},dispatch]=useStateValue();
     const [data,setData]=useState('');
-
+    const [interview,setInterview]=useState([]);
+    const [experience,setexperience]=useState('');
+    const [tok, setToken] = useState(false);
 
     const style = {
       margin: 0,
@@ -53,25 +59,69 @@ function ncards(val){
       left: 'auto',
       position: 'fixed',
     };
-  
+    function sendData()
+    {
+      
 
-  const [token, setToken] = useState(false);
+        axios.post("http://localhost:9000/interviews",{
+          name:name,
+            company:roll,
+            content:experience,
+
+          
+            token:token
+       
+        }).then((res)=>{
+          console.log(res);
+          //  history.push("/placements");
+          console.log(token);
+          setToken(false);
+           })
+        .catch((e)=>console.log("unsuccessfull submission"));
+
+        // console.log(name,image,position,branch,course,placement,salary,year,interview);
+    
+    }
+    
+ 
+    useEffect(() => {
+
+      axios.get("http://localhost:9000/interviews")
+  
+  
+        .then((res) => {
+          console.log(res.data.data);
+  
+  
+          console.log(res);
+          console.log('arraya fdjfdkfksjfkldsjflkdsjfkdjflkdjflkdjfkldj');
+          setInterview(res.data.interviews);
+          // console.log("ahazam ",data)
+  
+          // setdata(data.data.length);
+        })
+        .catch(error => {
+          console.log('djfjkdjflkdjfldjflkdjfdljflkjf    fjdkfjkdfjdsjf')
+        });
+    }
+  
+      , [interview])
+
+
   
   return(<>
-        {token?(<div id="loginform">
-          {name}
-          {roll}
-          {data}
-      
+        {tok?(<div id="loginform">
+          
           <h2 id="headerTitle">Interview Experience</h2>
           <div>
          <div class="row">
-  
+           
+  {token}
      <input value={name} onChange={(e)=>{setName(e.target.value)}}  type='text' placeholder="Enter your name"/>
    </div>  
    <div class="row">
   
-  <input value={roll} onChange={(e)=>{setRoll(e.target.value)}}  type='text' placeholder="Enter your roll number"/>
+  <input value={roll} onChange={(e)=>{setRoll(e.target.value)}}  type='text' placeholder="Enter your companey name"/>
 </div>  
 
    
@@ -85,9 +135,9 @@ function ncards(val){
                           console.log( 'Editor is ready to use!', editor );
                       } }
                       onChange={ ( event, editor ) => {
-                          const data = editor.getData();
-                          setData(data);
-                          console.log( { event, editor, data } );
+                          const ckdata = editor.getData();
+                          setexperience(ckdata);
+                          console.log( { event, editor, ckdata } );
                       } }
                       onBlur={ ( event, editor ) => {
                           console.log( 'Blur.', editor );
@@ -99,7 +149,7 @@ function ncards(val){
        </div>
     
       <div id="button" class="row">
-     <button>Submit</button>
+     <button onClick={sendData}>Submit</button>
    </div>
     </div>
     <Fab color="primary" aria-label="add" style={style}>
@@ -112,8 +162,18 @@ function ncards(val){
   
     <div className="Inter">
       <header className="Inter-header">
-      
-        {Data.map(ncards)}
+   
+        {interview.map((item)=>
+        <div>
+              <Card
+              image={"https://res.cloudinary.com/tnpmmmut/image/upload/v1630779028/tnp/ti9hemolb088ff7ksyue.jpg"}
+              
+              description={item.name}
+              job_pos={item.company}
+              dept={item.dept}
+              />
+              </div>
+        )}
 
       </header>
     </div>

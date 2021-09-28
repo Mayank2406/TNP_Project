@@ -43,11 +43,14 @@ const student_get = async (req, res) => {
 
 const student_post = async (req, res) => {
     const query = req.body;
-    const uid = req.user._id;
-    const f   = req.file;
+    const uid = req.user.userID;
+    console.log("In post")
+    console.log(uid);
+    console.log(req.body);
+    // const f   = req.file;
 
     try {
-        const student = await StudentService.postStudents({ query, uid,f });
+        const student = await StudentService.postStudents({ query, uid});
         if (student) {
             return res.status(200).json({
                 message: "student created successfully",

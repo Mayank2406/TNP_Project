@@ -34,7 +34,6 @@ app.use('/students', studentRouter);
 app.use('/interviews', interviewRouter);
 
 
-app.use('/students',studentRouter);
 app.use('/register',registerRouter);
 app.use('/login',loginRouter);
 app.use('/reset',resetRouter)

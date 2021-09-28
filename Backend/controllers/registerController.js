@@ -31,7 +31,7 @@ const registration =  async (req,res) =>{
             await user.save().then((data) => toSend={
                 status:mail_res,
                 msg:mail_res?"email sent":"email not sent",
-                
+        
                 }
             )
             .catch(err => toSend={status:false,error:err})

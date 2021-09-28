@@ -7,7 +7,7 @@ const InterviewExperienceSchema = new Schema({
     author:
     {
         type: Schema.Types.ObjectId,
-        ref: 'DemoUser'
+        ref: 'User'
     },
     content: { type: String, required: true}
 }, { timestamps: true });

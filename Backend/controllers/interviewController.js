@@ -43,8 +43,8 @@ const show_interview = async (req, res) => {
 
 const post_interview = async (req, res) => {
     const query = req.body;
-    const uid = req.user._id;
-
+    const uid = req.user.userID;
+    
     try {
         const interview = await InterviewService.postInterview({ query, uid })
         if (interview) {

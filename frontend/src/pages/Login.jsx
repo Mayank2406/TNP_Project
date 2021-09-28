@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import FormInput from './FormInput';
 
-
+import Alert from '@mui/material/Alert';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -55,12 +55,14 @@ function Login() {
     const [login,setlogin]=useState(0);
     const [user,setuser]=useState('');
     const [pass,setpass]=useState('');
+    const [exist,setexist]=useState(true);
 const [{token},dispatch]=useStateValue();
 useEffect(()=>{
   axios.post('http://localhost:9000/login/verify',{
     token:token
   }).then((res)=>{
     setlogin(res.data.status);
+  
     console.log('token reslt ',res);
   })
 },[])
@@ -78,6 +80,7 @@ useEffect(()=>{
     }); 
       
       setlogin(res.data.status);
+      setexist(res.data.status);
     })
     .catch((e)=>console.log("unsuccessfull submission"));
     console.log('verdict',login);
@@ -87,7 +90,7 @@ useEffect(()=>{
     return (
         <div>
         {!login ? <div>   
-
+          
             <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -128,6 +131,10 @@ useEffect(()=>{
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           /> */}
+          {exist?<div></div>:<div ><Alert severity="error">Either your Password or Roll number is incorrect </Alert> 
+
+  </div>}
+  
           <Button
            onClick={set}
     

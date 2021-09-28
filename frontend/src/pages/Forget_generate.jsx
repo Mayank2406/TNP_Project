@@ -1,6 +1,8 @@
 import { Avatar, Box, Button, Container, CssBaseline, Grid, Link, makeStyles, TextField, Typography } from '@material-ui/core'
 import React, { useState } from 'react'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import axios from 'axios';
+import ResetVerify from './ResetVerify';
 function Copyright() {
     return (
       <Typography variant="body2" color="textSecondary" align="center">
@@ -34,12 +36,23 @@ function Copyright() {
   }));
 
 function Forget_generate() {
-const [user,setuser]=useState('');
+  const [user,setuser]=useState('');
+const [status,setStatus]=useState(false);
+  function callApi(){
+    axios.post('http://localhost:9000/reset/generate',{
+    userID:user
+  }).then((res)=>{
+    setStatus(res.data.status);
+    console.log('token reslt ',res);
+  })
+  }
+
+
     const classes = useStyles();
     return (
         <div>
             
-            <div>   
+           {!status? <div>   
 
 <Container component="main" maxWidth="xs">
 <CssBaseline />
@@ -70,7 +83,7 @@ control={<Checkbox value="remember" color="primary" />}
 label="Remember me"
 /> */}
 <Button
-
+onClick={callApi}
 
 fullWidth
 variant="contained"
@@ -86,7 +99,7 @@ send OTP
 <Copyright />
 </Box>
 </Container>
-</div>
+</div>:<ResetVerify user={user}/>}
         </div>
     )
 }

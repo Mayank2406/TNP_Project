@@ -10,7 +10,9 @@ const resetPassword = async (req,res)=>{
     const secrettmp=secret.slice(1,11)
     const user=req.body.userID;
     var password=req.body.userPassword
+    password=password.toString();
     password = await bcrypt.hash(password,10)
+    console.log('atif',password,secret,secrettmp,req.body);
     try{
         
         if(secret==user||secrettmp==user){

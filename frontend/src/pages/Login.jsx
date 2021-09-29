@@ -18,6 +18,8 @@ import Container from '@material-ui/core/Container';
 import axios from 'axios';
 import { useStateValue } from '../StateProvider';
 import { actionTypes } from '../reducer';
+import './Login.css';
+
 
 function Copyright() {
   return (
@@ -65,7 +67,7 @@ useEffect(()=>{
   
     console.log('token reslt ',res);
   })
-},[])
+},[token])
     const set=()=>{
         
       axios.post('http://localhost:9000/login',{
@@ -78,6 +80,7 @@ useEffect(()=>{
         type:actionTypes.SET_TOKEN,
         token: res.data.token,
     }); 
+    console.log("data jdfjdkfjdfkdsf  ",res);
       
       setlogin(res.data.status);
       setexist(res.data.status);
@@ -86,6 +89,16 @@ useEffect(()=>{
     console.log('verdict',login);
     }
     
+
+
+  
+    function setLog()
+    {
+      dispatch({
+          type:actionTypes.SET_TOKEN,
+          token: null,
+      }); 
+    }  
     const classes = useStyles();
     return (
         <div>
@@ -164,8 +177,36 @@ useEffect(()=>{
       </Box>
     </Container>
         </div>
-            : <div><FormInput/></div>
+            :  <div className="contBg">
+                    
             
+           <div class="middle">
+               <h1>Welcome student</h1>
+               <hr/>
+                 
+            <button onClick={setLog} class="btn fifth"><Link href='/login'> Logout</Link></button>
+              
+              </div>
+            
+          
+            </div>
+            // <div   style={{ 
+            //   backgroundImage: `url('https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171__480.jpg')`, 
+            //   backgroundRepeat: 'no-repeat',
+            //   width:'250px' 
+            // }}>
+            // <div class="bgimg">
+            
+            //   <div class="middle">
+            //     <h1>Welcome studt</h1>
+            //     <hr/>
+                 
+            // <button onClick={setLog} class="btn fifth"><Link href='/login'> Logout</Link></button>
+              
+            //   </div>
+            
+            // </div>
+            // </div>
             
         }
 

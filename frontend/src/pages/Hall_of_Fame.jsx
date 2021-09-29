@@ -10,6 +10,8 @@ import AddIcon from '@mui/icons-material/Add';
 import './model.css'
 import { Select, InputLabel, FormControl, MenuItem, makeStyles, Fab } from '@material-ui/core'
 import FormInput from './FormInput';
+import { useStateValue } from '../StateProvider';
+import NotLogin from './NotLogin';
 
 
 
@@ -32,7 +34,18 @@ function Hall_of_Fame() {
   const [sort, setSort] = useState('');
   const [search, setSearch] = useState('');
   const [t, sett] = useState(false);
-  const [open2, setOpen2] = useState(false)
+  const [open2, setOpen2] = useState(false);
+  const [login,setLogin]=useState(false);
+  const [{token},dispatch]=useStateValue();
+  useEffect(()=>{
+    axios.post('http://localhost:9000/login/verify',{
+      token:token
+    }).then((res)=>{
+      setLogin(res.data.status);
+    
+      console.log('token reslt ',res);
+    })
+  },[token]);
   const funSort = () => {
     console.log(sort);
     const url2 = `http://localhost:9000/students/${sort}`;
@@ -92,7 +105,7 @@ function Hall_of_Fame() {
   return (
     <div>
 
-      {!t ? (<div classNmae="subHome">
+      {!t? (<div classNmae="subHome">
 
         <h4 className='stats'>Placements Stats</h4>
 
@@ -332,16 +345,14 @@ function Hall_of_Fame() {
 
 
         </div>
-        <Fab color="primary" aria-label="add" style={style}>
+         <Fab color="primary" aria-label="add" style={style}>
            <AddIcon onClick={()=>sett(true)}  />
            
 
           </Fab>
       </div>) : (<div>
-        <FormInput/>
-
-
-        <Fab color="primary" aria-label="add" style={style}>
+       {login? <FormInput/>:<div><NotLogin/></div>}
+<Fab color="primary" aria-label="add" style={style}>
            <AddIcon onClick={()=>sett(false)}  />
            
 

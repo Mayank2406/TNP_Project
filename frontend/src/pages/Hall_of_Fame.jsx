@@ -37,6 +37,7 @@ function Hall_of_Fame() {
   const [open2, setOpen2] = useState(false);
   const [login,setLogin]=useState(false);
   const [{token},dispatch]=useStateValue();
+  
   useEffect(()=>{
     axios.post('http://localhost:9000/login/verify',{
       token:token
@@ -346,9 +347,7 @@ function Hall_of_Fame() {
 
         </div>
          <Fab color="primary" aria-label="add" style={style}>
-           <AddIcon onClick={()=>sett(true)}  />
-           
-
+         <AddIcon onClick={()=>sett(true)}  />
           </Fab>
       </div>) : (<div>
        {login? <FormInput/>:<div><NotLogin/></div>}

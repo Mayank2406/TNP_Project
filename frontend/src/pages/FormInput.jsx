@@ -10,6 +10,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
+import Imageup from './Imageup.jsx'
 import { useHistory } from "react-router-dom";
 
 import axios from 'axios';
@@ -134,14 +135,16 @@ function FormInput() {
         ) : (<div><Grid>
         <Paper elevation={20} style={paperStyle}>
             <Grid align='center' className='Avatar'>
-                <Avatar style={avatarStyle}>
+                {/* <Avatar style={avatarStyle}>
                     <AddCircleOutlineOutlinedIcon />
-                </Avatar>
+                </Avatar> */}
                 <h2 style={headerStyle}>Registration form</h2>
                 <Typography variant='caption' gutterBottom>Please fill this form to create an account !</Typography>
+               
             </Grid>
-           
-            <TextField fullWidth label='imageUrl' onChange={(e)=>{setimage(e.target.value)}} placeholder="Enter your imageUrl" />
+            <div style={{display:'flex',justifyContent:'center'}}>
+            <Imageup/>
+           </div>
                 <TextField fullWidth label='Name' onChange={(e)=>{setname(e.target.value)}} placeholder="Enter your name" />
                 <TextField fullWidth label='Job Position' onChange={(e)=>{setposition(e.target.value)}} placeholder="Enter your email" />
              

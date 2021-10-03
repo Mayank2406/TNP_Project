@@ -1,8 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const ImageSchema = new Schema({
+    url: String,
+    filename: String
+});
+
 const studentSchema = new Schema({
-    image: { url: String, filename: String },
+    image: ImageSchema,
     name: { type: String, required: true },
     position: { type: String, required: true },
     company: { type: String, required: true },

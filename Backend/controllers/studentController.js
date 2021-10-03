@@ -47,10 +47,10 @@ const student_post = async (req, res) => {
     console.log("In post")
     console.log(uid);
     console.log(req.body);
-    // const f   = req.file;
+    const f   = req.file;
 
     try {
-        const student = await StudentService.postStudents({ query, uid});
+        const student = await StudentService.postStudents({ query, uid,f});
         if (student) {
             return res.status(200).json({
                 message: "student created successfully",

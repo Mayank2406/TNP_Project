@@ -47,7 +47,9 @@ const student_post = async (req, res) => {
     console.log("In post")
     console.log(uid);
     console.log(req.body);
+    
     const f   = req.file;
+
 
     try {
         const student = await StudentService.postStudents({ query, uid,f});

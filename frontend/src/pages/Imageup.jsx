@@ -36,6 +36,7 @@ body: data
 .then(resp => resp.json())
 .then(data => {
 setUrl(data.url)
+console.log(data.url);
 setupload(true);
 })
 .catch(err => console.log(err))

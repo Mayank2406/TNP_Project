@@ -16,6 +16,7 @@ import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import './FormInput.css'
 import Select from '@material-ui/core/Select';
+import { useRef } from 'react';
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -31,14 +32,20 @@ const useStyles = makeStyles((theme) => ({
 function FormInput() {
   const history = useHistory();
   const [loading, setloading] = useState(false);
+  
   const [completed, setcompleted] = useState(false);
     const paperStyle = { padding: '30px 60px', width: 600, margin: "20px auto" }
     const headerStyle = { margin: 0 }
     const avatarStyle = { padding:'30px',backgroundColor: '#1bbd7e' }
     const sendData=()=>{
+      const data = new FormData();
+      
+      data.append("file", image);
+      console.log("atif ",data);
+      
 
         axios.post('/students',{
-            imageUrl:image,
+            image:url,
             name:name,
             position:position,
             branch:branch,
@@ -54,12 +61,13 @@ function FormInput() {
 
     }
     const [name, setname] = useState('')
-    const[image,setimage]=useState('');
+   
     const [position, setposition] = useState('')
     const[branch,setbranch]=useState('');
     const[course,setcourse]=useState('');
     const [placement, setplacement] = useState('')
     const[salary,setsalary]=useState('');
+    
     const [year, setyear] = useState('')
     const[interview,setInterview]=useState();
 
@@ -71,6 +79,20 @@ function FormInput() {
     const [open2, setOpen2] = React.useState(false);
   
     const [open3, setOpen3] = React.useState(false);
+
+
+    const [selectedImage, setSelectedImage] = useState();
+const imageChange = (e) => {
+  setImage(e.target.files[0])
+  if (e.target.files && e.target.files.length > 0) {
+    setSelectedImage(e.target.files[0]);
+    
+    setupload(false);
+
+  }
+  console.log('atif is imagechange')
+
+};
     // (() => {
     //   setTimeout(() => {
      
@@ -116,6 +138,46 @@ function FormInput() {
       setOpen3(true);
     };
   
+
+    const fileInput = useRef(null);
+    const [image, setImage ] = useState("");
+    const [ url, setUrl ] = useState("https://www.annauniv.edu/DIST/assests/images/upload_images/no-photo.gif");
+    const [upload,setupload]=useState(true);
+    // const fun=() => {
+    //     console.log('naffo',imgData);
+    //     fetch("  https://api.cloudinary.com/v1_1/breellz/image/upload",{
+    //         method:"post",
+    //         body: imgData
+    //         })
+    //         .then(resp => resp.json())
+    //         .then(data => {
+    //             console.log('at',data.url);
+    //         if(data.url)
+    //             setUrl(data.url)
+    //         })
+    //         .catch(err => console.log(err))
+    // }
+    const uploadImage =   () => {
+    
+    const data = new FormData()
+    console.log("imag",selectedImage);
+
+    data.append('file',selectedImage);
+    data.append("upload_preset", "tnpImages");
+    data.append("cloud_name","tnpmmmut");
+
+    
+      fetch("https://api.cloudinary.com/v1_1/tnpmmmut/image/upload",{
+    method:"post",
+    body: data
+    })
+    .then(resp => resp.json())
+    .then(data => {
+    setUrl(data.url);
+    console.log('url   ',data.url);
+    })
+    .catch(err => console.log("atif error  ",err))
+    }
   
 
     
@@ -138,13 +200,56 @@ function FormInput() {
                 {/* <Avatar style={avatarStyle}>
                     <AddCircleOutlineOutlinedIcon />
                 </Avatar> */}
+            
                 <h2 style={headerStyle}>Registration form</h2>
                 <Typography variant='caption' gutterBottom>Please fill this form to create an account !</Typography>
                
             </Grid>
             <div style={{display:'flex',justifyContent:'center'}}>
-            <Imageup/>
-           </div>
+         
+{selectedImage? (<div className="imgHead">
+<div>
+<input style={{display:'none'}} type="file" className="but" 
+ref={fileInput}onChange=  {imageChange}
+></input>
+</div>
+    <div className="upImg">
+     
+    <img src={URL.createObjectURL(selectedImage)}  alt="no image"/>
+    </div>
+    
+    
+    <div>
+{upload?<button className="bel"  onClick={()=>fileInput.current.click()}>Pick image</button>
+:<button className="bel" onClick={uploadImage}>Upload</button>}
+</div>
+    </div>): (<div className="imgHead">
+    <div>
+<input style={{display:'none'}} type="file" className="but" 
+ref={fileInput}onChange=  {imageChange}
+></input>
+</div>
+    <div className="upImg">
+    <img src={"https://www.annauniv.edu/DIST/assests/images/upload_images/no-photo.gif"}  alt="no image"/>
+    </div>
+    
+    <div>
+{upload?<button className="bel"  onClick={()=>fileInput.current.click()}>Pick image</button>
+:<button className="bel" onClick={uploadImage}>Upload</button>}
+</div>
+    </div>)}
+{/* <div>
+<input style={{display:'none'}} type="file" className="but" 
+ref={fileInput}onChange=  {imageChange}
+></input>
+</div> */}
+{/* <div>
+{upload?<button className="bel"  onClick={()=>fileInput.current.click()}>Pick image</button>
+:<button className="bel" onClick={uploadImage}>Upload</button>}
+</div> */}
+</div>
+
+          
                 <TextField fullWidth label='Name' onChange={(e)=>{setname(e.target.value)}} placeholder="Enter your name" />
                 <TextField fullWidth label='Job Position' onChange={(e)=>{setposition(e.target.value)}} placeholder="Enter your email" />
              

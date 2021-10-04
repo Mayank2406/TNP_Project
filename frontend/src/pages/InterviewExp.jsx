@@ -42,6 +42,7 @@ function ncards(val){
 
   function InterviewExp(){
     const classes = useStyles();
+    const [alert,setalert]=useState();
     const [name,setName]=useState('');
     const [roll,setRoll]=useState('');
     const [{token},dispatch]=useStateValue();
@@ -156,7 +157,12 @@ function ncards(val){
           </Fab>
        
           
-        </div>):    (<div className="main">
+        </div>):    (
+          <div>
+        
+        {alert?
+          
+        <div className="main">
     
   
     <div className="Inter">
@@ -181,10 +187,15 @@ function ncards(val){
 
 
          <Fab color="primary" aria-label="add" style={style}>
-         <AddIcon onClick={()=>setToken(true)}  />
+         <AddIcon onClick={()=>{
+           
+           setToken(true)}}  />
         </Fab>
       
-  </div>)
+  </div>:<div>noinput</div>}
+
+  </div>
+  )
   }
    </> 
   )

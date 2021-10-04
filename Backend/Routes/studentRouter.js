@@ -11,7 +11,7 @@ router.post('/register',studentController.student_register);
 
 router.get('/',studentController.student_get);
 
-router.post('/',authenticate,upload.single('image'),studentController.student_post)
+router.post('/',authenticate,studentController.student_post)
 
 router.get('/:sortBy',studentController.student_sorting);
 

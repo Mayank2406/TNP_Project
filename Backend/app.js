@@ -11,6 +11,8 @@ const interviewRouter = require('./Routes/interviewRouter');
 const registerRouter = require('./Routes/registerRouter');
 const loginRouter  = require('./Routes/loginRouter');
 const resetRouter  = require('./Routes/resetRouter');
+const placementRouter  = require('./Routes/placementRouter');
+const adminRouter  = require('./Routes/adminRouter');
 const app = express();
 const PORT = process.env.PORT || 9000;
 // connect to mongoDB
@@ -36,5 +38,7 @@ app.use('/interviews', interviewRouter);
 
 app.use('/register',registerRouter);
 app.use('/login',loginRouter);
-app.use('/reset',resetRouter)
+app.use('/reset',resetRouter);
+app.use('/placement',placementRouter);
+app.use('/admin',adminRouter);
 app.get('/', (req, res) => res.send('Home Page'));

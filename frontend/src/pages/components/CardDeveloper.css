@@ -1,0 +1,93 @@
+.cardDeveloper {
+	float:left;
+	background-color: white;
+	color: #272727;
+	padding: 3rem;
+	transition: 200ms;
+  max-width: 200;
+	text-align: center;
+}
+
+.cardDeveloper:hover {
+	transition: 200ms;
+}
+
+.card-header-Developer {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;   
+}
+
+.letter {
+	vertical-align: middle;
+}
+
+.card-title-group-Developer {
+	justify-content: center;
+}
+
+.card-title-Developer {
+	flex: 0.5;
+	font-size: large;
+	margin-bottom: 8;
+	margin-top: 0;
+	margin-left: 6.25rem;
+}
+
+
+.card-image-Developer {
+	border-radius: 100%;
+	border: solid 3px black;
+}
+
+.card-image-Developer:hover {
+	transition: 200ms;
+	opacity: 0.3;
+	border-style: solid;
+}
+
+.card-text1-Developer {
+	width: auto;
+	font-size: 19px;
+	color: black;
+	text-align: center;
+	padding: 8px 0px;
+}
+
+.card-text2-Developer {
+	width: auto;
+	font-size: 15px;
+	text-align: center;
+	color: grey;
+}
+.card-text3-Developer {
+	width: auto;
+	color: grey;
+	font-size: 15px;
+	text-align: center;
+
+}
+
+.social{
+	padding:8px 0px;
+}
+
+
+.card-like-bar-Developer {
+	display: flex;
+	align-items: center;
+	margin-top: 1.25rem;
+	
+}
+
+@media only screen and (max-width: 1375px) {
+	.cardDeveloper {
+		padding: 1rem  ;
+	}
+}
+
+@media only screen and (max-width: 415px) {
+	.cardDeveloper {
+		padding: 0rem;
+	}
+}

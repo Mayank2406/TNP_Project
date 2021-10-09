@@ -18,9 +18,9 @@ function interview_Data(props) {
         </div>
         </div>
         <div className="inter-lower-container">
-
+        <div dangerouslySetInnerHTML={{ __html: props.content}} />
   
-           {props.content}
+      
         
         </div>
         <div className="butset">

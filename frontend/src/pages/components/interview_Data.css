@@ -1,0 +1,114 @@
+.inter-card{
+    width: 800px;
+    
+    background: white;
+    border-radius:10px;
+    min-height: 100px;
+    box-shadow: 0px 1px 10px 1px black;
+    overflow: hidden;
+    padding:20px;
+}
+.inter-upper-container{
+    height: 100px;
+
+}
+.inter-image-container img{
+    background: white;
+    width: 100px;
+    height: 100px;
+    
+    border-radius:50%;
+    padding:5px;
+    transform:translate(155px,45px);
+    border:2px solid #8c00b9;
+
+}
+
+.inter-lower-container{
+    
+    margin:10px;
+    height: auto;
+    background: white;
+    text-align: center;
+    font-family:'Titillium web',sans-serif;
+}
+.inter-lower-container h3,h4,p{
+    margin:0;
+padding:0;
+}
+.inter-lower-container h3{
+    color:#2f2d2e;
+font-weight:600;
+font-size:1.5rem;
+}
+.inter-lower-container h4{
+    color: #8e00b9;
+    font-weight: 700;
+    font-size:1.2rem;
+}
+
+.inter-lower-container p{
+    font-family: sans-serif;
+    font-weight: 300;
+    color:#2f2d2e;
+    margin:0.4rem;
+    font-size:0.9rem;
+
+    text-align: center;
+}
+button{
+    margin:1rem;
+    margin-top:0.5rem;
+    color:#2f2d2e;
+    font:bold;
+    background-color: white;
+    border:2px solid #8e00b9;
+    padding:0.6rem;
+    border-radius: 6px;
+    transition-duration: 0.5s;
+    animation: ease-in-out;
+}
+button:hover{
+    background-image:linear-gradient(to left,#2d00f7,#ff0291); ;
+
+border:none;
+color:white;
+}
+.popup{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+  
+
+.popup-overlay {
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    background: rgba(255,255,255,0.5);
+
+    backdrop-filter: blur(6px);
+  }
+  .links{
+margin: 30px;  
+display: flex;
+flex-direction: row;
+
+justify-content: center;
+}
+.linkedin{
+    padding:10px;
+}
+.top-head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+  }
+  .butset{
+      display: flex;
+      justify-content:center;
+      
+  }

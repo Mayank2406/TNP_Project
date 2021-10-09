@@ -12,6 +12,7 @@ import './InterviewExp.css';
 import Data from "./Data.jsx";
 import { useStateValue } from '../StateProvider';
 import axios from 'axios';
+import Interview_Data from './components/Interview_Data.jsx';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -42,7 +43,11 @@ function ncards(val){
 
   function InterviewExp(){
     const classes = useStyles();
-    const [alert,setalert]=useState();
+    const [tog,settog]=useState(true);
+    const [alert,setalert]=useState(true);
+    const [content,setcontent]=useState();
+    const [company,setcompany]=useState();
+  
     const [name,setName]=useState('');
     const [roll,setRoll]=useState('');
     const [{token},dispatch]=useStateValue();
@@ -85,6 +90,7 @@ function ncards(val){
     
  
     useEffect(() => {
+      setalert(token);
 
       axios.get("http://localhost:9000/interviews")
   
@@ -110,7 +116,11 @@ function ncards(val){
 
   
   return(<>
-        {tok?(<div id="loginform">
+        {tok?(
+        
+        <div>
+          {alert?
+        <div id="loginform">
           
           <h2 id="headerTitle">Interview Experience</h2>
           <div>
@@ -157,12 +167,15 @@ function ncards(val){
           </Fab>
        
           
-        </div>):    (
+        </div>:(<div>not login</div>)}
+        
+        </div>
+        ):    (
           <div>
         
-        {alert?
+      
           
-        <div className="main">
+       {tog? <div className="main">
     
   
     <div className="Inter">
@@ -176,6 +189,14 @@ function ncards(val){
               description={item.name}
               job_pos={item.company}
               dept={item.dept}
+              company={item.company}
+              content={item.content}
+              tog={tog}
+              comp={company}
+              setcomp={setcompany}
+              expData={content}
+              setexpData={setcontent}
+              settog={settog}
               />
               </div>
         )}
@@ -192,7 +213,7 @@ function ncards(val){
            setToken(true)}}  />
         </Fab>
       
-  </div>:<div>noinput</div>}
+  </div>:<div><Interview_Data setshowExp={settog} company={company} content={content}/></div>}
 
   </div>
   )

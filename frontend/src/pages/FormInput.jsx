@@ -17,6 +17,7 @@ import axios from 'axios';
 import './FormInput.css'
 import Select from '@material-ui/core/Select';
 import { useRef } from 'react';
+import { useStateValue } from '../StateProvider.js';
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -32,8 +33,9 @@ const useStyles = makeStyles((theme) => ({
 function FormInput() {
   const history = useHistory();
   const [loading, setloading] = useState(false);
-  
+  const [{token},dispatch]=useStateValue();
   const [completed, setcompleted] = useState(false);
+  const [company,setcompany]=useState("");
     const paperStyle = { padding: '30px 60px', width: 600, margin: "20px auto" }
     const headerStyle = { margin: 0 }
     const avatarStyle = { padding:'30px',backgroundColor: '#1bbd7e' }
@@ -52,9 +54,11 @@ function FormInput() {
             course:course,
             type:placement,
             salary:salary,
-            year:year,
-            interviewExperience:interview
-        }).then((res)=>{console.log(res); history.push("/placements"); })
+            company:company,
+            token:token,
+            year:year
+            
+        }).then((res)=>{console.log("naffAt",res); history.push("/"); })
         .catch((e)=>console.log("unsuccessfull submission"));
 
         console.log(name,image,position,branch,course,placement,salary,year,interview);
@@ -169,11 +173,12 @@ const imageChange = (e) => {
     
       fetch("https://api.cloudinary.com/v1_1/tnpmmmut/image/upload",{
     method:"post",
-    body: data
+    body: data     
     })
     .then(resp => resp.json())
     .then(data => {
     setUrl(data.url);
+    setupload(true);
     console.log('url   ',data.url);
     })
     .catch(err => console.log("atif error  ",err))
@@ -311,6 +316,7 @@ onChange={(e)=>{setplacement(e.target.value)}}
 </FormControl>
 </div>
 <TextField fullWidth label='Salary' onChange={(e)=>{setsalary(e.target.value)}} placeholder="Enter your Salary" />
+<TextField fullWidth label='company' onChange={(e)=>{setcompany(e.target.value)}} placeholder="Enter your company name" />
 <TextField fullWidth label='Graduation year' onChange={(e)=>{setyear(e.target.value)}} placeholder="Enter Graduation year" />
 <div className="interview">
   

@@ -12,6 +12,7 @@ import { Select, InputLabel, FormControl, MenuItem, makeStyles, Fab } from '@mat
 import FormInput from './FormInput';
 import { useStateValue } from '../StateProvider';
 import NotLogin from './NotLogin';
+import Interview_Data from './components/Interview_Data.jsx';
 
 
 
@@ -32,17 +33,24 @@ function Hall_of_Fame() {
   const url = 'http://localhost:9000/students/';
   const classes = useStyles();
   const [sort, setSort] = useState('');
+  const [company,setcompany]=useState("atifjkfjkfdf");
+  const [content,setcontent]=useState("dfjdkjfkjfdkjfkdjfjfkjd")
   const [search, setSearch] = useState('');
   const [t, sett] = useState(false);
+  const [showExp,setshowExp]=useState(true);
+  const [userBut,setuserBut]=useState(true);
   const [open2, setOpen2] = useState(false);
+  
   const [login,setLogin]=useState(false);
   const [{token},dispatch]=useStateValue();
+  const [user,setuser]=useState('');
   
   useEffect(()=>{
     axios.post('http://localhost:9000/login/verify',{
       token:token
     }).then((res)=>{
       setLogin(res.data.status);
+      setuser(res.data.userID)
     
       console.log('token reslt ',res);
     })
@@ -84,7 +92,7 @@ function Hall_of_Fame() {
   useEffect(() => {
 
     axios.get(url)
-
+    
 
       .then((res) => {
         console.log(res.data.data);
@@ -106,7 +114,10 @@ function Hall_of_Fame() {
   return (
     <div>
 
-      {!t? (<div classNmae="subHome">
+      {!t? (
+      
+      <div>
+       { showExp? (<div classNmae="subHome">
 
         <h4 className='stats'>Placements Stats</h4>
 
@@ -335,9 +346,17 @@ function Hall_of_Fame() {
         <div className="cardStudent">
 
           {data.map((item) => {
+            // if(user===item.author._id)
+            // {console.log("person Id", user,item._id)
+            //   setuserBut(false);
+            // }
+            console.log("auther",item.author);
+
+            
             return (
               <div className="student">
-                <Card name={item.name} job={item.position} branch={item.branch} course={item.course} batch={item.year} />
+        
+                <Card userBut={userBut} setcontent={setcontent} setcompany={setcompany} setshowExp={setshowExp} name={item.name} interview={item.interviews} job={item.position} branch={item.branch} course={item.course} batch={item.year} />
               </div>
             )
           })
@@ -349,6 +368,7 @@ function Hall_of_Fame() {
          <Fab color="primary" aria-label="add" style={style}>
          <AddIcon onClick={()=>sett(true)}  />
           </Fab>
+        </div>):(<div><Interview_Data setshowExp={setshowExp} company={company} content={content} /></div>)}
       </div>) : (<div>
        {login? <FormInput/>:<div><NotLogin/></div>}
 <Fab color="primary" aria-label="add" style={style}>

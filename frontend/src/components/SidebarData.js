@@ -39,6 +39,12 @@ export const SidebarData = [
     path: '/Interview',
     icon: <FaIcons.FaEnvelopeOpenText />,
     cName: 'nav-text'
+  },
+  {
+    title: 'Developers.',
+    path: '/developers',
+    icon: <FaIcons.FaEnvelopeOpenText />,
+    cName: 'nav-text'
   }
 
 ];

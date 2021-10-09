@@ -1,241 +1,254 @@
 .Inter{
-    text-align: center;
-  }
-  
+  text-align: center;
+}
+
+.Inter-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
   .Inter-logo {
-    height: 40vmin;
-    pointer-events: none;
+    animation: App-logo-spin infinite 20s linear;
   }
-  
-  @media (prefers-reduced-motion: no-preference) {
-    .Inter-logo {
-      animation: App-logo-spin infinite 20s linear;
-    }
+}
+
+.Inter-header {
+ 
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.Inter-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
   }
-  
-  .Inter-header {
-   
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+  to {
+    transform: rotate(360deg);
   }
-  
-  .Inter-link {
-    color: #61dafb;
-  }
-  
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
-  
-  @import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Work+Sans:400,500,600,700&display=swap');
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Work+Sans:400,500,600,700&display=swap');
 /*   
-  body{
-    background: rgb(158, 218, 218);
-    border-color: black;
-    border-radius: 10%;
-    font-family: "work sans";
-  } */
+body{
+  background: rgb(158, 218, 218);
+  border-color: black;
+  border-radius: 10%;
+  font-family: "work sans";
+} */
+
+/* html{
+  font-size: 100%;
+} */
+
+#loginform{
+  max-width: 80%;
+  min-width: 80%;
+  max-height: 70%;
+  width: 60%;
+  height: 60%;
+  border-width: 5px;
+  border-color: black;
+  margin: 100px auto;
+  background: linear-gradient(135deg, rgb(250, 252, 252) 0%,     rgb(246, 253, 253) 100%);
+  border-radius: 25px;
+}
+
+#headerTitle{
+  text-align: center;
+  font-family: 'open sans', sans-serif;
+  padding: 2rem 0;
+  margin: 0;
+  font-size: 2rem;
+}
+
+.row{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+  max-width: 100%;
   
-  /* html{
-    font-size: 100%;
-  } */
-  
-  #loginform{
-    max-width: 80%;
-    min-width: 80%;
-    max-height: 70%;
-    width: 60%;
-    height: 60%;
-    border-width: 5px;
-    border-color: black;
-    margin: 100px auto;
-    background: linear-gradient(135deg, rgb(250, 252, 252) 0%,     rgb(246, 253, 253) 100%);
-    border-radius: 25px;
-  }
-  
-  #headerTitle{
-    text-align: center;
-    font-family: 'open sans', sans-serif;
-    padding: 2rem 0;
-    margin: 0;
-    font-size: 2rem;
-  }
-  
-  .row{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 2rem;
-    max-width: 100%;
-    
-  }
-  
-  .row input{
-    width: 80%;
-    box-sizing: border-box;
-      border: none;
-    font-size: 1.3rem;
-    padding-left: 1.5rem;
-    padding-bottom: 1rem;
-    box-shadow: inset 0px -3px 0px 0px rgba(187,187,187,0.2);
-    transition: box-shadow 0.2s ease-in;
-  }
-  
-  .row input:focus{
-     box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
-     outline: none;
-  }
-  
-  .row input::-webkit-input-placeholder{
-    opacity: 1;
-    transition: opacity 0.25s ease-out;
-  }
-  
-  .row input:hover::-webkit-input-placeholder,
-  .row input:focus::-webkit-input-placeholder{
-    opacity: 0;
-  }
-  
-  .row label{
-    align-self: start;
-    padding-left: 4.5rem;
-    padding-bottom: 0.5rem;
-    color: rgba(187,187,187,0.9);
-  }
-  
-  .row button{
-    border-radius: 25px;
-    width: 40%;
-    height: 40px;
-    font-size: 1.3rem;
-    color: white;
-    font-weight: 700;
-    background: rgb(34,193,195);
-    background: linear-gradient(90deg, rgba(34,193,195,1) 0%,  100%);
-    border: 0px;
-    cursor: pointer;
-    transition: opacity 0.25s ease-out;
-  }
-  
-  .row button:hover{
-    opacity: 0.8;
-  }
-  
-  #button{
-    padding-bottom: 1.5rem;
-  }
-  
-  #alternativeLogin {
-     text-align: center;
-     padding-top: 2rem;
-     margin-top: 1.5rem;
-  }
-  
-  .editor{
-   padding-top: 3%;
-   padding-left:9%;
-   padding-right: 9%;
-  }
-  
-  #delegar {
-    position:fixed;
-    right: 10px;
-    bottom: 10px;
-  }
-  /* app header 
-     background-color
-  */
-  .Inter {
-    width: 100%;
-    height:100%;
-    text-align: center;
-    flex-wrap: wrap;
-  }
-  
+}
+
+.row input{
+  width: 80%;
+  box-sizing: border-box;
+    border: none;
+  font-size: 1.3rem;
+  padding-left: 1.5rem;
+  padding-bottom: 1rem;
+  box-shadow: inset 0px -3px 0px 0px rgba(187,187,187,0.2);
+  transition: box-shadow 0.2s ease-in;
+}
+
+.row input:focus{
+   box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
+   outline: none;
+}
+
+.row input::-webkit-input-placeholder{
+  opacity: 1;
+  transition: opacity 0.25s ease-out;
+}
+
+.row input:hover::-webkit-input-placeholder,
+.row input:focus::-webkit-input-placeholder{
+  opacity: 0;
+}
+
+.row label{
+  align-self: start;
+  padding-left: 4.5rem;
+  padding-bottom: 0.5rem;
+  color: rgba(187,187,187,0.9);
+}
+
+.row button{
+  border-radius: 25px;
+  width: 40%;
+  height: 40px;
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 700;
+  background: rgb(34,193,195);
+  background: linear-gradient(90deg, rgba(34,193,195,1) 0%,  100%);
+  border: 0px;
+  cursor: pointer;
+  transition: opacity 0.25s ease-out;
+}
+
+.row button:hover{
+  opacity: 0.8;
+}
+
+#button{
+  padding-bottom: 1.5rem;
+}
+
+#alternativeLogin {
+   text-align: center;
+   padding-top: 2rem;
+   margin-top: 1.5rem;
+}
+
+.editor{
+ padding-top: 3%;
+ padding-left:9%;
+ padding-right: 9%;
+}
+
+#delegar {
+  position:fixed;
+  right: 10px;
+  bottom: 10px;
+}
+/* app header 
+   background-color
+*/
+.Inter {
+  width: 100%;
+  height:100%;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.Inter-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
   .Inter-logo {
-    height: 40vmin;
-    pointer-events: none;
+    animation: App-logo-spin infinite 20s linear;
   }
-  
-  
-  @media (prefers-reduced-motion: no-preference) {
-    .Inter-logo {
-      animation: App-logo-spin infinite 20s linear;
-    }
-  }
-  
+}
+
+.Inter-header {
+  min-height: 10vh;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  padding: 10px;
+
+
+}
+
+.Inter-link {
+  color: #61dafb;
+}
+@media only screen and (max-width: 768px) {
   .Inter-header {
-    
-    min-height: 10vh;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    padding: 10px;
-  
-  
+    grid-template-columns: auto auto auto ;
+    padding-left: 10%;
+    padding-right:5% ;
   }
-  
-  .Inter-link {
-    color: #61dafb;
-  }
-  @media only screen and (max-width: 600px) {
-    .Inter-header {
-      grid-template-columns: auto auto  ;
-    }
-    .heading1{
-      text-align: center;
-    }
-  }
-  
-  @media only screen and (max-width: 300px) {
-    .Inter-header {
-      grid-template-columns: auto ;
-    }
-    .heading1{
-      text-align: center;
-    }
-  }
-  
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
-  
-  
-  .main{
-    display: flex;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    align-content: space-around;
-    flex-wrap: wrap;
-  }
-  
   .heading1{
-    color: grey;
-    font-family: Arial;
-    padding: 3px 0px;
-    margin-left: 9%;
+    text-align: center;
   }
-  
-  
+}
+
+@media only screen and (max-width: 600px) {
+  .Inter-header {
+    grid-template-columns: auto auto  ;
+    padding-left: 10%;
+    padding-right:5% ;
+  }
+  .heading1{
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .Inter-header {
+    grid-template-columns: auto ;
+    padding-left: 10%;
+    padding-right:5% ;
+  }
+  .heading1{
+    text-align: center;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+.main{
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  align-content: space-around;
+  flex-wrap: wrap;
+}
+
+.heading1{
+  color: grey;
+  font-family: Arial;
+  padding: 3px 0px;
+  margin-left: 9%;
+}
+

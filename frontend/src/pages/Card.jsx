@@ -23,12 +23,13 @@ function Card(props) {
             <p>{props.branch}</p>
             <p>[{props.course}]</p>
             <p>Batch of {props.batch}</p>
-            <Popup trigger={  <button>
+            
+           {props.userBut?<Popup trigger={  <button>
                 visit profile
             </button>} modal>
-               <div class="popup"><PopUp name={props.name} job={props.job} branch={props.branch} course={props.course} batch={props.batch} /></div> 
+               <div class="popup"><PopUp setcontent={props.setcontent} setcompany={props.setcompany} setshowExp={props.setshowExp} name={props.name} interview={props.interview}job={props.job} branch={props.branch} course={props.course} batch={props.batch} /></div> 
 
-            </Popup>
+            </Popup>:<button>Edit profile</button>} 
           
 
         </div>

@@ -21,8 +21,14 @@ function PopUp(props) {
             <p>{props.about}</p>
             <p>[{props.course}]</p>
             <p>Batch of {props.batch}</p>
-            <button>Interview Exp1</button>  <button>Interview Exp1</button>  <button>Interview Exp1</button>
-            <button>Interview Exp1</button>
+            {
+                props.interview.map((item)=>{
+                    return(
+                        <button onClick={()=>{props.setshowExp(false);props.setcontent(item.content);props.setcompany(item.company)}}>Interview of {item.company}</button> 
+                    )
+                })
+            }
+  
             <div className='links'> 
             
             

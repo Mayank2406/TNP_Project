@@ -12,6 +12,8 @@ import Contact from './pages/Countact';
 import SignUp from './pages/SignUp';
 import InterviewExp from './pages/InterviewExp';
 import Forget_generate from './pages/Forget_generate';
+import Developer from './pages/Developer';
+
 function App() {
   return (
     <>
@@ -26,6 +28,7 @@ function App() {
           <Route path='/signup' component={SignUp} />
           <Route path='/Interview' component={InterviewExp} />
           <Route path='/forget' component={Forget_generate}/>
+          <Route path='/developers' component={Developer}/>
         </Switch>
       </Router>
     </>

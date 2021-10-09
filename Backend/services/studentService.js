@@ -8,11 +8,9 @@ const getStudents = async () => {
     return students;
 }
 
-const postStudents = async ({ query, uid,f}) => {
+const postStudents = async ({ query, uid}) => {
     const newStudent = await StudentQuery.createStudent(query);
     newStudent.author = uid;
-    // newStudent.image.url = f.path;
-    // newStudent.image.filename = f.filename;
     await newStudent.save();
     console.log(newStudent);
     return newStudent;

@@ -8,12 +8,22 @@ const getStudents = async () => {
     return students;
 }
 
+const getStudentById = async (id) => {
+    const student = await StudentQuery.findStudentById(id);
+    return student;
+}
+
 const postStudents = async ({ query, uid}) => {
     const newStudent = await StudentQuery.createStudent(query);
     newStudent.author = uid;
     await newStudent.save();
     console.log(newStudent);
     return newStudent;
+}
+
+const editStudent = async({sid,query}) => {
+    const editedStudent = await StudentQuery.editStudent({sid,query});
+    return editedStudent;
 }
 
 const getSortedStudents = async (id) => {
@@ -32,4 +42,4 @@ const getFilteredStudents = async (query) => {
     return students;
 }
 
-module.exports = { getStudents, postStudents, getSortedStudents, getFilteredStudents};
+module.exports = { getStudents, postStudents, getSortedStudents, getFilteredStudents,editStudent,getStudentById};

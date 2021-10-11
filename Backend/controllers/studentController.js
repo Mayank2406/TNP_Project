@@ -41,13 +41,32 @@ const student_get = async (req, res) => {
     }
 }
 
+const student_getbyId = async (req, res) => {
+    const id = req.params.id;
+    try {
+        const student = await StudentService.getStudentById(id);
+        if (student) {
+            return res.status(200).json({
+                message: "Student is fetched",
+                students: student
+            })
+        }
+        else {
+            res.status(404).json({ message: "No Student found" });
+        }
+    }
+    catch (err) {
+        return res.status(400).json({ message: err.message || err.toString })
+    }
+}
+
 const student_post = async (req, res) => {
     const query = req.body;
     const uid = req.user.userID;
 
 
     try {
-        const student = await StudentService.postStudents({ query, uid});
+        const student = await StudentService.postStudents({ query, uid });
         if (student) {
             return res.status(200).json({
                 message: "student created successfully",
@@ -57,6 +76,28 @@ const student_post = async (req, res) => {
         else {
             return res.status(404).json({
                 message: "Some error occured and User did not got saved"
+            })
+        }
+    }
+    catch (err) {
+        return res.status(404).json({ message: err.message || err.toString })
+    }
+}
+
+const student_edit = async (req, res) => {
+    const query = req.body;
+    const sid = req.params.id;
+    try {
+        const student = await StudentService.editStudent({ sid, query });
+        if (student) {
+            return res.status(200).json({
+                message: "student edited successfully",
+                newStudent: student
+            })
+        }
+        else {
+            return res.status(404).json({
+                message: "Some error occured and User did not got edited"
             })
         }
     }
@@ -111,6 +152,8 @@ const student_filter = async (req, res) => {
 module.exports = {
     student_get,
     student_post,
+    student_edit,
+    student_getbyId,
     student_sorting,
     student_register,
     getuserdetails,

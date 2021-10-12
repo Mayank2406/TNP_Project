@@ -1,7 +1,7 @@
 import "./Team.css";
 import CardTeam from "./components/CardTeam";
-import Data from "./Data.jsx";
-import Data2 from "./Data2.jsx";
+import DataFaculty from "./DataFaculty.jsx";
+import DataCoordinator from "./DataCoordinator.jsx";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -28,6 +28,8 @@ function ncards(val){
     description={val.description}
     job_pos={val.job_pos}
     dept={val.dept}
+    phone={val.phone}
+    email={val.email}
     />
      
 
@@ -51,7 +53,7 @@ function Team() {
     <div className="Team">
       <header className="App-header">
       
-        {Data.map(ncards)}
+        {DataFaculty.map(ncards)}
 
       </header>
     </div>
@@ -62,14 +64,14 @@ function Team() {
   
    <h4 className="heading1">  Student Placement Co-ordinators (B.Tech.)  </h4>
     
-   <Grid container spacing={3} justifyContent="center">
+   <Grid container spacing={3} justifyContent="center" alignItems="center">
     <Grid item xs={10}>
       <Paper className={classes.paper}>
 
     <div className="Team">
       <header className="App-header">
       
-        {Data2.map(ncards)}
+        {DataCoordinator.map(ncards)}
 
       </header>
     </div>

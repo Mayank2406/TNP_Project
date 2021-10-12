@@ -1,7 +1,7 @@
 /* app header 
    background-color
 */
-.Team {
+.Team{
   width: 100%;
   height:100%;
   text-align: center;
@@ -21,8 +21,11 @@
 }
 
 .App-header {
-  
-  min-height: 10vh;
+
+  width: '100%';
+  height: '100%';
+  overflow: 'hidden';
+
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
@@ -32,15 +35,13 @@
   display: grid;
   grid-template-columns: auto auto auto auto;
   padding: 10px;
-
-
 }
 
 .App-link {
-  color: #61dafb;
+  
 }
-@media only screen and (max-width: 600px) {
-  .App-header {
+@media only screen and (max-width: 1075px) {
+  .App-header{
     grid-template-columns: auto auto  ;
   }
   .heading1{
@@ -48,7 +49,7 @@
   }
 }
 
-@media only screen and (max-width: 300px) {
+@media only screen and (max-width: 600px) {
   .App-header {
     grid-template-columns: auto ;
   }
@@ -66,16 +67,15 @@
   }
 }
 
-
+.heading1{
+  color: grey;
+  font-size: 25px;
+  font-family: Arial;
+  padding: 20px 0px;
+  margin-left: 9%;
+}
 
 .main{
   background-color: #add8e6;
-  flex-wrap: wrap;
-}
-
-.heading1{
-  color: grey;
-  font-family: Arial;
-  padding: 3px 0px;
-  margin-left: 9%;
+  padding-bottom: 2rem;
 }

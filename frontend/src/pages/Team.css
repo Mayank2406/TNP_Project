@@ -25,7 +25,6 @@
   width: '100%';
   height: '100%';
   overflow: 'hidden';
-
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
@@ -40,9 +39,18 @@
 .App-link {
   
 }
-@media only screen and (max-width: 1075px) {
+@media only screen and (max-width: 1125px) {
   .App-header{
-    grid-template-columns: auto auto  ;
+    grid-template-columns: auto auto auto ;
+  }
+  .heading1{
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .App-header{
+    grid-template-columns: auto auto ;
   }
   .heading1{
     text-align: center;

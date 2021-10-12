@@ -44,14 +44,15 @@ function Hall_of_Fame() {
   const [login,setLogin]=useState(false);
   const [{token},dispatch]=useStateValue();
   const [user,setuser]=useState('');
-  
+  const [data, setdata] = useState([]);
   useEffect(()=>{
     axios.post('http://localhost:9000/login/verify',{
       token:token
     }).then((res)=>{
       setLogin(res.data.status);
-      setuser(res.data.userID)
-    
+      setuser(res.data.userID);
+      console.log('token userId ',res.data.userID);
+      console.log('token satus ',res.data.status);
       console.log('token reslt ',res);
     })
   },[token]);
@@ -88,7 +89,7 @@ function Hall_of_Fame() {
   };
 
 
-  const [data, setdata] = useState([]);
+
   useEffect(() => {
 
     axios.get(url)
@@ -107,9 +108,7 @@ function Hall_of_Fame() {
       .catch(error => {
         console.log('djfjkdjflkdjfldjflkdjfdljflkjf    fjdkfjkdfjdsjf')
       });
-  }
-
-    , [])
+  } , [data])
 
   return (
     <div>
@@ -346,17 +345,16 @@ function Hall_of_Fame() {
         <div className="cardStudent">
 
           {data.map((item) => {
-            // if(user===item.author._id)
-            // {console.log("person Id", user,item._id)
-            //   setuserBut(false);
-            // }
-            console.log("auther",item.author);
+  
+            const authID=item.author._id || '123';
+   
+            console.log("auther",authID,user);
 
             
             return (
               <div className="student">
         
-                <Card userBut={userBut} setcontent={setcontent} setcompany={setcompany} setshowExp={setshowExp} name={item.name} interview={item.interviews} job={item.position} branch={item.branch} course={item.course} batch={item.year} />
+                <Card authID={authID} user={user} setcontent={setcontent} setcompany={setcompany} setshowExp={setshowExp} pic={item.image} name={item.name} interview={item.interviews} job={item.position} branch={item.branch} course={item.course} batch={item.year} company={item.company} />
               </div>
             )
           })

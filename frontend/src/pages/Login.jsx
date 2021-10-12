@@ -19,6 +19,8 @@ import axios from 'axios';
 import { useStateValue } from '../StateProvider';
 import { actionTypes } from '../reducer';
 import './Login.css';
+import Profile from './Profile';
+import { useHistory } from 'react-router';
 
 
 function Copyright() {
@@ -54,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function Login() {
+  const history = useHistory();
     const [login,setlogin]=useState(0);
     const [user,setuser]=useState('');
     const [pass,setpass]=useState('');
@@ -80,8 +83,9 @@ useEffect(()=>{
         type:actionTypes.SET_TOKEN,
         token: res.data.token,
     }); 
+  
     console.log("data jdfjdkfjdfkdsf  ",res);
-      
+      history.push('/placements')
       setlogin(res.data.status);
       setexist(res.data.status);
     })
@@ -177,19 +181,20 @@ useEffect(()=>{
       </Box>
     </Container>
         </div>
-            :  <div className="contBg">
+        :<Profile/>
+          //   :  <div className="contBg">
                     
             
-           <div class="middle">
-               <h1>Welcome student</h1>
-               <hr/>
+          //  <div class="middle">
+          //      <h1>Welcome student</h1>
+          //      <hr/>
                  
-            <button onClick={setLog} class="btn fifth"><Link href='/login'> Logout</Link></button>
+          //   <button onClick={setLog} class="btn fifth"><Link href='/login'> Logout</Link></button>
               
-              </div>
+          //     </div>
             
           
-            </div>
+          //   </div>
             // <div   style={{ 
             //   backgroundImage: `url('https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171__480.jpg')`, 
             //   backgroundRepeat: 'no-repeat',

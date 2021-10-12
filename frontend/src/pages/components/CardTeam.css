@@ -2,43 +2,27 @@
 	float:left;
 	background-color: white;
 	color: #272727;
-	padding: 0.625rem;
+	padding: 2rem;
 	transition: 200ms;
-    max-width: 200;
+  max-width: 200;
 	text-align: center;
 }
 
 .cardTeam:hover {
 	transition: 200ms;
-	border-color: tomato;
-	border-style: solid;
 }
 
 .card-header {
 	display: flex;
 	flex-wrap: nowrap;
-	align-items: center;
-    
-}
-
-.profile {
-	width: 2.5rem;
-	height: 2.5rem;
-	background-color: tomato;
-	border-radius: 100%;
-	margin:0.625rem;
-	font-size: 20pt;
-	text-align: center;
-	font-weight: bold;
-	color: white;
-	justify-content: center;
+	align-items: center;   
 }
 
 .letter {
 	vertical-align: middle;
 }
 
-.card-title-group {
+.card-title-group{
 	justify-content: center;
 }
 
@@ -51,9 +35,9 @@
 }
 
 
-.card-image {
+.card-image{
 	border-radius: 100%;
-	border: solid 5px black;
+	border: solid 3px black;
 }
 
 .card-image:hover {
@@ -64,22 +48,28 @@
 
 .card-text1 {
 	width: auto;
-	font-size: small;
+	font-size: 19px;
 	color: black;
 	text-align: center;
+	padding: 8px 0px;
 }
 
 .card-text2 {
 	width: auto;
-	font-size: small;
+	font-size: 15px;
 	text-align: center;
 	color: grey;
 }
 .card-text3 {
 	width: auto;
 	color: grey;
-	font-size: small;
+	font-size: 15px;
 	text-align: center;
+
+}
+
+.social{
+	padding:8px 0px;
 }
 
 
@@ -88,4 +78,16 @@
 	align-items: center;
 	margin-top: 1.25rem;
 	
+}
+
+@media only screen and (max-width: 1375px) {
+	.cardTeam {
+		padding: 1rem  ;
+	}
+}
+
+@media only screen and (max-width: 415px) {
+	.cardTeam {
+		padding: 0rem;
+	}
 }

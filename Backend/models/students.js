@@ -4,6 +4,9 @@ const Schema = mongoose.Schema;
 
 const studentSchema = new Schema({
     image: { type: String},
+    linkedIn: { type: String},
+    github: { type: String},
+    instagram: { type: String},
     name: { type: String, required: true },
     position: { type: String, required: true },
     company: { type: String, required: true },

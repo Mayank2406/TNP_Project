@@ -21,7 +21,7 @@
 }
 
 .App-header-Developer {
-  
+
   min-height: 70vh;
   flex-direction: column;
   flex-wrap: wrap;
@@ -37,7 +37,7 @@
 }
 
 .App-link {
-  
+
 }
 @media only screen and (max-width: 1075px) {
   .App-header-Developer {
@@ -76,5 +76,5 @@
 
 .mainDeveloper{
   background-color: #add8e6;
-  padding-bottom: 2rem;
+  height: 655px;
 }

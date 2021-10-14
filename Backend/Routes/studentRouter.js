@@ -13,13 +13,15 @@ router.get('/:id', studentController.student_getbyId);
 
 router.get('/',studentController.student_get);
 
+router.post('/filter', studentController.student_filter);
+
 router.post('/',authenticate,studentController.student_post)
 
 router.post('/:id',studentController.student_edit)
 
 router.get('/:sortBy',studentController.student_sorting);
 
-router.post('/filter', studentController.student_filter);
+
 
 router.post('/profile',upload.single('image'),(req, res) => {
     console.log(req.body,req.file);

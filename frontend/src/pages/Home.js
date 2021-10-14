@@ -20,8 +20,43 @@ import ViewColumn from '@material-ui/icons/ViewColumn';
 import axios from 'axios';
 
 function Home() {
-  const [cse,setcse]=useState(0)
+  const [placementData,setPlacementData]=useState([])
+  const [tuples,setTuples]=useState([])
 
+  useEffect(async ()=>{
+    const url2 = `http://localhost:9000/placement`;
+    await axios.get(url2)
+      .then((res) => {
+        console.log(res.data.result);
+          setPlacementData(res.data.result);
+      
+      })
+      .catch(error => console.error('error'));
+      
+  },[])
+
+  useEffect(async()=>{
+    console.log("hello")
+      let tuplesList=[]
+      for(let i=0;i<placementData.length;i++){
+        let c=0
+        console.log(placementData[i]["branch"].length)
+        for(let j=0;j<placementData[i]["branch"].length;j++){
+          c=c+placementData[i]["branch"][j].count;
+        }
+        var row = {
+          company:placementData[i]["company"],
+          batch:placementData[i]["batch"],
+          ctc: String(placementData[i]["lowestsalary"])+"LPA" + 
+            ((placementData[i]["lowestsalary"]===placementData[i]["highestsalary"])?"":"-"+String(placementData[i]["highestsalary"])+"LPA"),
+          
+          count: c
+        }
+       
+        tuplesList.push(row);
+      }
+      setTuples(tuplesList);
+  }, [placementData])
 
   
   const tableIcons = {
@@ -47,40 +82,28 @@ function Home() {
  const columns= [
    
   
-    { title: 'Branch', field: 'branch' },
-    { title: 'OFFERS', field: 'offers', type: 'numeric' },
+    { title: 'Company', field: 'company' },
+    
     {
-      title: 'PLACED',
-      field: 'placed',
+      title: 'Batch',
+      field: 'batch',
 
     },
     {
-      title: 'PLACEMENT',
-      field: 'placement',
-
-    },
-    {
-      title: 'HIGHEST',
-      field: 'highest',
+      title: 'CTC Package',
+      field: 'ctc',
       
     },
     {
-      title: 'AVERAGE',
-      field: 'average',
+      title: 'No. of Selection',
+      field: 'count',
       
     },
   
   ];
 
-  const tuples= [
-    { branch: 'Computer Science', offers: 'Baran', placement: cse, highest: 63,average:3.4 },
-    { branch: 'Electronic & Comm.', offers: 'Baran', placement: 19, highest: 63,average:3.4 },
-    { branch: 'Eelectrical', offers: 'Baran', placement: 19, highest: 63,average:3.4 },
-    { branch: 'Mecanical', offers: 'Baran', placement: 19, highest: 63,average:3.4 },
-    { branch: '	Civil', offers: 'Baran', placement: 19, highest: 63,average:3.4 },
-    { branch: 'Chemical', offers: 'Baran', placement: 19, highest: 63,average:3.4 },
-   
-  ];
+
+  
   return (
     <div className='sub'>
      <div className="heading">Welcome to MMMUT Placement Portal</div> 
@@ -89,18 +112,17 @@ function Home() {
           
     <MaterialTable
   
-      title="UG Placement Statics 2020-2021 
+      title="UG Placement Statistics 2020-2021 
       Placement Cell,MMMUT,Gk"
       columns={columns}
       data={tuples}
-      icons={tableIcons}
       options={{
         search: false,
         paging:false,
         headerStyle: {
           zIndex:0,
           backgroundColor:'gray',
-        fontSize:'20px',
+          fontSize:'20px',
         }
       }}
      

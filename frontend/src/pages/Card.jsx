@@ -7,7 +7,10 @@ function Card(props) {
     var pic='https://upload.wikimedia.org/wikipedia/commons/1/18/Mark_Zuckerberg_F8_2019_Keynote_%2832830578717%29_%28cropped%29.jpg';
     
 
-    
+    if(props.authID===props.user)
+    {
+    props.setreg(true);
+    }
     return (
         <div className="card">
         <div className="upper-container">
@@ -24,7 +27,7 @@ function Card(props) {
             <p>[{props.course}]</p>
             <p>Batch of {props.batch}</p>
             
-           {(props.authID===props.user)?<button>Edit profile</button>:<Popup trigger={  <button>
+           {(props.authID===props.user)?<button onClick={()=>{props.sett(true);props.seteId(props.itemID);props.setEdit(true);props.setname(props.name);props.setUrl3(props.pic);props.setposition(props.job);props.setbranch(props.branch);props.setcourse(props.course);props.setplacement(props.placement);props.setsalary(props.salary);props.setyear(props.batch);props.setcompany(props.company);props.settip(props.typ)}}>Edit profile</button>:<Popup trigger={  <button>
                 visit profile
             </button>} modal>
                <div class="popup"><PopUp setcontent={props.setcontent} setcompany={props.setcompany} setshowExp={props.setshowExp} name={props.name} interview={props.interview}job={props.job} branch={props.branch} course={props.course} batch={props.batch} company={props.company} /></div> 

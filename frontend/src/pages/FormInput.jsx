@@ -30,16 +30,37 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
   
-function FormInput() {
+function FormInput(props) {
   const history = useHistory();
   const [loading, setloading] = useState(false);
   const [{token},dispatch]=useStateValue();
   const [completed, setcompleted] = useState(false);
   const [company,setcompany]=useState("");
+  const [name,setname]=useState('');
     const paperStyle = { padding: '30px 60px', width: 600, margin: "20px auto" }
     const headerStyle = { margin: 0 }
     const avatarStyle = { padding:'30px',backgroundColor: '#1bbd7e' }
+    useEffect(() => {
+
+      axios.get(`http://localhost:9000/students/${props.id}`)
+      
+  
+        .then((res) => {
+        
+  setname(res.data.students.userName);
+  console.log(res.data.students.userName);
+          console.log("single",res);
+        
+          
+  
+          // setdata(data.data.length);
+        })
+        .catch(error => {
+          console.log('djfjkdjflkdjfldjflkdjfdljflkjf    fjdkfjkdfjdsjf')
+        });
+    } , [])
     const sendData=()=>{
+      
       const data = new FormData();
       
       data.append("file", image);
@@ -64,7 +85,7 @@ function FormInput() {
         console.log(name,image,position,branch,course,placement,salary,year,interview);
 
     }
-    const [name, setname] = useState('')
+  
    
     const [position, setposition] = useState('')
     const[branch,setbranch]=useState('');
@@ -202,6 +223,7 @@ const imageChange = (e) => {
             )}
           </>
         ) : (<div><Grid>
+       
         <Paper elevation={20} style={paperStyle}>
             <Grid align='center' className='Avatar'>
                 {/* <Avatar style={avatarStyle}>
@@ -257,7 +279,9 @@ ref={fileInput}onChange=  {imageChange}
 </div>
 
           
-                <TextField fullWidth label='Name' onChange={(e)=>{setname(e.target.value)}} placeholder="Enter your name" />
+                <TextField fullWidth label='Name' value={name}  InputProps={{
+            readOnly: true,
+          }}/>
                 <TextField fullWidth label='Job Position' onChange={(e)=>{setposition(e.target.value)}} placeholder="Enter your email" />
              
         <FormControl className={classes.formControl}>

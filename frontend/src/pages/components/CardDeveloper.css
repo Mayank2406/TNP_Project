@@ -1,18 +1,18 @@
-.cardTeam {
+.cardDeveloper {
 	float:left;
 	background-color: white;
 	color: #272727;
-	padding: 2rem;
+	padding: 3rem;
 	transition: 200ms;
   max-width: 200;
 	text-align: center;
 }
 
-.cardTeam:hover {
+.cardDeveloper:hover {
 	transition: 200ms;
 }
 
-.card-header {
+.card-header-Developer {
 	display: flex;
 	flex-wrap: nowrap;
 	align-items: center;   
@@ -22,11 +22,11 @@
 	vertical-align: middle;
 }
 
-.card-title-group{
+.card-title-group-Developer {
 	justify-content: center;
 }
 
-.card-title {
+.card-title-Developer {
 	flex: 0.5;
 	font-size: large;
 	margin-bottom: 8;
@@ -35,18 +35,18 @@
 }
 
 
-.card-image{
+.card-image-Developer {
 	border-radius: 100%;
 	border: solid 3px black;
 }
 
-.card-image:hover {
+.card-image-Developer:hover {
 	transition: 200ms;
 	opacity: 0.3;
 	border-style: solid;
 }
 
-.card-text1 {
+.card-text1-Developer {
 	width: auto;
 	font-size: 19px;
 	color: black;
@@ -54,13 +54,13 @@
 	padding: 8px 0px;
 }
 
-.card-text2 {
+.card-text2-Developer {
 	width: auto;
 	font-size: 15px;
 	text-align: center;
 	color: grey;
 }
-.card-text3 {
+.card-text3-Developer {
 	width: auto;
 	color: grey;
 	font-size: 15px;
@@ -73,7 +73,7 @@
 }
 
 
-.card-like-bar {
+.card-like-bar-Developer {
 	display: flex;
 	align-items: center;
 	margin-top: 1.25rem;
@@ -81,13 +81,13 @@
 }
 
 @media only screen and (max-width: 1375px) {
-	.cardTeam {
+	.cardDeveloper {
 		padding: 1rem  ;
 	}
 }
 
 @media only screen and (max-width: 415px) {
-	.cardTeam {
+	.cardDeveloper {
 		padding: 0rem;
 	}
 }

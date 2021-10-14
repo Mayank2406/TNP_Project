@@ -30,6 +30,8 @@ export default function CardTeam(props) {
       <div className="card-text1" >{props.description}</div>
       <div className="card-text2">{props.job_pos}</div>
       <div className="card-text3">{props.dept}</div>
+      <div className="card-text3">{props.phone}</div>
+      <div className="card-text3">{props.email}</div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 /* app header 
    background-color
 */
-.Team{
+.TeamDeveloper {
   width: 100%;
   height:100%;
   text-align: center;
@@ -20,11 +20,9 @@
   }
 }
 
-.App-header {
+.App-header-Developer {
 
-  width: '100%';
-  height: '100%';
-  overflow: 'hidden';
+  min-height: 70vh;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
@@ -34,34 +32,28 @@
   display: grid;
   grid-template-columns: auto auto auto auto;
   padding: 10px;
+
+
 }
 
 .App-link {
-  
-}
-@media only screen and (max-width: 1125px) {
-  .App-header{
-    grid-template-columns: auto auto auto ;
-  }
-  .heading1{
-    text-align: center;
-  }
-}
 
-@media only screen and (max-width: 850px) {
-  .App-header{
-    grid-template-columns: auto auto ;
+}
+@media only screen and (max-width: 1075px) { 
+  .App-header-Developer {
+    grid-template-columns: auto auto  ;
   }
-  .heading1{
+  .headingDeveloper{
     text-align: center;
   }
+  
 }
 
 @media only screen and (max-width: 600px) {
-  .App-header {
+  .App-header-Developer {
     grid-template-columns: auto ;
   }
-  .heading1{
+  .headingDeveloper{
     text-align: center;
   }
 }
@@ -75,7 +67,7 @@
   }
 }
 
-.heading1{
+.headingDeveloper{
   color: grey;
   font-size: 25px;
   font-family: Arial;
@@ -83,7 +75,7 @@
   margin-left: 9%;
 }
 
-.main{
+.mainDeveloper{
   background-color: #add8e6;
-  padding-bottom: 2rem;
+  min-height: 655px;
 }

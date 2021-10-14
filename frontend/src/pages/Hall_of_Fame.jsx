@@ -14,7 +14,7 @@ import { useStateValue } from '../StateProvider';
 import NotLogin from './NotLogin';
 import Interview_Data from './components/Interview_Data.jsx';
 
-
+import EditPro from './EditPro.jsx';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -29,29 +29,46 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Hall_of_Fame() {
+function Hall_of_Fame(props) {
   const url = 'http://localhost:9000/students/';
   const classes = useStyles();
   const [sort, setSort] = useState('');
-  const [company,setcompany]=useState("atifjkfjkfdf");
+  const [reg,setreg]=useState(false);
+  const [company,setcompany]=useState("");
   const [content,setcontent]=useState("dfjdkjfkjfdkjfkdjfjfkjd")
   const [search, setSearch] = useState('');
   const [t, sett] = useState(false);
   const [showExp,setshowExp]=useState(true);
+  const [eId,seteId]=useState('');
   const [userBut,setuserBut]=useState(true);
   const [open2, setOpen2] = useState(false);
   
   const [login,setLogin]=useState(false);
   const [{token},dispatch]=useStateValue();
   const [user,setuser]=useState('');
-  
+  const [data, setdata] = useState([]);
+  const [edit,setEdit]=useState(false);
+  const [name,setname]=useState(props.name);
+  const [image, setImage ] = useState("");
+  const [ url3, setUrl3 ] = useState(props.url);
+ const [tip,settip]=useState("");
+  const [position, setposition] = useState('')
+  const[branch,setbranch]=useState('');
+  const[course,setcourse]=useState('');
+  const [placement, setplacement] = useState('')
+  const[salary,setsalary]=useState('');
+
+  const [year, setyear] = useState('')
+  const[interview,setInterview]=useState();
+
   useEffect(()=>{
     axios.post('http://localhost:9000/login/verify',{
       token:token
     }).then((res)=>{
       setLogin(res.data.status);
-      setuser(res.data.userID)
-    
+      setuser(res.data.userID);
+      console.log('token userId ',res.data.userID);
+      console.log('token satus ',res.data.status);
       console.log('token reslt ',res);
     })
   },[token]);
@@ -88,7 +105,7 @@ function Hall_of_Fame() {
   };
 
 
-  const [data, setdata] = useState([]);
+
   useEffect(() => {
 
     axios.get(url)
@@ -107,9 +124,7 @@ function Hall_of_Fame() {
       .catch(error => {
         console.log('djfjkdjflkdjfldjflkdjfdljflkjf    fjdkfjkdfjdsjf')
       });
-  }
-
-    , [])
+  } , [data])
 
   return (
     <div>
@@ -346,17 +361,16 @@ function Hall_of_Fame() {
         <div className="cardStudent">
 
           {data.map((item) => {
-            // if(user===item.author._id)
-            // {console.log("person Id", user,item._id)
-            //   setuserBut(false);
-            // }
-            console.log("auther",item.author);
-
+  
+            const authID=item.author._id || '123';
+   
+            console.log("auther",authID,user);
+            const itemID=item._id;
             
             return (
               <div className="student">
         
-                <Card userBut={userBut} setcontent={setcontent} setcompany={setcompany} setshowExp={setshowExp} name={item.name} interview={item.interviews} job={item.position} branch={item.branch} course={item.course} batch={item.year} />
+                <Card seteId={seteId} settip={settip} typ={item.type} itemID={itemID} setcontent={props.setcontent}setname={setname} setUrl3={setUrl3} setposition={setposition} setcourse={setcourse} setbranch={setbranch} setplacement={setplacement} setsalary={setsalary} setyear={setyear} setcompany={setcompany} setEdit={setEdit} setreg={setreg} sett={sett} authID={authID} user={user}  setshowExp={setshowExp} pic={item.image} name={item.name} interview={item.interviews} job={item.position} branch={item.branch} salary={item.salary} course={item.course} batch={item.year} company={item.company} type={item.type} placement={item.placement} />
               </div>
             )
           })
@@ -365,12 +379,12 @@ function Hall_of_Fame() {
 
 
         </div>
-         <Fab color="primary" aria-label="add" style={style}>
-         <AddIcon onClick={()=>sett(true)}  />
-          </Fab>
+         {!reg?<Fab color="primary" aria-label="add" style={style}>
+         <AddIcon onClick={()=>sett(true)} />
+          </Fab>:<div></div>}
         </div>):(<div><Interview_Data setshowExp={setshowExp} company={company} content={content} /></div>)}
       </div>) : (<div>
-       {login? <FormInput/>:<div><NotLogin/></div>}
+       {login? <div>{edit?<EditPro tip={tip} eId={eId} tip={tip} pic={url3} name={name}  job={position} branch={branch} salary={salary} course={course} batch={year} company={company} placement={placement}/>:<FormInput id={user}/>}</div>:<div><NotLogin/></div>}
 <Fab color="primary" aria-label="add" style={style}>
            <AddIcon onClick={()=>sett(false)}  />
            

@@ -17,7 +17,7 @@ function PopUp(props) {
         </div>
         <div className="PopUp-lower-container">
             <h3>{props.name}</h3>
-            <h4>{props.job}</h4>
+            <h4>{props.job} @ {props.company}</h4>
             <p>{props.about}</p>
             <p>[{props.course}]</p>
             <p>Batch of {props.batch}</p>

@@ -9,7 +9,7 @@ const authenticate = require('../middlewares/authenticate');
 
 router.post('/register',studentController.student_register);
 
-router.get('/:id', studentController.student_getbyId);
+router.get('/getbyid/:id', studentController.student_getbyId);
 
 router.get('/',studentController.student_get);
 
@@ -17,10 +17,9 @@ router.post('/filter', studentController.student_filter);
 
 router.post('/',authenticate,studentController.student_post)
 
-router.post('/:id',studentController.student_edit)
+router.post('/edit/:id',studentController.student_edit)
 
 router.get('/:sortBy',studentController.student_sorting);
-
 
 
 router.post('/profile',upload.single('image'),(req, res) => {

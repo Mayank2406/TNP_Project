@@ -18,6 +18,7 @@ import './FormInput.css'
 import Select from '@material-ui/core/Select';
 import { useRef } from 'react';
 import { useStateValue } from '../StateProvider.js';
+import { Alert } from '@mui/material';
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -37,6 +38,7 @@ function FormInput(props) {
   const [completed, setcompleted] = useState(false);
   const [company,setcompany]=useState("");
   const [name,setname]=useState('');
+  const [exits,setexits]=useState(true);
     const paperStyle = { padding: '30px 60px', width: 600, margin: "20px auto" }
     const headerStyle = { margin: 0 }
     const avatarStyle = { padding:'30px',backgroundColor: '#1bbd7e' }
@@ -80,7 +82,7 @@ function FormInput(props) {
             year:year
             
         }).then((res)=>{console.log("naffAt",res); history.push("/"); })
-        .catch((e)=>console.log("unsuccessfull submission"));
+        .catch((e)=>{console.log("unsuccessfull submission");setexits(false)});
 
         console.log(name,image,position,branch,course,placement,salary,year,interview);
 
@@ -232,7 +234,10 @@ const imageChange = (e) => {
             
                 <h2 style={headerStyle}>Registration form</h2>
                 <Typography variant='caption' gutterBottom>Please fill this form to create an account !</Typography>
-               
+                {exits?<div></div>:<div ><Alert severity="error">The user is not registered or roll number is incorrect </Alert> 
+
+</div>}
+
             </Grid>
             <div style={{display:'flex',justifyContent:'center'}}>
          
@@ -282,7 +287,7 @@ ref={fileInput}onChange=  {imageChange}
                 <TextField fullWidth label='Name' value={name}  InputProps={{
             readOnly: true,
           }}/>
-                <TextField fullWidth label='Job Position' onChange={(e)=>{setposition(e.target.value)}} placeholder="Enter your email" />
+                <TextField required fullWidth label='Job Position' onChange={(e)=>{setposition(e.target.value)}} placeholder="Enter your job position" />
              
         <FormControl className={classes.formControl}>
     <InputLabel>Course</InputLabel>
@@ -294,7 +299,7 @@ ref={fileInput}onChange=  {imageChange}
       onChange={(e)=>{setcourse(e.target.value)}}
     >
       <MenuItem value='B.tech'>B.tech</MenuItem>
-      <MenuItem value='MCA'>M.tech</MenuItem>
+      <MenuItem value='M.tech'>M.tech</MenuItem>
       <MenuItem value='MCA'>MCA</MenuItem>
       
     </Select>

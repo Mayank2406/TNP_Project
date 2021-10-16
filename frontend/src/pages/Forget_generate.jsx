@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import axios from 'axios';
 import ResetVerify from './ResetVerify';
+import { Alert } from '@mui/material';
 function Copyright() {
     return (
       <Typography variant="body2" color="textSecondary" align="center">
@@ -38,13 +39,17 @@ function Copyright() {
 function Forget_generate() {
   const [user,setuser]=useState('');
 const [status,setStatus]=useState(false);
+const [exits,setexits]=useState(true);
   function callApi(){
+    console.log("atif reyaz khan")
     axios.post('http://localhost:9000/reset/generate',{
     userID:user
   }).then((res)=>{
     setStatus(res.data.status);
+ setexits(res.data.status);
     console.log('token reslt ',res);
   })
+  .catch((err)=>{ console.error(err); setexits(false);});
   }
 
 
@@ -77,6 +82,9 @@ onChange={(e)=>{setuser(e.target.value)}}
 autoComplete="number"
 autoFocus
 />
+{exits?<div></div>:<div ><Alert severity="error">The user is not registered or roll number is incorrect </Alert> 
+
+</div>}
 
 {/* <FormControlLabel
 control={<Checkbox value="remember" color="primary" />}

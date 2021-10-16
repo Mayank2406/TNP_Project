@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
 function Hall_of_Fame(props) {
   const url = 'http://localhost:9000/students/';
   const classes = useStyles();
+  const [filter,setfilter]=useState({});
   const [sort, setSort] = useState('');
   const [reg,setreg]=useState(false);
   const [company,setcompany]=useState("");
@@ -42,7 +43,7 @@ function Hall_of_Fame(props) {
   const [eId,seteId]=useState('');
   const [userBut,setuserBut]=useState(true);
   const [open2, setOpen2] = useState(false);
-  
+  const [opt,setopt]=useState(3);
   const [login,setLogin]=useState(false);
   const [{token},dispatch]=useStateValue();
   const [user,setuser]=useState('');
@@ -57,11 +58,37 @@ function Hall_of_Fame(props) {
   const[course,setcourse]=useState('');
   const [placement, setplacement] = useState('')
   const[salary,setsalary]=useState('');
-
+const [degree,setdegree]=useState('');
   const [year, setyear] = useState('')
   const[interview,setInterview]=useState();
+  const [fbatch,setfbatch]=useState('');
+  const [dept,setdept]=useState('');
+  const [Recuit,setRecuit]=useState('');
+  const [fcomp,setfcomp]=useState('');
+const funFilter=()=>{
+axios.post('/students/filter',filter)
+.then((res)=>{
+  
+  console.log("filterdata",res.data.student);
+setdata(res.data.student);
 
+})
+.catch((err)=>{
+  
+  console.error("Error response:");
+    // console.error(err.response.data);    // ***
+    const stat=err.response.status;
+    if(stat===404)
+    {
+      setdata([]);
+    }
+    console.error(stat);  // ***
+    // console.error(err.response.headers); 
+});
+}
   useEffect(()=>{
+
+    
     axios.post('http://localhost:9000/login/verify',{
       token:token
     }).then((res)=>{
@@ -70,7 +97,7 @@ function Hall_of_Fame(props) {
       console.log('token userId ',res.data.userID);
       console.log('token satus ',res.data.status);
       console.log('token reslt ',res);
-    })
+    });
   },[token]);
   const funSort = () => {
     console.log(sort);
@@ -107,28 +134,38 @@ function Hall_of_Fame(props) {
 
 
   useEffect(() => {
+    // if(opt===1)
+    // {
+      funFilter();
+    // }
+    // else if(opt===2)
+    // {
+    //   funSort();
 
-    axios.get(url)
+    // }
+    // else{
+    // axios.get(url)
     
 
-      .then((res) => {
-        console.log(res.data.data);
+    //   .then((res) => {
+    //     console.log(res.data.data);
 
 
-        console.log(res);
-        console.log('arraya fdjfdkfksjfkldsjflkdsjfkdjflkdjflkdjfkldj');
-        setdata(res.data.students);
+    //     console.log(res);
+    //     console.log('arraya fdjfdkfksjfkldsjflkdsjfkdjflkdjflkdjfkldj');
+    //     setdata(res.data.students);
 
-        // setdata(data.data.length);
-      })
-      .catch(error => {
-        console.log('djfjkdjflkdjfldjflkdjfdljflkjf    fjdkfjkdfjdsjf')
-      });
-  } , [data])
+    //     // setdata(data.data.length);
+    //   })
+    //   .catch(error => {
+    //     console.log('djfjkdjflkdjfldjflkdjfdljflkjf    fjdkfjkdfjdsjf')
+    //   })};
+  } , [filter])
 
   return (
     <div>
-
+      {fbatch}
+<div>{JSON.stringify(filter)}</div>
       {!t? (
       
       <div>
@@ -159,9 +196,10 @@ function Hall_of_Fame(props) {
                     <div>
                       <FormControl className={classes.formControl}>
                         <Select
-                          value={sort}
-                          onChange={(e) => { setSearch(e.target.value) }}
-
+                            value={fcomp}
+                            onChange={(e) => { setfcomp(e.target.value);
+                              setfilter({...filter,["company"]:e.target.value});
+                             }}
                           displayEmpty
                           className={classes.selectEmpty}
                           inputProps={{ 'aria-label': 'Without label' }}
@@ -171,12 +209,8 @@ function Hall_of_Fame(props) {
                           </MenuItem>
 
 
-                          <MenuItem value="Package">--Select by company Name--</MenuItem>
-                          <MenuItem value="branch">--Select by Degree--</MenuItem>
-                          <MenuItem value="branch">--Select by Batch--</MenuItem>
-                          <MenuItem value="branch">--Select by Recruitment--</MenuItem>
-                          <MenuItem value="branch">--Select by Department--</MenuItem>
-                          <MenuItem value="branch">--Select by Recruitment Type--</MenuItem>
+                          <MenuItem value="company1">--Select by company Name--</MenuItem>
+                          <MenuItem value="company2">--Select by Degree--</MenuItem>
 
                         </Select>
 
@@ -184,9 +218,11 @@ function Hall_of_Fame(props) {
 
                       <FormControl className={classes.formControl}>
                         <Select
-                          value={sort}
-                          onChange={(e) => { setSearch(e.target.value) }}
-
+                      value={degree}
+                      onChange={(e) => { setdegree(e.target.value);
+                        setfilter({...filter,["course"]:e.target.value});
+                    
+                       }}
                           displayEmpty
                           className={classes.selectEmpty}
                           inputProps={{ 'aria-label': 'Without label' }}
@@ -196,21 +232,20 @@ function Hall_of_Fame(props) {
                           </MenuItem>
 
 
-                          <MenuItem value="Package">--Select by company Name--</MenuItem>
-                          <MenuItem value="branch">--Select by Degree--</MenuItem>
-                          <MenuItem value="branch">--Select by Batch--</MenuItem>
-                          <MenuItem value="branch">--Select by Recruitment--</MenuItem>
-                          <MenuItem value="branch">--Select by Department--</MenuItem>
-                          <MenuItem value="branch">--Select by Recruitment Type--</MenuItem>
-
+                          <MenuItem value="B.Tech">B.Tech</MenuItem>
+                          <MenuItem value="M.Tech">M.Tech</MenuItem>
+                          <MenuItem value="MBA">MBA</MenuItem>
+                       
                         </Select>
 
                       </FormControl>
 
                       <FormControl className={classes.formControl}>
                         <Select
-                          value={sort}
-                          onChange={(e) => { setSearch(e.target.value) }}
+                          value={fbatch}
+                          onChange={(e) => { setfbatch(e.target.value);
+                            setfilter({...filter,["year"]:e.target.value});
+                           }}
 
                           displayEmpty
                           className={classes.selectEmpty}
@@ -221,13 +256,10 @@ function Hall_of_Fame(props) {
                           </MenuItem>
 
 
-                          <MenuItem value="Package">--Select by company Name--</MenuItem>
-                          <MenuItem value="branch">--Select by Degree--</MenuItem>
-                          <MenuItem value="branch">--Select by Batch--</MenuItem>
-                          <MenuItem value="branch">--Select by Recruitment--</MenuItem>
-                          <MenuItem value="branch">--Select by Department--</MenuItem>
-                          <MenuItem value="branch">--Select by Recruitment Type--</MenuItem>
-
+                          <MenuItem value="2020">2020</MenuItem>
+                          <MenuItem value="2021">2021</MenuItem>
+                          <MenuItem value="2022">2022</MenuItem>
+                       
                         </Select>
 
                       </FormControl>
@@ -237,9 +269,11 @@ function Hall_of_Fame(props) {
 
                       <FormControl className={classes.formControl}>
                         <Select
-                          value={sort}
-                          onChange={(e) => { setSearch(e.target.value) }}
-
+               value={dept}
+               onChange={(e) => { setdept(e.target.value);
+                setfilter({...filter,["branch"]:e.target.value});
+              
+                }}
                           displayEmpty
                           className={classes.selectEmpty}
                           inputProps={{ 'aria-label': 'Without label' }}
@@ -249,22 +283,24 @@ function Hall_of_Fame(props) {
                           </MenuItem>
 
 
-                          <MenuItem value="Package">--Select by company Name--</MenuItem>
-                          <MenuItem value="branch">--Select by Degree--</MenuItem>
-                          <MenuItem value="branch">--Select by Batch--</MenuItem>
-                          <MenuItem value="branch">--Select by Recruitment--</MenuItem>
-                          <MenuItem value="branch">--Select by Department--</MenuItem>
-                          <MenuItem value="branch">--Select by Recruitment Type--</MenuItem>
-
+                          <MenuItem  value="Computer Science and enginerring">CSE</MenuItem>
+                          <MenuItem value="Electronics and Communication engineering">ECE</MenuItem>
+        
+                          <MenuItem value="Electrical engineering">EE</MenuItem>
+                          <MenuItem value="Civil engineering">Civil</MenuItem>
+                          <MenuItem value="Mechanical engineering">ME</MenuItem>
+                            <MenuItem value="Chemical engineering">CH.</MenuItem>
                         </Select>
 
                       </FormControl>
 
                       <FormControl className={classes.formControl}>
                         <Select
-                          value={sort}
-                          onChange={(e) => { setSearch(e.target.value) }}
-
+                             value={Recuit}
+                             onChange={(e) => { setRecuit(e.target.value);
+                              setfilter({...filter,["type"]:e.target.value});
+                             
+                              }}
                           displayEmpty
                           className={classes.selectEmpty}
                           inputProps={{ 'aria-label': 'Without label' }}
@@ -274,13 +310,10 @@ function Hall_of_Fame(props) {
                           </MenuItem>
 
 
-                          <MenuItem value="Package">--Select by company Name--</MenuItem>
-                          <MenuItem value="branch">--Select by Degree--</MenuItem>
-                          <MenuItem value="branch">--Select by Batch--</MenuItem>
-                          <MenuItem value="branch">--Select by Recruitment--</MenuItem>
-                          <MenuItem value="branch">--Select by Department--</MenuItem>
-                          <MenuItem value="branch">--Select by Recruitment Type--</MenuItem>
-
+                          <MenuItem value="Pre-Placement">Pre-Placement</MenuItem>
+                          <MenuItem value="On-Campus">On-Campus</MenuItem>
+                          <MenuItem value="off-Campus">Off-Campus</MenuItem>
+        
                         </Select>
 
                       </FormControl>
@@ -294,6 +327,11 @@ function Hall_of_Fame(props) {
                     className="button"
                     onClick={() => {
                       console.log('modal closed ');
+                      
+                   
+                     
+                  
+                       
                       close();
                     }}
                   >
@@ -346,8 +384,9 @@ function Hall_of_Fame(props) {
                     className="button"
                     onClick={() => {
                       console.log('modal closed ');
-                      close();
                       funSort();
+                      close();
+                      
                     }}
                   >
                     Done
@@ -359,10 +398,10 @@ function Hall_of_Fame(props) {
 
         </div>
         <div className="cardStudent">
-
+       
           {data.map((item) => {
   
-            const authID=item.author._id || '123';
+            const authID=item.author || '123';
    
             console.log("auther",authID,user);
             const itemID=item._id;

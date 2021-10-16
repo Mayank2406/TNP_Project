@@ -85,7 +85,11 @@ useEffect(()=>{
     }); 
   
     console.log("data jdfjdkfjdfkdsf  ",res);
-      history.push('/placements')
+    if(res.data.status===true)
+    { history.push('/placements')
+
+    }
+     
       setlogin(res.data.status);
       setexist(res.data.status);
     })

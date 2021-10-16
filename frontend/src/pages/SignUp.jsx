@@ -17,6 +17,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Popup from 'reactjs-popup';
 import Verify from './Verify';
+import { Alert } from '@mui/material';
 
 function Copyright() {
   return (
@@ -116,11 +117,12 @@ autoComplete="current-password"
 />
 
 
-{exist?<div></div>:<div >* You are already registerd 
-  
+{exist?<div></div>:<div >
+  <Alert severity="error">* You are already registerd  or  roll number is incorrect   
   <Link href="/login" variant="body2">
                 {" click to login"}
-              </Link>
+              </Link></Alert> 
+
   </div>}
 
 <Button

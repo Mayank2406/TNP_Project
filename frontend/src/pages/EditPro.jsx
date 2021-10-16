@@ -50,7 +50,7 @@ function EditPro(props) {
         
   
           axios.post(`/students/${props.eId}`,{
-          
+              image:url,
               name:name,
               position:position,
               company:company,
@@ -296,11 +296,13 @@ function EditPro(props) {
         onChange={(e)=>{setbranch(e.target.value)}}
       >
         <MenuItem  value="Computer Science and enginerring">CSE</MenuItem>
-        <MenuItem value="EE">EE</MenuItem>
-        <MenuItem value="CE">CE</MenuItem>
-        <MenuItem value="ME">ME</MenuItem>
-        <MenuItem value="ECE">ECE</MenuItem>
+        <MenuItem value="Electronics and Communication engineering">ECE</MenuItem>
         
+        <MenuItem value="Electrical engineering">EE</MenuItem>
+        <MenuItem value="Civil engineering">Civil</MenuItem>
+        <MenuItem value="Mechanical engineering">ME</MenuItem>
+        <MenuItem value="Chemical engineering">CH.</MenuItem>
+      
   
       </Select>
     </FormControl>

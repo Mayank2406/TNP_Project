@@ -17,6 +17,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import PasswordSet from './PasswordSet';
 import axios from 'axios';
+import { Alert } from '@mui/material';
 
 function Copyright() {
   return (
@@ -56,6 +57,7 @@ function Verify(props) {
   const [msg,setmsg]=useState('');
   const [win,setwin]=useState(false);
   const [sec,setsec]=useState('')
+  const [exits,setexits]=useState(true);
   const [userid,setuserid]=useState('');
   const classes = useStyles();
   const verify=()=>{
@@ -66,7 +68,9 @@ function Verify(props) {
       
   }).then((res)=>{
     console.log(res)
+  
     setwin(res.data.status);
+    setexits(res.data.status);
     setuserid(res.data.userID);
     setsec(res.data.secret);
   })
@@ -97,11 +101,14 @@ value={msg}
 onChange={(e)=>{setmsg(e.target.value)}}
 fullWidth
 
-label="Message"
+label="OTP"
 type="text"
 
 autoComplete="current-password"
 />
+{exits?<div></div>:<div ><Alert severity="error">Your OTP is not correct </Alert> 
+
+</div>}
 
 <Button
 

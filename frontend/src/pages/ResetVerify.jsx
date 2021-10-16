@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import axios from 'axios';
 import Reset from './Reset';
+import { Alert } from '@mui/material';
 function Copyright() {
     return (
       <Typography variant="body2" color="textSecondary" align="center">
@@ -36,29 +37,47 @@ const useStyles = makeStyles((theme) => ({
   }));
 function ResetVerify(props) {
     const [otp,setotp]=useState('');
-    const [status,setStatus]=useState(false);
+    const [otpstatus,setotpStatus]=useState(false);
     const [secret,setSecret]=useState("");  
     const [userID,setuserID]=useState("");
-    function callApi(){
+    const [exits,setexits]=useState(true);
+    function callotp(){
         axios.post('http://localhost:9000/reset/verification',{
         userID:props.user,
         userOTP:otp,
         secret:"itsme"
 
       }).then((res)=>{
-        setStatus(res.data.status);
+     const indi=res.data.status;
+    
+      if(indi==='true')
+      {
+        setotpStatus(true);
         setSecret(res.data.secret);
-       
-        console.log('token reslt ',res);
-      })
+        
+        console.log('atif is fucked')
+      }
+      else{
+        setotpStatus(false);
+        setexits(false);
+
+      }
+   
+        console.log(res.data.status,indi,otpstatus,exits);
+
+      }).catch((err)=>{
+        
+        console.log('atif in error');
+        setexits(false)});
       }
     
     
         const classes = useStyles();
         return (
             <div>
+              {exits&&<h1>atif</h1>}
                 
-               {!status? <div>   
+               {!otpstatus? <div>   
     
     <Container component="main" maxWidth="xs">
     <CssBaseline />
@@ -76,7 +95,7 @@ function ResetVerify(props) {
     required
     fullWidth
     id="roll"
-    label="Roll Number"
+    label="OTP"
     name="roll"
     value={otp}
     onChange={(e)=>{setotp(e.target.value)}}
@@ -88,8 +107,11 @@ function ResetVerify(props) {
     control={<Checkbox value="remember" color="primary" />}
     label="Remember me"
     /> */}
+            {exits?<div></div>:<div ><Alert severity="error">Your OTP is incorrect </Alert> 
+
+</div>}
     <Button
-    onClick={callApi}
+    onClick={callotp}
     
     fullWidth
     variant="contained"
@@ -105,7 +127,7 @@ function ResetVerify(props) {
     <Copyright />
     </Box>
     </Container>
-    </div>:<Reset user={props.user} secret={secret}/>}
+    </div>:<div>{otpstatus?<div>{otpstatus}</div>:<div>chutye</div>}<Reset user={props.user} secret={secret}/></div>}
             </div>
         )
 }

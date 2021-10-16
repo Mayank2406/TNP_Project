@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import React, { Component,useEffect,useState } from 'react';
+import React, { Component,useEffect,useRef,useState } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Fab from '@mui/material/Fab';
@@ -44,13 +44,17 @@ function ncards(val){
 
   function InterviewExp(){
     const classes = useStyles();
+    const [upload,setupload]=useState(true);
+    const [image, setImage ] = useState("");
     const [tog,settog]=useState(true);
     const [alert,setalert]=useState(true);
     const [content,setcontent]=useState();
     const [company,setcompany]=useState();
-  
+    const [selectedImage, setSelectedImage] = useState();
+    const fileInput = useRef(null);
     const [name,setName]=useState('');
     const [roll,setRoll]=useState('');
+    const [ url, setUrl ] = useState("https://www.annauniv.edu/DIST/assests/images/upload_images/no-photo.gif");
     const [{token},dispatch]=useStateValue();
     const [data,setData]=useState('');
     const [interview,setInterview]=useState([]);
@@ -88,7 +92,41 @@ function ncards(val){
         // console.log(name,image,position,branch,course,placement,salary,year,interview);
     
     }
+    const uploadImage =   () => {
     
+      const data = new FormData()
+      console.log("imag",selectedImage);
+  
+      data.append('file',selectedImage);
+      data.append("upload_preset", "tnpImages");
+      data.append("cloud_name","tnpmmmut");
+  
+      
+        fetch("https://api.cloudinary.com/v1_1/tnpmmmut/image/upload",{
+      method:"post",
+      body: data     
+      })
+      .then(resp => resp.json())
+      .then(data => {
+      setUrl(data.url);
+      setupload(true);
+      console.log('url   ',data.url);
+      })
+      .catch(err => {
+        setUrl('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png');
+        console.log("atif error  ",err)})
+      }
+    const imageChange = (e) => {
+      setImage(e.target.files[0])
+      if (e.target.files && e.target.files.length > 0) {
+        setSelectedImage(e.target.files[0]);
+        
+        setupload(false);
+    
+      }
+      console.log('atif is imagechange')
+    
+    };
  
     useEffect(() => {
       setalert(token);
@@ -126,8 +164,50 @@ function ncards(val){
           <h2 id="headerTitle">Interview Experience</h2>
           <div>
          <div class="row">
-           
-  {token}
+         <div style={{display:'flex',justifyContent:'center'}}>
+         
+         {selectedImage? (<div className="imgHead">
+         <div>
+         <input style={{display:'none'}} type="file" className="but" 
+         ref={fileInput}onChange=  {imageChange}
+         ></input>
+         </div>
+             <div className="upImg">
+              
+             <img src={URL.createObjectURL(selectedImage)}  alt="no image"/>
+             </div>
+             
+             
+             <div>
+         {upload?<button className="bel"  onClick={()=>fileInput.current.click()}>Pick image</button>
+         :<button className="bel" onClick={uploadImage}>Upload</button>}
+         </div>
+             </div>): (<div className="imgHead">
+             <div>
+         <input style={{display:'none'}} type="file" className="but" 
+         ref={fileInput}onChange=  {imageChange}
+         ></input>
+         </div>
+             <div className="upImg">
+             <img src={"https://www.annauniv.edu/DIST/assests/images/upload_images/no-photo.gif"}  alt="no image"/>
+             </div>
+             
+             <div>
+         {upload?<button className="bel"  onClick={()=>fileInput.current.click()}>Pick image</button>
+         :<button className="bel" onClick={uploadImage}>Upload</button>}
+         </div>
+             </div>)}
+         {/* <div>
+         <input style={{display:'none'}} type="file" className="but" 
+         ref={fileInput}onChange=  {imageChange}
+         ></input>
+         </div> */}
+         {/* <div>
+         {upload?<button className="bel"  onClick={()=>fileInput.current.click()}>Pick image</button>
+         :<button className="bel" onClick={uploadImage}>Upload</button>}
+         </div> */}
+         </div>
+        
      <input value={name} onChange={(e)=>{setName(e.target.value)}}  type='text' placeholder="Enter your name"/>
    </div>  
    <div class="row">

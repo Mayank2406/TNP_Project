@@ -12,6 +12,7 @@ const verifyToken = (req, res, next) => {
       console.log("in authenticate");
       console.log(req.user)
     } catch (err) {
+      console.log(err)
       return res.send({status:false,msg:"Invalid Token"});
     }
     return next();

@@ -104,13 +104,11 @@ setdata(res.data.student);
     const url2 = `http://localhost:9000/students/${sort}`;
     axios.get(url2)
       .then((res) => {
-        console.log(res.data.data);
-
-        setdata(res.data.data);
-        console.log(data);
+        console.log(res.data.students);
 
 
-        // setdata(data.data.length);
+
+        setdata(res.data.students);
       })
       .catch(error => console.error('error'));
 
@@ -164,8 +162,8 @@ setdata(res.data.student);
 
   return (
     <div>
-      {fbatch}
-<div>{JSON.stringify(filter)}</div>
+     
+
       {!t? (
       
       <div>

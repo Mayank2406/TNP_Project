@@ -43,7 +43,7 @@ const [login,setlogin]=useState(false);
                   setlogin(false);
 
 
-          }}><Link to="/login"> Logout</Link></button>:<div><button><Link to="/login"> Login</Link></button></div>}</div>
+          }}><Link to="/login" style={{textDecoration:"none"}}> Logout</Link></button>:<div><button><Link to="/login" style={{textDecoration:"none"}}> Login</Link></button></div>}</div>
         </div>
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={showSidebar}>

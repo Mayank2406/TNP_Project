@@ -10,7 +10,7 @@ function PopUp(props) {
         <div className="PopUp-card">
         <div className="PopUp-upper-container">
         <div className="PopUp-image-container">
-            <img src={pic} alt=""  width="100px" height="100px"/>
+            <img src={props.pic} alt=""  width="100px" height="100px"/>
 
 
         </div>

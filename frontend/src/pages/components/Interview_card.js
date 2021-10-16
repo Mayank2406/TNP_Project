@@ -33,9 +33,9 @@ export default function Card(props) {
         </div>
       </div>
       <img className="Icard-image" width={100} height={100} src={props.image} alt="Logo" />
-      <div className="Icard-text1" >{props.description}</div>
+      <div className="Icard-text1" >{props.Iname}</div>
       <div className="Icard-text2">{props.job_pos}</div>
-      <div className="Icard-text2">{props.j}</div>
+
       <div className="Icard-text3">{props.dept}</div>
       
       <button className="button-default" onClick={toggle}>View Experience</button>

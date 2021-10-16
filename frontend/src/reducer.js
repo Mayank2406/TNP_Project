@@ -1,9 +1,11 @@
 export const initialState={
 
     token:null,
+    pic:null,
     }
     export const actionTypes={
         SET_TOKEN:"SET_TOKEN",
+        SET_PIC:"SET_PIC"
     }
     const reducer=(state,action)=>{
         console.log(action);
@@ -12,6 +14,7 @@ export const initialState={
                 return {
                     ...state,
                     token: action.token,
+                    pic:action.pic,
                 };
         
                 default:

@@ -237,13 +237,13 @@ body{
 
 
 
-.main{
+/* .main{
   display: flex;
   align-items: flex-end;
   flex-wrap: wrap;
   align-content: space-around;
   flex-wrap: wrap;
-}
+} */
 
 .heading1{
   color: grey;
@@ -251,4 +251,12 @@ body{
   padding: 3px 0px;
   margin-left: 9%;
 }
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+.head1{
+font-size: 30px;
+font-weight: 300;
+  display: flex;
+font-family: 'Montserrat', sans-serif;
+  justify-content: center;
 
+}

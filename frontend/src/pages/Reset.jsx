@@ -79,7 +79,7 @@ function Reset(props) {
     required
     fullWidth
     id="roll"
-    label="Roll Number"
+    label="Password"
     name="roll"
     value={pass}
     onChange={(e)=>{setpass(e.target.value)}}

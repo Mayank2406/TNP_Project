@@ -13,7 +13,7 @@ const getStudentById = async (id) => {
     return student;
 }
 
-const postStudents = async ({ query, uid}) => {
+const postStudents = async ({ query, uid }) => {
     const newStudent = await StudentQuery.createStudent(query);
     newStudent.author = uid;
     await newStudent.save();
@@ -21,8 +21,8 @@ const postStudents = async ({ query, uid}) => {
     return newStudent;
 }
 
-const editStudent = async({sid,query}) => {
-    const editedStudent = await StudentQuery.editStudent({sid,query});
+const editStudent = async ({ sid, query }) => {
+    const editedStudent = await StudentQuery.editStudent({ sid, query });
     return editedStudent;
 }
 
@@ -42,4 +42,17 @@ const getFilteredStudents = async (query) => {
     return students;
 }
 
-module.exports = { getStudents, postStudents, getSortedStudents, getFilteredStudents,editStudent,getStudentById};
+const getCompany = async () => {
+    const Company = await StudentQuery.getCompany();
+    return Company;
+}
+
+const postCompany = async (query) => {
+    const newCompany = await StudentQuery.createCompany(query);
+    return newCompany;
+}
+
+module.exports = {
+    getStudents, postStudents, getSortedStudents, getFilteredStudents, editStudent, getStudentById,
+    getCompany, postCompany
+};

@@ -8,6 +8,7 @@ require('dotenv').config();
 
 const studentRouter = require('./Routes/studentRouter');
 const interviewRouter = require('./Routes/interviewRouter');
+const companyRouter = require('./Routes/companyRouter');
 const registerRouter = require('./Routes/registerRouter');
 const loginRouter  = require('./Routes/loginRouter');
 const resetRouter  = require('./Routes/resetRouter');
@@ -34,7 +35,7 @@ app.use(methodOverride('_method'));
 
 app.use('/students', studentRouter);
 app.use('/interviews', interviewRouter);
-
+app.use('/company', companyRouter);
 
 app.use('/register',registerRouter);
 app.use('/login',loginRouter);

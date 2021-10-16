@@ -1,7 +1,8 @@
-const User                  =  require('../models/user');
-const Student               =  require('../models/students');
+const User = require('../models/user');
+const Student = require('../models/students');
+const Company = require('../models/company');
 
-const findStudents = () => {    
+const findStudents = () => {
     return Student.find();
 }
 
@@ -17,13 +18,13 @@ const createStudent = async (query) => {
     return newStudent;
 }
 
-const editStudent = async ({sid,query})=>{
-    const editedStudent = await Student.findByIdAndUpdate(sid,query,{new:true});
+const editStudent = async ({ sid, query }) => {
+    const editedStudent = await Student.findByIdAndUpdate(sid, query, { new: true });
     return editedStudent;
 }
 
 const findInterviewAuthor = async (uid) => {
-    const student = await Student.findOne({author:uid});
+    const student = await Student.findOne({ author: uid });
     return student;
 }
 
@@ -31,4 +32,18 @@ const getFilteredStudents = async (query) => {
     return Student.find(query);
 }
 
-module.exports = {findStudents,createStudent,findInterviewAuthor, getFilteredStudents,editStudent,findStudentById};
+const getCompany = async () => {
+    return Company.find();
+}
+
+const createCompany = async (query) => {
+    const newCompany = new Company(query);
+    await newCompany.save();
+
+    return newCompany;
+}
+
+module.exports = {
+    findStudents, createStudent, findInterviewAuthor, getFilteredStudents,
+    editStudent, findStudentById, getCompany, createCompany
+};

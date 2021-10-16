@@ -148,6 +148,49 @@ const student_filter = async (req, res) => {
     }
 }
 
+// ==========================
+
+const get_company = async (req, res) => {
+    try {
+        const companies = await StudentService.getCompany();
+        if (companies) {
+            return res.status(200).json({
+                message: "All Companies are fetched",
+                students: companies
+            })
+        }
+        else {
+            res.status(404).json({ message: "No Companies found" });
+        }
+    }
+    catch (err) {
+        return res.status(400).json({ message: err.message || err.toString })
+    }
+}
+
+const post_company = async (req, res) => {
+    const query = req.body;
+
+    try {
+        const company = await StudentService.postCompany(query);
+        if (company) {
+            return res.status(200).json({
+                message: "company added successfully",
+                newStudent: company
+            })
+        }
+        else {
+            return res.status(404).json({
+                message: "Some error occured and User did not got saved"
+            })
+        }
+    }
+    catch (err) {
+        return res.status(404).json({ message: err.message || err.toString })
+    }
+}
+
+
 
 module.exports = {
     student_get,
@@ -158,4 +201,6 @@ module.exports = {
     student_register,
     getuserdetails,
     student_filter,
+    get_company,
+    post_company
 }

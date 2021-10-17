@@ -165,13 +165,35 @@ function ncards(val){
   return(<>
         {tok?(
         
-        <div>
+        <div className="INTERVIEW_MAIN">
           {alert?
         <div id="loginform">
           
           <h2 id="headerTitle">Interview Experience</h2>
           <div className="row">
          <div class="row1">
+
+         <div className="INTERVIEWROW">
+         <TextField fullWidth
+           id="fullWidth"
+          label='Name' 
+         
+          value={name} 
+           InputProps={{
+            readOnly: true,
+          }}
+          margin="normal"
+          autoFocus
+          
+          />
+           <TextField required value={roll}  
+   id="fullWidth"
+  margin="normal"
+  autoFocus
+ label='Company' onChange={(e)=>{setRoll(e.target.value)}} placeholder="Enter your company name" />
+ 
+  </div>
+
          <div style={{display:'flex',justifyContent:'center'}}>
          
          {selectedImage? (<div className="imgHead">
@@ -217,26 +239,7 @@ function ncards(val){
          </div>
          
          
-         <div className="row">
-         <TextField
-        
-          label='Name' 
          
-          value={name} 
-           InputProps={{
-            readOnly: true,
-          }}
-        
-          margin="normal"
-          autoFocus
-          />
-           <TextField required value={roll}  
-  
-  margin="normal"
-  autoFocus
- 
- label='company' onChange={(e)=>{setRoll(e.target.value)}} placeholder="Enter your company name" />
-  </div>
   
    <div class="row">
   

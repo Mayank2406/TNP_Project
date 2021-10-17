@@ -44,7 +44,7 @@ function FormInput(props) {
     const avatarStyle = { padding:'30px',backgroundColor: '#1bbd7e' }
     useEffect(() => {
 
-      axios.get(`http://localhost:9000/students/${props.id}`)
+      axios.get(`http://localhost:9000/students/getbyid/${props.id}`)
       
   
         .then((res) => {
@@ -316,11 +316,15 @@ ref={fileInput}onChange=  {imageChange}
       value={branch}
       onChange={(e)=>{setbranch(e.target.value)}}
     >
-      <MenuItem  value="Computer Science and enginerring">CSE</MenuItem>
-      <MenuItem value="EE">EE</MenuItem>
-      <MenuItem value="CE">CE</MenuItem>
-      <MenuItem value="ME">ME</MenuItem>
-      <MenuItem value="ECE">ECE</MenuItem>
+           <MenuItem  value="Computer Science and enginerring">CSE</MenuItem>
+        <MenuItem value="Electronics and Communication engineering">ECE</MenuItem>
+        
+        <MenuItem value="Electrical engineering">EE</MenuItem>
+        <MenuItem value="Civil engineering">Civil</MenuItem>
+        <MenuItem value="Mechanical engineering">ME</MenuItem>
+        <MenuItem value="Chemical engineering">CH.</MenuItem>
+      
+  
       
 
     </Select>

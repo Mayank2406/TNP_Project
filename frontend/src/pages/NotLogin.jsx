@@ -9,7 +9,7 @@ function NotLogin() {
        <div className="box">
          <h4>Looks like you've not login in to the Account</h4>
          <p>To write interview experience <br/>You Should First Login</p>
-       <Button variant="outlined" color="gray"><Link href='/login'> Go  To Login Page </Link></Button>
+       <Button variant="outlined" color="gray"><Link href='/login' style={{textDecoration:"none"}}> Go  To Login Page </Link></Button>
        </div>
        
         </div>

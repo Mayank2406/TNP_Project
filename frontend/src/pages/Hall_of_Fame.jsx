@@ -64,12 +64,14 @@ const [degree,setdegree]=useState('');
   const [fbatch,setfbatch]=useState('');
   const [dept,setdept]=useState('');
   const [Recuit,setRecuit]=useState('');
+  const [compData,setcompData]=useState([]);
   const [fcomp,setfcomp]=useState('');
 const funFilter=()=>{
 axios.post('/students/filter',filter)
 .then((res)=>{
   
   console.log("filterdata",res.data.student);
+
 setdata(res.data.student);
 
 })
@@ -130,7 +132,18 @@ setdata(res.data.student);
   };
 
 
+useEffect(()=>{
 
+axios.get("http://localhost:9000/company")
+.then((res)=>{
+
+  const uni=getUnique(res.data.students,'name')
+  setcompData(uni);
+  console.log("atif",uni);
+ 
+})
+.catch(error=>console.error('atif'));
+},[compData]);
   useEffect(() => {
     // if(opt===1)
     // {
@@ -160,6 +173,19 @@ setdata(res.data.student);
     //   })};
   } , [filter])
 
+  function getUnique(arr, comp) {
+
+    // store the comparison  values in array
+const unique =  arr.map(e => e[comp])
+
+  // store the indexes of the unique objects
+  .map((e, i, final) => final.indexOf(e) === i && i)
+
+  // eliminate the false indexes & return unique objects
+ .filter((e) => arr[e]).map(e => arr[e]);
+
+return unique;
+}
   return (
     <div>
      
@@ -205,11 +231,17 @@ setdata(res.data.student);
                           <MenuItem value="">
                             <em>--Select by company Name--</em>
                           </MenuItem>
+                         {
+                           compData.map((item)=>{
+                             return (
+                              <MenuItem value={item.name}>
+                              <em>{item.name}</em>
+                            </MenuItem>
+                             )
+                           })
+                         }       
 
-
-                          <MenuItem value="company1">--Select by company Name--</MenuItem>
-                          <MenuItem value="company2">--Select by Degree--</MenuItem>
-
+     
                         </Select>
 
                       </FormControl>
@@ -300,7 +332,11 @@ setdata(res.data.student);
                              
                               }}
                           displayEmpty
-                          className={classes.selectEmpty}
+           // axios.post('./company',{
+  //   name:company
+  // }).then((res)=>{console.log(res)})
+  // .catch((e)=>console.log("company not added"));
+                   className={classes.selectEmpty}
                           inputProps={{ 'aria-label': 'Without label' }}
                         >
                           <MenuItem value="">
@@ -401,7 +437,7 @@ setdata(res.data.student);
   
             const authID=item.author || '123';
    
-            console.log("auther",authID,user);
+          
             const itemID=item._id;
             
             return (

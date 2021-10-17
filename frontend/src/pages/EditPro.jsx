@@ -49,7 +49,7 @@ function EditPro(props) {
         console.log("atif ",data);
         
   
-          axios.post(`/students/${props.eId}`,{
+          axios.post(`/students/edit/${props.eId}`,{
               image:url,
               name:name,
               position:position,
@@ -64,6 +64,10 @@ function EditPro(props) {
               
           }).then((res)=>{console.log("naffAt",res); history.push("/"); })
           .catch((e)=>console.log("unsuccessfull submission"));
+  axios.post('./company',{
+    name:company
+  }).then((res)=>{console.log(res)})
+  .catch((e)=>console.log("company not added"));
   
           console.log(name,image,position,branch,course,placement,salary,year);
   

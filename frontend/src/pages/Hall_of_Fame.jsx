@@ -262,8 +262,8 @@ return unique;
                           </MenuItem>
 
 
-                          <MenuItem value="B.Tech">B.Tech</MenuItem>
-                          <MenuItem value="M.Tech">M.Tech</MenuItem>
+                          <MenuItem value="B.tech">B.Tech</MenuItem>
+                          <MenuItem value="M.tech">M.Tech</MenuItem>
                           <MenuItem value="MBA">MBA</MenuItem>
                        
                         </Select>
@@ -345,9 +345,9 @@ return unique;
 
 
                           <MenuItem value="Pre-Placement">Pre-Placement</MenuItem>
-                          <MenuItem value="On-Campus">On-Campus</MenuItem>
-                          <MenuItem value="off-Campus">Off-Campus</MenuItem>
-        
+<MenuItem  value="on-Campus">On-Campus</MenuItem>
+
+<MenuItem value="off-campus">Off-campus</MenuItem>
                         </Select>
 
                       </FormControl>

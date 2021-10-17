@@ -194,7 +194,7 @@ function ncards(val){
  
   </div>
 
-         <div style={{display:'flex',justifyContent:'center'}}>
+         <div className="INTERVIEWROW">
          
          {selectedImage? (<div className="imgHead">
          <div>
@@ -241,10 +241,10 @@ function ncards(val){
          
          
   
-   <div class="row">
+   {/* <div class="row">
   
-  {/* <input value={roll} onChange={(e)=>{setRoll(e.target.value)}}  type='text' placeholder="Enter your companey name"/> */}
-</div>  
+  <input value={roll} onChange={(e)=>{setRoll(e.target.value)}}  type='text' placeholder="Enter your companey name"/>
+</div>   */}
 </div>
 
    

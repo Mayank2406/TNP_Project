@@ -343,9 +343,10 @@ onOpen={handleOpen3}
 value={placement}
 onChange={(e)=>{setplacement(e.target.value)}}
 >
-<MenuItem  value="on-Campus">on-Campus</MenuItem>
+<MenuItem value="Pre-Placement">Pre-Placement</MenuItem>
+<MenuItem  value="on-Campus">On-Campus</MenuItem>
 
-<MenuItem value="off-campus">off-campus</MenuItem>
+<MenuItem value="off-campus">Off-campus</MenuItem>
 
 </Select>
 </FormControl>

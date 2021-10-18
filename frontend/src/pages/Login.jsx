@@ -23,6 +23,7 @@ import Profile from './Profile';
 import { useHistory } from 'react-router';
 
 
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -83,7 +84,7 @@ useEffect(()=>{
         type:actionTypes.SET_TOKEN,
         token: res.data.token,
     }); 
-  
+    
     console.log("data jdfjdkfjdfkdsf  ",res);
     if(res.data.status===true)
     { history.push('/placements')

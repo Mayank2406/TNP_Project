@@ -10,7 +10,8 @@ import { Button } from '@material-ui/core';
 import { useStateValue } from '../StateProvider';
 import axios from 'axios';
 import { actionTypes } from '../reducer';
-
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
 const [{token},dispatch]=useStateValue();
@@ -35,7 +36,8 @@ const [login,setlogin]=useState(false);
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
           <div className="logo"><img height="50px" src={imgAdd} alt="ald" /></div>
-          <div className="Logname">{login?<button onClick={()=>{
+          <div className="Logname">{login?<Button      variant="contained"
+             onClick={()=>{
                     dispatch({
                       type:actionTypes.SET_TOKEN,
                       token: null,
@@ -43,7 +45,7 @@ const [login,setlogin]=useState(false);
                   setlogin(false);
 
 
-          }}><Link to="/login" style={{textDecoration:"none"}}> Logout</Link></button>:<div><button><Link to="/login" style={{textDecoration:"none"}}> Login</Link></button></div>}</div>
+          }}><Link to="/login" style={{textDecoration:"none"}}> Logout</Link><LogoutIcon/></Button>:<div><Button     style={{ color: 'white'}}  variant="contained"><Link to="/login" style={{textDecoration:"none",color:"black",'&:hover':{color:"black"}}}> Login</Link><LoginIcon/></Button></div>}</div>
         </div>
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={showSidebar}>

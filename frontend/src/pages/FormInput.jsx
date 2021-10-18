@@ -64,7 +64,7 @@ function FormInput(props) {
     const sendData=()=>{
       
       const data = new FormData();
-      
+      const upCamp=company.toUpperCase();
       data.append("file", image);
       console.log("atif ",data);
       
@@ -83,7 +83,10 @@ function FormInput(props) {
             
         }).then((res)=>{console.log("naffAt",res); history.push("/"); })
         .catch((e)=>{console.log("unsuccessfull submission");setexits(false)});
-
+        axios.post('./company',{
+          name:upCamp
+        }).then((res)=>{console.log(res)})
+        .catch((e)=>console.log("company not added"))
         console.log(name,image,position,branch,course,placement,salary,year,interview);
 
     }

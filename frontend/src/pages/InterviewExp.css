@@ -1,5 +1,6 @@
 .Inter{
   text-align: center;
+  padding-top: 2rem;
 }
 
 .Inter-logo {
@@ -25,10 +26,10 @@
 }
 
 .Inter-link {
-  color: #61dafb;
+  color: #fb61a1;
 }
-
-@keyframes App-logo-spin {
+/* app-inter */
+@keyframes Inter-logo-spin {
   from {
     transform: rotate(0deg);
   }
@@ -53,15 +54,18 @@ body{
 
 #loginform{
   max-width: 80%;
-  min-width: 80%;
   max-height: 70%;
-  width: 60%;
-  height: 60%;
   border-width: 5px;
   border-color: black;
   margin: 100px auto;
   background: linear-gradient(135deg, rgb(250, 252, 252) 0%,     rgb(246, 253, 253) 100%);
   border-radius: 25px;
+}
+
+.INTERVIEW_MAIN{
+  background: white;
+  padding-top: 1px;
+  padding-bottom:8rem ;
 }
 
 #headerTitle{
@@ -72,22 +76,36 @@ body{
   font-size: 2rem;
 }
 
-.row{
+.INTERVIEWROW{
   display: flex;
   flex-direction: column;
   align-items: center;
+ 
+  
+  padding-left:7%;
+ padding-right: 7%;
+  
   /* padding-top: 2rem; */
   /* max-width: 100%; */
+  
+}
+.row{
+
+  /* padding-top: 2rem; */
+  /* max-width: 100%; */
+  display: flex;
+  flex-direction: column;
+  
   
 }
 .row1{
   display: flex;
   flex-direction: row;
-  align-items: center;
+  justify-content: space-between;
 }
-/* 
+/*
 .row input{
-  width: 80%;
+  width: 50rem;
   box-sizing: border-box;
     border: none;
   font-size: 1.3rem;
@@ -141,6 +159,12 @@ body{
   padding-bottom: 1.5rem;
 } */
 
+#button{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
 #alternativeLogin {
    text-align: center;
    padding-top: 2rem;
@@ -149,8 +173,8 @@ body{
 
 .editor{
  padding-top: 3%;
- padding-left:9%;
- padding-right: 9%;
+ padding-left:7%;
+ padding-right: 7%;
  
 }
 
@@ -167,6 +191,7 @@ body{
   height:100%;
   text-align: center;
   flex-wrap: wrap;
+  background-color:white;
 }
 
 .Inter-logo {
@@ -197,40 +222,9 @@ body{
 }
 
 .Inter-link {
-  color: #61dafb;
-}
-@media only screen and (max-width: 768px) {
-  .Inter-header {
-    grid-template-columns: auto auto auto ;
-    padding-left: 10%;
-    padding-right:5% ;
-  }
-  .heading1{
-    text-align: center;
-  }
+  color: #6b61fb;
 }
 
-@media only screen and (max-width: 600px) {
-  .Inter-header {
-    grid-template-columns: auto auto  ;
-    padding-left: 10%;
-    padding-right:5% ;
-  }
-  .heading1{
-    text-align: center;
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  .Inter-header {
-    grid-template-columns: auto ;
-    padding-left: 10%;
-    padding-right:5% ;
-  }
-  .heading1{
-    text-align: center;
-  }
-}
 
 @keyframes App-logo-spin {
   from {
@@ -252,9 +246,9 @@ body{
 } */
 
 .heading1{
-  color: grey;
+  padding: 20px 0px;
+  color: black;
   font-family: Arial;
-  padding: 3px 0px;
   margin-left: 9%;
 }
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');

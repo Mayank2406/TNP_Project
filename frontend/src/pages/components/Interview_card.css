@@ -1,16 +1,52 @@
 .Icard {
-	float:left;
-	color: #272727;
-	padding: 0.625rem;
-	transition: 200ms;
-    min-width: 90%;
-    background-color: white;
-	text-align: center;
-    font-size: large;
-    border-radius: 5%;
-    margin-right: 4em;
-    margin-top: 4em;
-    min-height: 350px;
+  width: 300px;
+  height: 400px;
+  background: white;
+  border-radius:10px;
+  box-shadow: 0px 1px 10px 1px rgb(189, 183, 183);
+  overflow: hidden;
+}
+
+.Iupper-container{
+  height: 100px;
+  background: linear-gradient(to left,#8ea1f3,#86d5f5);
+
+}
+
+.Iimage-container img{
+  background: white;
+  width: 100px;
+  height: 100px;
+  
+  border-radius:50%;
+  padding:5px;
+  transform:translate(5px,45px);
+}
+
+.Ilower-container h3,h4,p{
+  margin:10;
+padding:10;
+font-family: Titillium;
+}
+.Ilower-container h3{
+  color:#2f2d2e;
+font-weight:600;
+font-size:1.5rem;
+}
+.Ilower-container h4{
+  color: #0012b9;
+  font-weight: 700;
+  font-size:1.2rem;
+}
+
+.Ilower-container p{
+  font-family: sans-serif;
+  font-weight: 300;
+  color:#2f2d2e;
+  margin:0.4rem;
+  font-size:0.9rem;
+line-height: 1;
+  text-align: center;
 }
 
 .Icard:hover {
@@ -71,18 +107,23 @@
 
 .Icard-text1 {
 	width: auto;
-	font-size: large;
-	color: black;
+
 	text-align: center;
-    padding-top: 5%;
+    padding-top: 15%;
+    color:#2f2d2e;
+    font-weight:600;
+    font-size:1.5rem;
+    font-family: Titillium;
 }
 
 .Icard-text2 {
 	width: auto;
-	font-size: large;
 	text-align: center;
-	color: grey;
     padding-top: 5% ;
+    color: #0012b9;
+  font-weight: 700;
+  font-size:1.2rem;
+  font-family: Titillium;
 }
 .Icard-text3 {
 	width: auto;

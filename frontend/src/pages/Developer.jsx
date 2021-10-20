@@ -49,7 +49,7 @@ function Team() {
     
   <Grid container  spacing={3} justifyContent="center" alignItems="center">
     <Grid item xs={10}>
-      <Paper className={classes.paper}>
+      <Paper className={classes.paper} style={{ border: "1px solid grey" }}>
 
     <div className="TeamDeveloper">
       <header className="App-header-Developer">

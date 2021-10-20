@@ -44,6 +44,7 @@ function EditPro(props) {
       const sendData=()=>{
         
         const data = new FormData();
+        const upCamp=company.toUpperCase();
         
         data.append("file", image);
         console.log("atif ",data);
@@ -65,7 +66,7 @@ function EditPro(props) {
           }).then((res)=>{console.log("naffAt",res); history.push("/"); })
           .catch((e)=>console.log("unsuccessfull submission"));
   axios.post('./company',{
-    name:company
+    name:upCamp
   }).then((res)=>{console.log(res)})
   .catch((e)=>console.log("company not added"));
   

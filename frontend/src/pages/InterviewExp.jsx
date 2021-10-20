@@ -165,14 +165,36 @@ function ncards(val){
   return(<>
         {tok?(
         
-        <div>
+        <div className="INTERVIEW_MAIN">
           {alert?
         <div id="loginform">
           
           <h2 id="headerTitle">Interview Experience</h2>
           <div className="row">
          <div class="row1">
-         <div style={{display:'flex',justifyContent:'center'}}>
+
+         <div className="INTERVIEWROW">
+         <TextField fullWidth
+           id="fullWidth"
+          label='Name' 
+         
+          value={name} 
+           InputProps={{
+            readOnly: true,
+          }}
+          margin="normal"
+          autoFocus
+          
+          />
+           <TextField required value={roll}  
+   id="fullWidth"
+  margin="normal"
+  autoFocus
+ label='Company' onChange={(e)=>{setRoll(e.target.value)}} placeholder="Enter your company name" />
+ 
+  </div>
+
+         <div className="INTERVIEWROW">
          
          {selectedImage? (<div className="imgHead">
          <div>
@@ -217,31 +239,12 @@ function ncards(val){
          </div>
          
          
-         <div className="row">
-         <TextField
-        
-          label='Name' 
          
-          value={name} 
-           InputProps={{
-            readOnly: true,
-          }}
-        
-          margin="normal"
-          autoFocus
-          />
-           <TextField required value={roll}  
   
-  margin="normal"
-  autoFocus
- 
- label='company' onChange={(e)=>{setRoll(e.target.value)}} placeholder="Enter your company name" />
-  </div>
+   {/* <div class="row">
   
-   <div class="row">
-  
-  {/* <input value={roll} onChange={(e)=>{setRoll(e.target.value)}}  type='text' placeholder="Enter your companey name"/> */}
-</div>  
+  <input value={roll} onChange={(e)=>{setRoll(e.target.value)}}  type='text' placeholder="Enter your companey name"/>
+</div>   */}
 </div>
 
    
@@ -286,7 +289,7 @@ function ncards(val){
       
           
        {tog? <div className="main">
-         <div className="head1"><div>Interview Experience</div></div>
+       <div className="head1"><div>Interview Experience</div></div>
   
     <div className="Inter">
       <header className="Inter-header">

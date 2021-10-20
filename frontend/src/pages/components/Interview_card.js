@@ -24,6 +24,7 @@ export default function Card(props) {
   const classes = useStyles();
 
   return (
+    /*
     <div>
       
     <div className="Icard">
@@ -41,6 +42,30 @@ export default function Card(props) {
       <button className="button-default" onClick={toggle}>View Experience</button>
  </div>
 
+    </div>
+    */
+
+    <div className="Icard">
+    <div className="Iupper-container">
+    <div className="Iimage-container">
+        <img className="Iimg1" src={props.image} alt=""  width="100px" height="100px"/>
+    
+    
+    </div>
+    </div>
+    <div className="Ilower-container">
+        <div className="Icard-text1" >{props.Iname}</div>
+          <div className="Icard-text2"> @ {props.job_pos}</div>
+    
+          <div className="Icard-text3">{props.dept}</div>
+          
+          <button className="button-default" onClick={toggle}>View Experience</button>
+    
+      
+    
+    </div>
+    
+    
     </div>
   );
 }

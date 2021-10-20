@@ -68,7 +68,7 @@
 }
 
 .headingDeveloper{
-  color: grey;
+  color: black;
   font-size: 25px;
   font-family: Arial;
   padding: 20px 0px;
@@ -76,6 +76,6 @@
 }
 
 .mainDeveloper{
-  background-color: #add8e6;
+  background-color: white;
   min-height: 655px;
 }

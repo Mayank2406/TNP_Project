@@ -78,12 +78,12 @@
 .heading1{
   color: grey;
   font-size: 25px;
+  padding: 30px 30px;
   font-family: Arial;
-  padding: 20px 0px;
   margin-left: 9%;
 }
 
 .main{
-  background-color: #add8e6;
+  background-color: white;
   padding-bottom: 2rem;
 }

@@ -289,7 +289,7 @@ function ncards(val){
       
           
        {tog? <div className="main">
-         <div className="head1"><div>Interview Experience</div></div>
+       <div className="head1"><div>Interview Experience</div></div>
   
     <div className="Inter">
       <header className="Inter-header">

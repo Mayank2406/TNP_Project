@@ -1,5 +1,6 @@
 .Inter{
   text-align: center;
+  padding-top: 2rem;
 }
 
 .Inter-logo {
@@ -25,7 +26,7 @@
 }
 
 .Inter-link {
-  color: #61dafb;
+  color: #fb61a1;
 }
 /* app-inter */
 @keyframes Inter-logo-spin {
@@ -62,7 +63,7 @@ body{
 }
 
 .INTERVIEW_MAIN{
-  background: #add8e6;
+  background: white;
   padding-top: 1px;
   padding-bottom:8rem ;
 }
@@ -190,6 +191,7 @@ body{
   height:100%;
   text-align: center;
   flex-wrap: wrap;
+  background-color:white;
 }
 
 .Inter-logo {
@@ -220,7 +222,7 @@ body{
 }
 
 .Inter-link {
-  color: #61dafb;
+  color: #6b61fb;
 }
 
 
@@ -244,9 +246,9 @@ body{
 } */
 
 .heading1{
-  color: grey;
+  padding: 20px 0px;
+  color: black;
   font-family: Arial;
-  padding: 3px 0px;
   margin-left: 9%;
 }
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');

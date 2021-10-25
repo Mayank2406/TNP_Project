@@ -197,14 +197,14 @@ const unique =  arr.map(e => e[comp])
 return unique;
 }
   return (
-    <div className="HALLOFFAME">
+    <div>
      
 
       {!t? (
       
       <div>
-       { showExp? (<div className="subHome">
-          
+       { showExp? (<div classNmae="subHome">
+
         <h4 className='stats'>Placements Stats</h4>
 
 
@@ -453,7 +453,7 @@ return unique;
             return (
               <div className="student">
         
-                <Card seteId={seteId} settip={settip} typ={item.type} itemID={itemID} setcontent={props.setcontent}setname={setname} setUrl3={setUrl3} setposition={setposition} setcourse={setcourse} setbranch={setbranch} setplacement={setplacement} setsalary={setsalary} setyear={setyear} setcompany={setcompany} setEdit={setEdit} setreg={setreg} sett={sett} authID={authID} user={user}  setshowExp={setshowExp} pic={item.image} name={item.name} interview={item.interviews} job={item.position} branch={item.branch} salary={item.salary} course={item.course} batch={item.year} company={item.company} type={item.type} placement={item.placement} />
+                <Card seteId={seteId} settip={settip} typ={item.type} itemID={itemID} setcontent={setcontent} setname={setname} setUrl3={setUrl3} setposition={setposition} setcourse={setcourse} setbranch={setbranch} setplacement={setplacement} setsalary={setsalary} setyear={setyear} setcompany={setcompany} setEdit={setEdit} setreg={setreg} sett={sett} authID={authID} user={user}  setshowExp={setshowExp} pic={item.image} name={item.name} interview={item.interviews} job={item.position} branch={item.branch} salary={item.salary} course={item.course} batch={item.year} company={item.company} type={item.type} placement={item.placement} />
               </div>
             )
           })

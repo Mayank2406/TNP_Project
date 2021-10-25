@@ -38,7 +38,7 @@ const getSortedStudents = async (id) => {
 }
 
 const getFilteredStudents = async (query) => {
-    const students = await StudentQuery.getFilteredStudents(query)
+    const students = await StudentQuery.getFilteredStudents(query);
     return students;
 }
 

@@ -51,6 +51,15 @@ function ncards(val){
 
 
   function InterviewExp(){
+    const [act,setact]=useState(false);
+    function actionToggle(){
+    
+      setact(!act);
+if(alert){
+  setToken(true);
+}
+     console.log(act,"atif");
+     }
     const classes = useStyles();
     const [upload,setupload]=useState(true);
     const [image, setImage ] = useState("");
@@ -179,9 +188,10 @@ function ncards(val){
           label='Name' 
          
           value={name} 
-           InputProps={{
-            readOnly: true,
-          }}
+          //  InputProps={{
+          //   readOnly: true,
+          // }}
+          onChange={(e)=>{setName(e.target.value)}}
           margin="normal"
           autoFocus
           
@@ -275,12 +285,13 @@ function ncards(val){
      <button onClick={sendData}>Submit</button>
    </div>
     </div>
-    <Fab color="primary" aria-label="add" style={style}>
-           <AddIcon onClick={()=>setToken(false)}  />
-          </Fab>
-       
+    <div class={act?"action actionActive":"action"} onClick={()=>{setToken(false);setact(!act)}}>
+        <div>+</div>
+     
+    </div>
           
-        </div>:(<div><NotLogin/></div>)}
+        </div>:(<div><NotLogin/></div>)
+        }
         
         </div>
         ):    (
@@ -288,7 +299,7 @@ function ncards(val){
         
       
           
-       {tog? <div className="main">
+       {tog? <div className="mainINTERVIEW">
        <div className="head1"><div>Interview Experience</div></div>
   
     <div className="Inter">
@@ -320,11 +331,14 @@ function ncards(val){
 
 
 
-         <Fab color="primary" aria-label="add" style={style}>
-         <AddIcon onClick={()=>{
-           
-           setToken(true)}}  />
-        </Fab>
+    <div class={act?"action actionActive":"action"} onClick={actionToggle}>
+        <div>+</div>
+        {!alert && <ul>
+            
+            <li>Please login to write interview Experience</li>
+        </ul>}
+    </div>
+          
       
   </div>:<div><Interview_Data setshowExp={settog} company={company} content={content}/></div>}
 

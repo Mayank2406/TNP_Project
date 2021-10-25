@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
@@ -36,8 +36,8 @@ const [login,setlogin]=useState(false);
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
           <div className="logo"><img height="50px" src={imgAdd} alt="ald" /></div>
-          <div className="Logname">{login?<Button      variant="contained"
-             onClick={()=>{
+
+          <div className="Logname">{login?           <NavLink to="/login"        onClick={()=>{
                     dispatch({
                       type:actionTypes.SET_TOKEN,
                       token: null,
@@ -45,7 +45,8 @@ const [login,setlogin]=useState(false);
                   setlogin(false);
 
 
-          }}><Link to="/login" style={{textDecoration:"none"}}> Logout</Link><LogoutIcon/></Button>:<div><Button     style={{ color: 'white'}}  variant="contained"><Link to="/login" style={{textDecoration:"none",color:"black",'&:hover':{color:"black"}}}> Login</Link><LoginIcon/></Button></div>}</div>
+          }
+          } className="nav_link" style={{textDecoration:"none",fontSize:"20px"}}>Logout</NavLink>:<div> <NavLink to="/login" className="nav_link" style={{textDecoration:"none",fontSize:"20px"}}>Login</NavLink></div>}</div>
         </div>
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={showSidebar}>

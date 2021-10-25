@@ -197,7 +197,7 @@ const unique =  arr.map(e => e[comp])
 return unique;
 }
   return (
-    <div>
+    <div className="hall_color">
      
 
       {!t? (

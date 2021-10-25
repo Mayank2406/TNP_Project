@@ -22,28 +22,36 @@ import axios from 'axios';
 function Home() {
   const [placementData,setPlacementData]=useState([])
   const [tuples,setTuples]=useState([])
-
+  const [offersCount,setOffersCount]=useState(0)
+  const [companyCount,setCompanyCount]=useState(0)
+  const [placementBatch,setPlacementBatch]=useState("")
   useEffect(async ()=>{
     const url2 = `http://localhost:9000/placement`;
     await axios.get(url2)
       .then((res) => {
         console.log(res.data.result);
           setPlacementData(res.data.result);
-      
+          setPlacementBatch("2022")
       })
       .catch(error => console.error('error'));
       
   },[])
 
   useEffect(async()=>{
-    console.log("hello")
+     
+
       let tuplesList=[]
+      let companies=0
+      let offers = 0
       for(let i=0;i<placementData.length;i++){
         let c=0
-        console.log(placementData[i]["branch"].length)
+        if(placementData[i]["batch"]!=placementBatch)continue;
         for(let j=0;j<placementData[i]["branch"].length;j++){
           c=c+placementData[i]["branch"][j].count;
         }
+        offers=offers + c
+        companies = companies + 1
+
         var row = {
           company:placementData[i]["company"],
           batch:placementData[i]["batch"],
@@ -55,10 +63,17 @@ function Home() {
        
         tuplesList.push(row);
       }
+      setOffersCount(offers);
+      setCompanyCount(companies);
       setTuples(tuplesList);
-  }, [placementData])
+  }, [placementBatch])
 
-  
+  // useEffect(()=>{
+  //   console.log("setting placement batch")
+  //   setPlacementBatch("2022")
+  // },[placementData])
+
+  let titlestring = "Placement Statistics "+{placementBatch}+"batch, Placement Cell, MMMUT"
   const tableIcons = {
     Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
     Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
@@ -80,9 +95,15 @@ function Home() {
   };
 
  const columns= [
+  
    
   
-    { title: 'Company', field: 'company' },
+    { title: 'Company', field: 'company',
+      cellStyle:{
+        color:"#168ddc"
+      }
+    
+    },
     
     {
       title: 'Batch',
@@ -90,13 +111,19 @@ function Home() {
 
     },
     {
-      title: 'CTC Package',
+      title: 'Package',
       field: 'ctc',
+      cellStyle:{
+        color:"orange"
+      }
       
     },
     {
-      title: 'No. of Selection',
+      title: 'Placed',
       field: 'count',
+      cellStyle:{
+        color:"#168ddc"
+      }
       
     },
   
@@ -106,32 +133,57 @@ function Home() {
   
   return (
     <div className='sub'>
-     <div className="heading">Welcome to MMMUT Placement Portal</div> 
+     <div className="heading">Welcome to MMMUT Placement Portal  
+      <select name="placementBatch" id="placementBatch" className="home-select" onChange={(e)=>{
+          setPlacementBatch(e.target.value);
+          
+        }} style={{"float":"right"}}>
+          <option value="2022">Placements 2021-22</option>
+          <option value="2021">Placements 2020-21</option>
+        
+          
+        </select> 
+      </div> 
+      <div>
       
+      </div>
         <div className="table">
           
-    <MaterialTable
-  
-      title="UG Placement Statistics 2020-2021 
-      Placement Cell,MMMUT,Gk"
-      columns={columns}
-      data={tuples}
-      options={{
-        search: false,
-        paging:false,
-        headerStyle: {
-          zIndex:0,
-          backgroundColor:'gray',
-          fontSize:'20px',
-        }
-      }}
-     
+          <MaterialTable
+        
+            title={titlestring}
+            columns={columns}
+            data={tuples}
+            options={{
+              search: false,
+              sorting: false,
+              paging:false,
+              headerStyle: {
+                zIndex:0,
+                backgroundColor:'#f3f1ee',
+                fontSize:'20px',
+              }
+            }}
+          
 
-    />
+          />
           
 
             
 
+      </div>
+
+      <div className="home-stats-count">
+        <div>
+          <h3>{companyCount}+ </h3>
+          <p>No. of Companies visited</p>
+        </div>
+
+        <div>
+          <h3>{offersCount}+ </h3>
+          <p>Pre-Placement Offers</p>
+        </div>
+       
       </div>
     </div>
   );

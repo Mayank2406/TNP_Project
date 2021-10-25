@@ -6,6 +6,7 @@
 
     
 }
+
 @media screen  and (max-width:1400px){
 
     .cardStudent{
@@ -26,8 +27,9 @@
     }
 }
 .subHome{
-    background-color:#edf1f5;
+
 }
+
 @media screen  and (max-width:720px){
 
     .cardStudent{

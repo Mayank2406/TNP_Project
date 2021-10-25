@@ -288,7 +288,7 @@ function ncards(val){
         
       
           
-       {tog? <div className="main">
+       {tog? <div className="mainINTERVIEW">
        <div className="head1"><div>Interview Experience</div></div>
   
     <div className="Inter">

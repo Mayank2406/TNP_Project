@@ -22,7 +22,6 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .Inter-link {
@@ -63,9 +62,8 @@ body{
 }
 
 .INTERVIEW_MAIN{
-  background: white;
-  padding-top: 1px;
-  padding-bottom:8rem ;
+  
+height: 100%;
 }
 
 #headerTitle{
@@ -191,7 +189,6 @@ body{
   height:100%;
   text-align: center;
   flex-wrap: wrap;
-  background-color:white;
 }
 
 .Inter-logo {
@@ -213,7 +210,7 @@ body{
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+
   display: grid;
   grid-template-columns: auto auto auto auto;
   padding: 10px;
@@ -245,6 +242,11 @@ body{
   flex-wrap: wrap;
 } */
 
+.mainINTERVIEW{
+  background-color: rgba(204, 226, 207, 0.508);
+  height: 100%;
+  padding-bottom: 100%;
+}
 .heading1{
   padding: 20px 0px;
   color: black;
@@ -259,4 +261,36 @@ font-weight: 300;
 font-family: 'Montserrat', sans-serif;
   justify-content: center;
 
+}
+
+@media only screen and (max-width: 768px) {
+  .Inter-header {
+    grid-template-columns: auto auto auto ;
+  }
+  .heading1{
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 666px) {
+  .Inter-header {
+    grid-template-columns: auto auto  ;
+  
+
+  }
+  
+  .heading1{
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .Inter-header {
+    grid-template-columns: auto ;
+
+  }
+
+  .head1{
+    text-align: center;
+  }
 }

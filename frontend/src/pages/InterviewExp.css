@@ -245,7 +245,6 @@ height: 100%;
 .mainINTERVIEW{
   background-color: rgba(204, 226, 207, 0.508);
   height: 100%;
-  padding-bottom: 100%;
 }
 .heading1{
   padding: 20px 0px;
@@ -263,7 +262,7 @@ font-family: 'Montserrat', sans-serif;
 
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1120px) {
   .Inter-header {
     grid-template-columns: auto auto auto ;
   }
@@ -272,7 +271,7 @@ font-family: 'Montserrat', sans-serif;
   }
 }
 
-@media only screen and (max-width: 666px) {
+@media only screen and (max-width: 850px) {
   .Inter-header {
     grid-template-columns: auto auto  ;
   

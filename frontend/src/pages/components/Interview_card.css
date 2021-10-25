@@ -215,8 +215,21 @@ line-height: 1;
     .heading1{
       text-align: center;
     }
+
+    .Icard
+    {
+      margin-inline: 5rem;
+    }
   }
   
+  @media only screen and (max-width: 1320px) {
+    .Icard
+    {
+      margin-inline: 1rem;
+    }
+  }
+  
+
   @media only screen and (max-width: 666px) {
     .Icard
     {

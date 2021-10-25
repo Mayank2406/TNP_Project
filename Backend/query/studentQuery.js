@@ -29,7 +29,7 @@ const findInterviewAuthor = async (uid) => {
 }
 
 const getFilteredStudents = async (query) => {
-    return Student.find(query);
+    return Student.find(query).populate('interviews');
 }
 
 const getCompany = async () => {

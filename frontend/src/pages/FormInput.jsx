@@ -39,7 +39,7 @@ function FormInput(props) {
   const [company,setcompany]=useState("");
   const [name,setname]=useState('');
   const [exits,setexits]=useState(true);
-    const paperStyle = { padding: '30px 60px', width: 600, margin: "20px auto" }
+    const paperStyle = { padding: '30px 60px',width: "auto", margin: "40px" }
     const headerStyle = { margin: 0 }
     const avatarStyle = { padding:'30px',backgroundColor: '#1bbd7e' }
     useEffect(() => {

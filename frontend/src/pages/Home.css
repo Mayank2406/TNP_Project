@@ -4,12 +4,43 @@
   
 }
 .table{
-
     margin-left: 10px;
     margin-right: 10px
 }
 .heading{
     padding: 30px;
     font-size:20px;
-    
+}
+
+.home-select{
+    background-color: grey;
+    height:30px;
+    color:white;
+    border-radius: 4px;
+    font-size: 18px;
+}
+.home-stats-count{
+    background-color: white;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-left:1%;
+    margin-right:1%;
+    margin-top: 24px;
+    border-radius: 5px;
+    box-shadow: black;
+    padding: 20px;
+}
+
+.home-stats-count div{
+    text-align: center;
+}
+
+.home-stats-count h3{
+    font-size: 36px;
+    font-weight: 400;
+    color:rgb(58, 55, 55);
+}
+
+.home-stats-count p{
+    color: grey;
 }

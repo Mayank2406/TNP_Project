@@ -2,6 +2,9 @@
     width: 300px;
     height: 400px;
     background: white;
+    display:flex;
+    justify-content: center;
+    flex-direction:column;
     border-radius:10px;
     box-shadow: 0px 1px 10px 1px rgb(189, 183, 183);
     overflow: hidden;
@@ -9,13 +12,13 @@
 @media screen and (max-width: 322px) {
     .card {
         width: 250px;
-        height: 350px;
+        
     }
   }
   @media screen and (max-width: 296px) {
     .card {
         width: 200px;
-        height: 350px;
+        
     }
   }
 .upper-container{
@@ -23,6 +26,7 @@
     background: linear-gradient(to left,#8ea1f3,#86d5f5);
 
 }
+
 .image-container img{
     background: white;
     width: 100px;

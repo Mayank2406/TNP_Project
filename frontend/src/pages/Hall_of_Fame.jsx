@@ -30,6 +30,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Hall_of_Fame(props) {
+  const [act,setact]=useState(false);
+  function actionToggle(){
+    
+   setact(!act);
+   if(login){
+     sett(true);
+   }
+  console.log(act,"atif");
+  }
+
   const url = 'http://localhost:9000/students/';
   const classes = useStyles();
   const [filter,setfilter]=useState({});
@@ -437,7 +447,7 @@ return unique;
   
             const authID=item.author || '123';
    
-          
+          console.log("atif reayz",item);
             const itemID=item._id;
             
             return (
@@ -452,17 +462,24 @@ return unique;
 
 
         </div>
-         {!reg?<Fab color="primary" aria-label="add" style={style}>
-         <AddIcon onClick={()=>sett(true)} />
-          </Fab>:<div></div>}
-        </div>):(<div><Interview_Data setshowExp={setshowExp} company={company} content={content} /></div>)}
+         {!reg?<div class={act?"action actionActive":"action"} onClick={actionToggle}>
+        <div>+</div>
+        {!login && <ul>
+            
+            <li>Please Login to add job profile</li>
+        </ul>}
+    </div>
+          
+          
+          :<div></div>}
+        </div>):(<div><Interview_Data setshowExp={setshowExp} company={company} content={content} /></div>)
+        }
       </div>) : (<div>
        {login? <div>{edit?<EditPro tip={tip} eId={eId} tip={tip} pic={url3} name={name}  job={position} branch={branch} salary={salary} course={course} batch={year} company={company} placement={placement}/>:<FormInput id={user}/>}</div>:<div><NotLogin/></div>}
-<Fab color="primary" aria-label="add" style={style}>
-           <AddIcon onClick={()=>sett(false)}  />
-           
-
-          </Fab>
+       <div class={act?"action actionActive":"action"} onClick={()=>{setact(!act);sett(false)}}>
+        <div>+</div>
+    
+    </div>
       </div>)}
     </div>
 

@@ -74,3 +74,62 @@ margin-left: 60px;
  color: white;
  
 }
+.action{
+    position: fixed;
+    bottom: 50px;
+    margin:0;
+    right: 50px;
+    width:50px;
+    height:50px;
+    background: rgb(13, 28, 167);
+    border-radius:50%;
+    box-shadow:0 5px 5px rgba(0,0,0,0.1);
+    cursor:pointer;
+  
+  }
+  
+  .action div{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#eae9f0;
+    font-size:2em;
+    transition: 0.3s ease-in-out;
+  }
+  .actionActive div{
+    transform:rotate(135deg);
+  }
+  .action ul{
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    background: rgb(125, 157, 165);
+    min-width: 150px;
+    padding:20px;
+    border-radius: 20px;
+  opacity: 0;
+  
+  visibility: hidden;
+  transition: 0.3s;
+  }
+  
+  .actionActive ul{
+    bottom:45px;
+    right: 20px;
+    opacity: 1;
+    visibility: visible;
+    transition: 0.3s;
+  
+  }
+  .actionActive ul li
+  {list-style: none;
+    display:flex;
+    
+    align-items:flex-start;
+    padding:10px 0;
+  
+  }
+  

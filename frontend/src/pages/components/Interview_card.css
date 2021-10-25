@@ -1,7 +1,9 @@
 .Icard {
-  width: 300px;
-  height: 400px;
+  width: 250px;
+  height: 350px;
   background: white;
+  margin-inline: 2.5rem;
+  margin-top: 1.5rem;
   border-radius:10px;
   box-shadow: 0px 1px 10px 1px rgb(189, 183, 183);
   overflow: hidden;
@@ -62,6 +64,7 @@ line-height: 1;
 	align-items: center;
     
 }
+
 
 .profile {
 	width: 2.5rem;
@@ -202,4 +205,28 @@ line-height: 1;
     border-radius: 3px;
     padding: .3rem 1rem;
     margin-left: .5rem;
+  }
+
+  
+  @media only screen and (max-width: 768px) {
+    .Inter-header {
+      grid-template-columns: auto auto auto ;
+    }
+    .heading1{
+      text-align: center;
+    }
+  }
+  
+  @media only screen and (max-width: 666px) {
+    .Icard
+    {
+      margin-inline: 1rem;
+    }
+  }
+  
+  @media only screen and (max-width: 574px) {
+    .Icard
+    {
+      margin-inline: 0.4rem;
+    }
   }

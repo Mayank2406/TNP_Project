@@ -197,13 +197,13 @@ const unique =  arr.map(e => e[comp])
 return unique;
 }
   return (
-    <div>
+    <div className="hall_color">
      
 
       {!t? (
       
       <div>
-       { showExp? (<div classNmae="subHome">
+       { showExp? (<div className="subHome">
 
         <h4 className='stats'>Placements Stats</h4>
 

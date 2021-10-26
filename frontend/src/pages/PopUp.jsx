@@ -24,7 +24,7 @@ function PopUp(props) {
             {
                 props.interview.map((item)=>{
                     return(
-                        <button onClick={()=>{props.setcontent(item.content);props.setcompany(item.company);props.setshowExp(false);}}>Interview of {item.content}</button> 
+                        <button onClick={()=>{props.setcontent(item.content);props.setcompany(item.company);props.setshowExp(false);}}>Interview of {item.company}</button> 
                     )
                 })
             }

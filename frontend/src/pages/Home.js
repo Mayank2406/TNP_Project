@@ -73,7 +73,7 @@ function Home() {
   //   setPlacementBatch("2022")
   // },[placementData])
 
-  let titlestring = "Placement Statistics "+{placementBatch}+"batch, Placement Cell, MMMUT"
+  let titlestring = "Placement Statistics Placement Cell, MMMUT"
   const tableIcons = {
     Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
     Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),

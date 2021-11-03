@@ -254,10 +254,11 @@ height: 100%;
 }
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
 .head1{
-font-size: 30px;
+  padding-top: 1rem;
+font-size: 40px;
+color: black;
 font-weight: 300;
   display: flex;
-font-family: 'Montserrat', sans-serif;
   justify-content: center;
 
 }

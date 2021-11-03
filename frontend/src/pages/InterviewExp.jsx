@@ -300,7 +300,7 @@ if(alert){
       
           
        {tog? <div className="mainINTERVIEW">
-       <div className="head1"><div>Interview Experience</div></div>
+       <h4 className="head1"><div>Interview Experience</div></h4>
   
     <div className="Inter">
       <header className="Inter-header">

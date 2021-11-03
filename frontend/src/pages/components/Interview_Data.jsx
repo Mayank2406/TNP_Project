@@ -1,23 +1,25 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom';
 import './interview_Data.css'
-
+import Accenture from "../assets/Accenture.png";
 function interview_Data(props) {
     
     var pic='https://upload.wikimedia.org/wikipedia/commons/1/18/Mark_Zuckerberg_F8_2019_Keynote_%2832830578717%29_%28cropped%29.jpg';
  
     return (
-        <div className="top-head">
+        <div className="top-head" >
         
         <div className="inter-card">
         <div className="inter-upper-container">
         <div className="inter-image-container">
          
-<h1>Interview Experience of {props.company}</h1>
+<center><h1 className="HEAD">Interview Experience of {props.company}</h1></center>
 
         </div>
         </div>
-        <div className="inter-lower-container">
+
+        <center><img className="logo" src={Accenture} alt=""  width="200px" height="100px"/></center>
+        <div className="inter-lower-container" >
         <div dangerouslySetInnerHTML={{ __html: props.content}} />
   
       

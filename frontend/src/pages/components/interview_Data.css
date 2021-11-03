@@ -1,6 +1,5 @@
 .inter-card{
     width: 800px;
-    
     background: white;
     border-radius:10px;
     min-height: 100px;
@@ -9,8 +8,15 @@
     padding:20px;
 }
 .inter-upper-container{
-    height: 100px;
+    height: 60px;
 
+}
+
+.HEAD{
+font-size: 40px;
+color: black;
+font-weight: bold;
+font-family: 'Times New Roman', Times, serif;
 }
 .inter-image-container img{
     background: white;

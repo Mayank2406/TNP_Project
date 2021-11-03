@@ -1,9 +1,9 @@
 .Icard {
   width: 250px;
-  height: 350px;
+  height: 300px;
   background: white;
   margin-inline: 2.5rem;
-  margin-top: 1.5rem;
+  margin-bottom: 2.5rem;
   border-radius:10px;
   box-shadow: 0px 1px 10px 1px rgb(189, 183, 183);
   overflow: hidden;
@@ -11,8 +11,8 @@
 
 .Iupper-container{
   height: 100px;
-  background: linear-gradient(to left,#8ea1f3,#86d5f5);
 
+  
 }
 
 .Iimage-container img{
@@ -36,9 +36,7 @@ font-weight:600;
 font-size:1.5rem;
 }
 .Ilower-container h4{
-  color: #0012b9;
-  font-weight: 700;
-  font-size:1.2rem;
+ 
 }
 
 .Ilower-container p{
@@ -112,20 +110,20 @@ line-height: 1;
 	width: auto;
 
 	text-align: center;
-    padding-top: 15%;
+    padding-top: 20%;
     color:#2f2d2e;
     font-weight:600;
-    font-size:1.5rem;
+    font-size:1.4rem;
     font-family: Titillium;
 }
 
 .Icard-text2 {
 	width: auto;
 	text-align: center;
-    padding-top: 5% ;
+    padding-top: 0% ;
     color: #0012b9;
   font-weight: 700;
-  font-size:1.2rem;
+  font-size:1.1rem;
   font-family: Titillium;
 }
 .Icard-text3 {

@@ -4,6 +4,8 @@ const Schema = mongoose.Schema;
 const InterviewExperienceSchema = new Schema({
     name: { type: String, required: true },
     company: { type: String, required: true },
+    branch: { type: String, required: true},
+    ctc: { type: String},
     url: { type: String},
     author:
     {

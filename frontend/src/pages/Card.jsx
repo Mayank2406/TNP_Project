@@ -34,7 +34,7 @@ function Card(props) {
            {(props.authID===props.user)?<button onClick={()=>{props.sett(true);props.seteId(props.itemID);props.setEdit(true);props.setname(props.name);props.setUrl3(props.pic);props.setposition(props.job);props.setbranch(props.branch);props.setcourse(props.course);props.setplacement(props.placement);props.setsalary(props.salary);props.setyear(props.batch);props.setcompany(props.company);props.settip(props.typ)}}>Edit profile</button>:<Popup trigger={  <button>
                 visit profile
             </button>} modal>
-               <div class="popup"><PopUp pic={props.pic} setcontent={props.setcontent} setcompany={props.setcompany} setshowExp={props.setshowExp} name={props.name} interview={props.interview}job={props.job} branch={props.branch} course={props.course} batch={props.batch} company={props.company} /></div> 
+               <div class="popup"><PopUp pic={props.pic} linkedin={props.linkedin} instagram={props.instagram} github={props.github}  setcontent={props.setcontent} setcompany={props.setcompany} setshowExp={props.setshowExp} name={props.name} interview={props.interview}job={props.job} branch={props.branch} course={props.course} batch={props.batch} company={props.company} /></div> 
 
             </Popup>} 
           

@@ -52,6 +52,7 @@ function ncards(val){
 
   function InterviewExp(){
     const [act,setact]=useState(false);
+
     function actionToggle(){
     
       setact(!act);
@@ -74,10 +75,12 @@ if(alert){
     const [ url, setUrl ] = useState("https://www.annauniv.edu/DIST/assests/images/upload_images/no-photo.gif");
     const [{token},dispatch]=useStateValue();
     const [data,setData]=useState('');
+    const [branch,setbranch]=useState('');
+    const [ctc,setctc]=useState('');
     const [interview,setInterview]=useState([]);
     const [experience,setexperience]=useState('');
     const [tok, setToken] = useState(false);
-
+const[user,setUser]=useState('');
     const style = {
       margin: 0,
       top: 'auto',
@@ -86,6 +89,37 @@ if(alert){
       left: 'auto',
       position: 'fixed',
     };
+    useEffect(()=>{
+
+    
+      axios.post('http://localhost:9000/login/verify',{
+        token:token
+      }).then((res)=>{
+      setUser(res.data.userID);
+        console.log('token userId ',res.data.userID);
+        console.log('token satus ',res.data.status);
+        console.log('token reslt ',res);
+      });
+    },[]);
+    useEffect(() => {
+
+      axios.get(`http://localhost:9000/students/getbyid/${user}`)
+      
+  
+        .then((res) => {
+        
+  setName(res.data.students.userName);
+  console.log(res.data.students.userName);
+          console.log("single",res);
+        
+          
+  
+          // setdata(data.data.length);
+        })
+        .catch(error => {
+          console.log('djfjkdjflkdjfldjflkdjfdljflkjf    fjdkfjkdfjdsjf')
+        });
+    } , [user])
     function sendData()
     {
       
@@ -95,7 +129,7 @@ if(alert){
             company:roll,
             content:experience,
             url:url, 
-          
+          branch:branch,
             token:token
        
         }).then((res)=>{
@@ -188,10 +222,10 @@ if(alert){
           label='Name' 
          
           value={name} 
-          //  InputProps={{
-          //   readOnly: true,
-          // }}
-          onChange={(e)=>{setName(e.target.value)}}
+           InputProps={{
+            readOnly: true,
+          }}
+     
           margin="normal"
           autoFocus
           
@@ -201,6 +235,17 @@ if(alert){
   margin="normal"
   autoFocus
  label='Company' onChange={(e)=>{setRoll(e.target.value)}} placeholder="Enter your company name" />
+
+<TextField required value={branch}  
+   id="fullWidth"
+  margin="normal"
+  autoFocus
+ label='Branch' onChange={(e)=>{setbranch(e.target.value)}} placeholder="Enter your Branch" />
+            <TextField required value={ctc}  
+   id="fullWidth"
+  margin="normal"
+  autoFocus
+ label='CTC' onChange={(e)=>{setctc(e.target.value)}} placeholder="Enter your CTC" />
  
   </div>
 

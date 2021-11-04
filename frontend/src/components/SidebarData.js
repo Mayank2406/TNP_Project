@@ -14,12 +14,12 @@ export const SidebarData = [
     icon: <AiIcons.AiFillHome />,
     cName: 'nav-text'
   },
-  {
-    title: 'Login',
-    path: '/login',
-    icon: <LoginIcon/>,
-    cName: 'nav-text'
-  },
+  // {
+  //   title: 'Login',
+  //   path: '/login',
+  //   icon: <LoginIcon/>,
+  //   cName: 'nav-text'
+  // },
   {
     title: 'Team',
     path: '/team',

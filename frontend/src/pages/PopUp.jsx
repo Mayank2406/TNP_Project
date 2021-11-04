@@ -3,6 +3,9 @@ import './PopUp.css';
 
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import {SocialMediaIconsReact} from 'social-media-icons-react';
+
 function PopUp(props) {
     var pic='https://upload.wikimedia.org/wikipedia/commons/1/18/Mark_Zuckerberg_F8_2019_Keynote_%2832830578717%29_%28cropped%29.jpg';
     
@@ -32,8 +35,10 @@ function PopUp(props) {
             <div className='links'> 
             
             
-            <div className="linkedin"><LinkedInIcon/></div>
-            <div className='linkedin'><GitHubIcon/></div>
+            {props.linkedin &&  <div className="linkedin"> <SocialMediaIconsReact borderColor="rgba(0,0,0,0.25)" icon="linkedin" iconColor="rgba(255,255,255,1)" backgroundColor="rgba(26,166,233,1)" url={props.linkedin} size="24" /></div>}
+           { props.github &&<div className='linkedin'>            <SocialMediaIconsReact borderColor="rgba(0,0,0,0.25)" icon="github" iconColor="rgba(255,255,255,1)"  url={props.github} size="24" /></div>}
+            {props.instagram && <div className='linkedin'>            <SocialMediaIconsReact borderColor="rgba(0,0,0,0.25)" icon="instagram" iconColor="rgba(255,255,255,1)" url={props.instagram} size="24" /></div>}
+
             </div>
            
         </div>

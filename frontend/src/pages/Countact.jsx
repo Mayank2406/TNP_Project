@@ -9,7 +9,7 @@ function Countact() {
     // },[]);
     return (
         <div className="toOfImg">
-            <h1>{token}</h1>
+     
             <div className="contactBg">
                 <img className='img2' src={logo} alt="" />
 

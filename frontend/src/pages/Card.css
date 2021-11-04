@@ -9,24 +9,6 @@
     box-shadow: 0px 1px 10px 1px rgb(189, 183, 183);
     overflow: hidden;
 }
-@media screen and (max-width: 322px) {
-    .card {
-        width: 250px;
-        
-    }
-  }
-  @media screen and (max-width: 296px) {
-    .card {
-        width: 200px;
-        
-    }
-  }
-.upper-container{
-    height: 100px;
-    background: linear-gradient(to left,#8ea1f3,#86d5f5);
-
-}
-
 .image-container img{
     background: white;
     width: 100px;
@@ -38,6 +20,48 @@
  
 
 }
+@media screen and (max-width: 322px) {
+    .card {
+        width: 250px;
+        
+    }
+    .image-container img{
+        background: white;
+        width: 100px;
+        height: 100px;
+        
+        border-radius:50%;
+        padding:5px;
+        transform:translate(70px,45px);
+     
+    
+    }  
+}
+@media screen and (max-width: 252px) {
+    .card {
+        width: 200px;
+        
+    }
+    .image-container img{
+        background: white;
+        width: 100px;
+        height: 100px;
+        
+        border-radius:50%;
+        padding:5px;
+        transform:translate(50px,45px);
+     
+    
+    }  
+}
+
+.upper-container{
+    height: 100px;
+    background: linear-gradient(to left,#8ea1f3,#86d5f5);
+
+}
+
+
 .img1:hover{
   
     border:3px solid #008eb9;

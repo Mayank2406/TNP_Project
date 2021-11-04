@@ -60,7 +60,10 @@ function EditPro(props) {
               type:placement,
               salary:salary,
               year:year,
-              token:token
+              token:token,
+              instagram:instagram,
+              linkedIn:linkedin,
+              github:github
             
               
           }).then((res)=>{console.log("naffAt",res); history.push("/"); })
@@ -82,7 +85,9 @@ function EditPro(props) {
       const[course,setcourse]=useState(props.course);
       const [placement, setplacement] = useState(props.tip)
       const[salary,setsalary]=useState(props.salary);
-      
+      const [instagram,setinstagram] = useState(props.instagram);
+      const [linkedin,setlinkedin] = useState(props.linkedin);
+      const[github,setgithub] = useState(props.github);
       const [year, setyear] = useState(props.batch)
       const[interview,setInterview]=useState();
   
@@ -336,6 +341,10 @@ function EditPro(props) {
   <TextField fullWidth value={company}label='company' onChange={(e)=>{setcompany(e.target.value)}} placeholder="Enter your company name" />
 
   <TextField fullWidth value={year}label='Graduation year' onChange={(e)=>{setyear(e.target.value)}} placeholder="Enter Graduation year" />
+  <TextField required fullWidth label='LinkedIn' onChange={(e)=>{setlinkedin(e.target.value)}} placeholder="Enter your job position" />
+<TextField required fullWidth label='Instagram' onChange={(e)=>{setinstagram(e.target.value)}} placeholder="Enter your job position" />
+<TextField required fullWidth label='Github' onChange={(e)=>{setgithub(e.target.value)}} placeholder="Enter your job position" />
+      
   <div className="interview">
     
   <Button onClick={sendData} variant='contained' color='primary'>Submit</Button>

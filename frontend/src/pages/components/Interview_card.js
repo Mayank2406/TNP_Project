@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Interview_card.css";
-import micro from "../assets/micro.jpg"; // Tell webpack this JS file uses this image
+// Tell webpack this JS file uses this image
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from "./Modal";
 import useModal from './useModal';
@@ -22,6 +22,9 @@ export default function Card(props) {
   }
     const [exp,setexp]=useState(false);
   const classes = useStyles();
+  var company = props.job_pos.toLowerCase();
+
+  company=company.replace(/\s/g, '');
 
   return (
     /*
@@ -44,9 +47,10 @@ export default function Card(props) {
 
     </div>
     */
+   
 
     <div className="Icard">
-    <div className="Iupper-container" style={{ backgroundImage: 'url(' + micro + ')', backgroundSize: '250px 100px',}}>
+    <div className="Iupper-container" style={{ backgroundImage: `url(/company_logo/${company}.jpeg)`, backgroundSize: '250px 100px',}}>
   
     <div className="Iimage-container">
         <img className="Iimg1" src={props.image} alt=""  width="100px" height="100px"/>
@@ -54,10 +58,11 @@ export default function Card(props) {
     
         </div>
     </div>
+    
     <div className="Ilower-container">
         <h4 className="Icard-text1" >{props.Iname}</h4>
           <div className="Icard-text2">SDE @ {props.job_pos}</div>
-    
+      
           <div className="Icard-text3">{props.dept}</div>
           
           <button className="button-default" onClick={toggle}>View Experience</button>

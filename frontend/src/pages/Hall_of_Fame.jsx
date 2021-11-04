@@ -449,11 +449,13 @@ return unique;
    
           console.log("atif reayz",item);
             const itemID=item._id;
-            
+            console.log("instagram    atif",item.instagram);
+            console.log("github   atif",item.github);
+            console.log("linkedin   atif",item.linkdin);
             return (
               <div className="student">
-        
-                <Card seteId={seteId} settip={settip} typ={item.type} itemID={itemID} setcontent={setcontent} setname={setname} setUrl3={setUrl3} setposition={setposition} setcourse={setcourse} setbranch={setbranch} setplacement={setplacement} setsalary={setsalary} setyear={setyear} setcompany={setcompany} setEdit={setEdit} setreg={setreg} sett={sett} authID={authID} user={user}  setshowExp={setshowExp} pic={item.image} name={item.name} interview={item.interviews} job={item.position} branch={item.branch} salary={item.salary} course={item.course} batch={item.year} company={item.company} type={item.type} placement={item.placement} />
+                
+                <Card seteId={seteId} settip={settip} typ={item.type} itemID={itemID} setcontent={setcontent} setname={setname} setUrl3={setUrl3} setposition={setposition} setcourse={setcourse} setbranch={setbranch} setplacement={setplacement} setsalary={setsalary} setyear={setyear} setcompany={setcompany} setEdit={setEdit} setreg={setreg} sett={sett} authID={authID} user={user}  setshowExp={setshowExp} pic={item.image} name={item.name} interview={item.interviews} job={item.position} branch={item.branch} salary={item.salary} course={item.course} batch={item.year} company={item.company} type={item.type} placement={item.placement} linkedin={item.linkedIn} instagram={item.instagram} github={item.github} />
               </div>
             )
           })

@@ -36,6 +36,9 @@ function FormInput(props) {
   const [loading, setloading] = useState(false);
   const [{token},dispatch]=useStateValue();
   const [completed, setcompleted] = useState(false);
+  const [instagram,setinstagram] = useState('');
+  const [linkedin,setlinkedin] = useState('');
+  const[github,setgithub] = useState('');
   const [company,setcompany]=useState("");
   const [name,setname]=useState('');
   const [exits,setexits]=useState(true);
@@ -79,7 +82,10 @@ function FormInput(props) {
             salary:salary,
             company:company,
             token:token,
-            year:year
+            year:year,
+            instagram:instagram,
+            linkedIn:linkedin,
+            github:github
             
         }).then((res)=>{console.log("naffAt",res); history.push("/"); })
         .catch((e)=>{console.log("unsuccessfull submission");setexits(false)});
@@ -357,6 +363,10 @@ onChange={(e)=>{setplacement(e.target.value)}}
 <TextField fullWidth label='Salary' onChange={(e)=>{setsalary(e.target.value)}} placeholder="Enter your Salary" />
 <TextField fullWidth label='company' onChange={(e)=>{setcompany(e.target.value)}} placeholder="Enter your company name" />
 <TextField fullWidth label='Graduation year' onChange={(e)=>{setyear(e.target.value)}} placeholder="Enter Graduation year" />
+<TextField required fullWidth label='LinkedIn' onChange={(e)=>{setlinkedin(e.target.value)}} placeholder="Enter your job position" />
+<TextField required fullWidth label='Instagram' onChange={(e)=>{setinstagram(e.target.value)}} placeholder="Enter your job position" />
+<TextField required fullWidth label='Github' onChange={(e)=>{setgithub(e.target.value)}} placeholder="Enter your job position" />
+                     
 <div className="interview">
   
 <Button onClick={sendData} variant='contained' color='primary'>Submit</Button>

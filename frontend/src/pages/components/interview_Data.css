@@ -7,11 +7,12 @@
     overflow: hidden;
     padding:20px;
 }
-.inter-upper-container{
+/*.inter-upper-container{
     height: 60px;
 
 }
 
+*/
 .HEAD{
 font-size: 40px;
 color: black;
@@ -116,3 +117,4 @@ justify-content: center;
       justify-content:center;
       
   }
+

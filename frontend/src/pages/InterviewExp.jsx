@@ -14,7 +14,7 @@ import { useStateValue } from '../StateProvider';
 import axios from 'axios';
 import Interview_Data from './components/Interview_Data.jsx';
 import NotLogin from './NotLogin';
-import { TextField } from '@material-ui/core';
+import { FormControl, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -29,6 +29,10 @@ const useStyles = makeStyles((theme) => ({
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 180,
   },
 
 }));
@@ -130,6 +134,7 @@ const[user,setUser]=useState('');
             content:experience,
             url:url, 
           branch:branch,
+          ctc:ctc,
             token:token
        
         }).then((res)=>{
@@ -203,7 +208,34 @@ const[user,setUser]=useState('');
   
       , [interview])
 
-
+  
+      const [open, setOpen] = React.useState(false);
+  
+      const [open2, setOpen2] = React.useState(false);
+    
+      const [open3, setOpen3] = React.useState(false);
+      const handleClose = () => {
+        setOpen(false);
+      };
+    
+      const handleOpen = () => {
+        setOpen(true);
+      };
+      const handleClose2 = () => {
+        setOpen2(false);
+      };
+    
+      const handleOpen2 = () => {
+        setOpen2(true);
+      };
+      const handleClose3 = () => {
+        setOpen3(false);
+      };
+    
+      const handleOpen3 = () => {
+        setOpen3(true);
+      };
+    
   
   return(<>
         {tok?(
@@ -235,12 +267,31 @@ const[user,setUser]=useState('');
   margin="normal"
   autoFocus
  label='Company' onChange={(e)=>{setRoll(e.target.value)}} placeholder="Enter your company name" />
+<div>
+<FormControl className={classes.formControl}>
 
-<TextField required value={branch}  
-   id="fullWidth"
-  margin="normal"
-  autoFocus
- label='Branch' onChange={(e)=>{setbranch(e.target.value)}} placeholder="Enter your Branch" />
+<InputLabel>Branch</InputLabel>
+<Select
+  open={open2}
+  onClose={handleClose2}
+  onOpen={handleOpen2}
+  value={branch}
+  onChange={(e)=>{setbranch(e.target.value)}}
+>
+       <MenuItem  value="Computer Science and enginerring">CSE</MenuItem>
+    <MenuItem value="Electronics and Communication engineering">ECE</MenuItem>
+    
+    <MenuItem value="Electrical engineering">EE</MenuItem>
+    <MenuItem value="Civil engineering">Civil</MenuItem>
+    <MenuItem value="Mechanical engineering">ME</MenuItem>
+    <MenuItem value="Chemical engineering">CH.</MenuItem>
+  
+
+  
+
+</Select>
+</FormControl>
+</div>
             <TextField required value={ctc}  
    id="fullWidth"
   margin="normal"
@@ -362,6 +413,8 @@ const[user,setUser]=useState('');
               content={item.content}
               tog={tog}
               comp={company}
+              branch={item.branch}
+              ctc={item.ctc}
               setcomp={setcompany}
               expData={content}
               setexpData={setcontent}

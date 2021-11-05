@@ -6,7 +6,9 @@ import './Card.css'
 function Card(props) {
     var pic='https://upload.wikimedia.org/wikipedia/commons/1/18/Mark_Zuckerberg_F8_2019_Keynote_%2832830578717%29_%28cropped%29.jpg';
     
+    var company = props.company.toLowerCase();
 
+    company=company.replace(/\s/g, '');
     if(props.authID===props.user)
     {
     props.setreg(true);
@@ -15,7 +17,7 @@ function Card(props) {
     }
     return (
         <div className="card">
-        <div className="upper-container">
+        <div className="upper-container" style={{ backgroundImage: `url(/company_logo/${company}.jpeg)`, backgroundSize: '300px 100px',}}>
         <div className="image-container">
             <img className="img1" src={props.pic} alt=""  width="100px" height="100px"/>
 

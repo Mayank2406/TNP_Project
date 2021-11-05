@@ -15,7 +15,7 @@ const registration =  async (req,res) =>{
     userData.userVerified="NO";
     console.log(userData)
     const userEncryptedData= EncryptDecrypt.encryptHelper(userData);
-    const msgEmail=`<p>Welcome ${userData.userName}, <br> OTP for registration is ${userData.userOTP}<br><h3>Thanks<br>TnP Info created by Nandzam</h3>`;
+    const msgEmail=`<p>Welcome ${userData.userName}, <br> OTP for registration is ${userData.userOTP}<br><h3>Thanks<br>TnP Info created by TNP</h3>`;
     try{
         var countUser=0
         var dbData

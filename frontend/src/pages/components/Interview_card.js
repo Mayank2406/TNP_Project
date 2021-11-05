@@ -63,8 +63,8 @@ export default function Card(props) {
         <h4 className="Icard-text1" >{props.Iname}</h4>
           <div className="Icard-text2">SDE @ {props.job_pos}</div>
       
-          <div className="Icard-text3">{props.dept}</div>
-          
+          <div className="Icard-text3">{props.branch}</div>
+          <div className="Icard-text3">{props.ctc && `CTC : ${props.ctc}`}</div>
           <button className="button-default" onClick={toggle}>View Experience</button>
     
       

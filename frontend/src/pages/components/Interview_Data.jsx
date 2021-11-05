@@ -19,7 +19,7 @@ function interview_Data(props) {
 
         </div>
        
-<div className="logo"><img  src={`/company_logo/${company}.jpeg`} alt=""  width="200px" height="100px"/></div>
+{/* <div className="logo"><img  src={`/company_logo/${company}.jpeg`} alt=""  width="200px" height="100px"/></div> */}
         
         <div className="inter-lower-container" >
         <div dangerouslySetInnerHTML={{ __html: props.content}} />
